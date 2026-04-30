@@ -155,20 +155,18 @@ export function BrandStatement() {
           transition={{ duration: 0.6, delay: 0.3 }}
         >
           {isMobile ? (
-            /* ── Mobile: column with star between ── */
-            <div style={{ display: "flex", flexDirection: "column", gap: 0, borderRadius: "16px", overflow: "visible", boxShadow: "0 4px 24px rgba(0,0,0,0.08)" }}>
-              <div style={{ background: "linear-gradient(135deg, #f97316 0%, #e53e2f 100%)", padding: "28px 24px", textAlign: "center", borderRadius: "16px 16px 0 0" }}>
+            /* ── Mobile: column with star perfectly between ── */
+            <div style={{ display: "flex", flexDirection: "column", borderRadius: "16px", overflow: "hidden", boxShadow: "0 4px 24px rgba(0,0,0,0.08)" }}>
+              <div style={{ background: "linear-gradient(135deg, #f97316 0%, #e53e2f 100%)", padding: "28px 24px", textAlign: "center" }}>
                 <div style={{ fontSize: "26px", fontWeight: 900, color: "#ffffff", marginBottom: "6px" }}>פורום טכנולוגי</div>
                 <div style={{ fontSize: "14px", color: "rgba(255,255,255,0.85)" }}>AI · Automation · Agents</div>
               </div>
 
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "4px", background: "#ffffff", position: "relative", zIndex: 1 }}>
-                <div style={{ position: "absolute" }}>
-                  <PulsingStar />
-                </div>
+              <div style={{ height: "64px", background: "#ffffff", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <PulsingStar />
               </div>
 
-              <div style={{ background: "linear-gradient(135deg, #326a9e 0%, #1e3a52 100%)", padding: "28px 24px", textAlign: "center", borderRadius: "0 0 16px 16px", marginTop: "52px" }}>
+              <div style={{ background: "linear-gradient(135deg, #326a9e 0%, #1e3a52 100%)", padding: "28px 24px", textAlign: "center" }}>
                 <div style={{ fontSize: "26px", fontWeight: 900, color: "#ffffff", marginBottom: "6px" }}>פורום תהליכי</div>
                 <div style={{ fontSize: "14px", color: "rgba(255,255,255,0.85)" }}>חשיבה יזמית · שיפור תהליכים · שינוי ארגוני</div>
               </div>
