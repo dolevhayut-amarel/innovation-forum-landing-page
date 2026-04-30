@@ -1,12 +1,44 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useMobile } from "@/hooks/useMobile";
 
 const view = { once: true, amount: 0.2 } as const;
 const hidden = { opacity: 0, y: 36 };
 const show = { opacity: 1, y: 0 };
 
+const PulsingStar = () => (
+  <motion.div
+    animate={{
+      scale: [1, 1.22, 1],
+      boxShadow: [
+        "0 0 0px 0px rgba(249,115,22,0)",
+        "0 0 20px 8px rgba(249,115,22,0.5)",
+        "0 0 0px 0px rgba(249,115,22,0)",
+      ],
+    }}
+    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+    style={{
+      width: "52px",
+      height: "52px",
+      borderRadius: "50%",
+      background: "linear-gradient(135deg, #f97316, #e53e2f)",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      fontSize: "22px",
+      fontWeight: 900,
+      color: "#ffffff",
+      flexShrink: 0,
+    }}
+  >
+    ✦
+  </motion.div>
+);
+
 export function BrandStatement() {
+  const isMobile = useMobile();
+
   return (
     <section
       style={{
@@ -121,87 +153,46 @@ export function BrandStatement() {
           whileInView={show}
           viewport={view}
           transition={{ duration: 0.6, delay: 0.3 }}
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            gap: "2px",
-            borderRadius: "16px",
-            overflow: "hidden",
-            boxShadow: "0 4px 24px rgba(0,0,0,0.08)",
-          }}
-          className="brand-pillars"
         >
-          <div
-            style={{
-              flex: 1,
-              background: "linear-gradient(135deg, #f97316 0%, #e53e2f 100%)",
-              padding: "28px 24px",
-              textAlign: "center",
-            }}
-          >
-            <div style={{ fontSize: "28px", fontWeight: 900, color: "#ffffff", marginBottom: "6px" }}>
-              פורום טכנולוגי
-            </div>
-            <div style={{ fontSize: "14px", color: "rgba(255,255,255,0.85)", lineHeight: 1.5 }}>
-              AI · Automation · Agents
-            </div>
-          </div>
+          {isMobile ? (
+            /* ── Mobile: column with star between ── */
+            <div style={{ display: "flex", flexDirection: "column", gap: 0, borderRadius: "16px", overflow: "visible", boxShadow: "0 4px 24px rgba(0,0,0,0.08)" }}>
+              <div style={{ background: "linear-gradient(135deg, #f97316 0%, #e53e2f 100%)", padding: "28px 24px", textAlign: "center", borderRadius: "16px 16px 0 0" }}>
+                <div style={{ fontSize: "26px", fontWeight: 900, color: "#ffffff", marginBottom: "6px" }}>פורום טכנולוגי</div>
+                <div style={{ fontSize: "14px", color: "rgba(255,255,255,0.85)" }}>AI · Automation · Agents</div>
+              </div>
 
-          <div
-            style={{
-              width: "4px",
-              background: "#ffffff",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              flexShrink: 0,
-              position: "relative",
-            }}
-          >
-            <motion.div
-              animate={{
-                scale: [1, 1.22, 1],
-                boxShadow: [
-                  "0 0 0px 0px rgba(249,115,22,0)",
-                  "0 0 20px 8px rgba(249,115,22,0.5)",
-                  "0 0 0px 0px rgba(249,115,22,0)",
-                ],
-              }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              style={{
-                position: "absolute",
-                width: "52px",
-                height: "52px",
-                borderRadius: "50%",
-                background: "linear-gradient(135deg, #f97316, #e53e2f)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: "22px",
-                fontWeight: 900,
-                color: "#ffffff",
-                zIndex: 1,
-              }}
-            >
-              ✦
-            </motion.div>
-          </div>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "4px", background: "#ffffff", position: "relative", zIndex: 1 }}>
+                <div style={{ position: "absolute" }}>
+                  <PulsingStar />
+                </div>
+              </div>
 
-          <div
-            style={{
-              flex: 1,
-              background: "linear-gradient(135deg, #326a9e 0%, #1e3a52 100%)",
-              padding: "28px 24px",
-              textAlign: "center",
-            }}
-          >
-            <div style={{ fontSize: "28px", fontWeight: 900, color: "#ffffff", marginBottom: "6px" }}>
-              פורום תהליכי
+              <div style={{ background: "linear-gradient(135deg, #326a9e 0%, #1e3a52 100%)", padding: "28px 24px", textAlign: "center", borderRadius: "0 0 16px 16px", marginTop: "52px" }}>
+                <div style={{ fontSize: "26px", fontWeight: 900, color: "#ffffff", marginBottom: "6px" }}>פורום תהליכי</div>
+                <div style={{ fontSize: "14px", color: "rgba(255,255,255,0.85)" }}>חשיבה יזמית · שיפור תהליכים · שינוי ארגוני</div>
+              </div>
             </div>
-            <div style={{ fontSize: "14px", color: "rgba(255,255,255,0.85)", lineHeight: 1.5 }}>
-              חשיבה יזמית · שיפור תהליכים · שינוי ארגוני
+          ) : (
+            /* ── Desktop: row with star in divider ── */
+            <div style={{ display: "flex", flexDirection: "row", gap: "2px", borderRadius: "16px", overflow: "hidden", boxShadow: "0 4px 24px rgba(0,0,0,0.08)" }}>
+              <div style={{ flex: 1, background: "linear-gradient(135deg, #f97316 0%, #e53e2f 100%)", padding: "28px 24px", textAlign: "center" }}>
+                <div style={{ fontSize: "28px", fontWeight: 900, color: "#ffffff", marginBottom: "6px" }}>פורום טכנולוגי</div>
+                <div style={{ fontSize: "14px", color: "rgba(255,255,255,0.85)", lineHeight: 1.5 }}>AI · Automation · Agents</div>
+              </div>
+
+              <div style={{ width: "4px", background: "#ffffff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, position: "relative" }}>
+                <div style={{ position: "absolute" }}>
+                  <PulsingStar />
+                </div>
+              </div>
+
+              <div style={{ flex: 1, background: "linear-gradient(135deg, #326a9e 0%, #1e3a52 100%)", padding: "28px 24px", textAlign: "center" }}>
+                <div style={{ fontSize: "28px", fontWeight: 900, color: "#ffffff", marginBottom: "6px" }}>פורום תהליכי</div>
+                <div style={{ fontSize: "14px", color: "rgba(255,255,255,0.85)", lineHeight: 1.5 }}>חשיבה יזמית · שיפור תהליכים · שינוי ארגוני</div>
+              </div>
             </div>
-          </div>
+          )}
         </motion.div>
 
         <motion.p
