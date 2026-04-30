@@ -10,7 +10,6 @@ const stats = [
     suffix: "",
     label: "פורומים מקבילים",
     sub: "טכנולוגי ותהליכי — בו-זמנית",
-    accent: false,
   },
   {
     value: 7,
@@ -18,14 +17,12 @@ const stats = [
     suffix: " מפגשים",
     label: "בסדרה אחת",
     sub: "פעם בשבועיים, עם תוצרים אמיתיים",
-    accent: true,
   },
   {
     value: 3,
     suffix: " שעות",
     label: "לכל מפגש",
     sub: "עבודה מעשית, לא הרצאה",
-    accent: false,
   },
   {
     value: 15,
@@ -33,7 +30,6 @@ const stats = [
     suffix: " משתתפים",
     label: "לכל פורום",
     sub: "נבחרים בקפידה — מקומות מוגבלים",
-    accent: false,
   },
 ];
 
@@ -41,12 +37,10 @@ function Counter({
   value,
   prefix = "",
   suffix = "",
-  accent,
 }: {
   value: number;
   prefix?: string;
   suffix?: string;
-  accent: boolean;
 }) {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
@@ -71,10 +65,89 @@ function Counter({
     return () => clearInterval(timer);
   }, [inView, value]);
 
+  return <span ref={ref}>{prefix}{count}{suffix}</span>;
+}
+
+function StatCard({ stat, index }: { stat: typeof stats[0]; index: number }) {
+  const [hovered, setHovered] = useState(false);
+
   return (
-    <span ref={ref}>
-      {prefix}{count}{suffix}
-    </span>
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.5 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      onHoverStart={() => setHovered(true)}
+      onHoverEnd={() => setHovered(false)}
+      style={{
+        flex: 1,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        textAlign: "center",
+        padding: "28px 20px",
+        borderRight: index < stats.length - 1 ? "1px solid rgba(255,255,255,0.12)" : "none",
+        position: "relative",
+        cursor: "default",
+        transition: "background 0.3s ease",
+        background: hovered ? "rgba(249,115,22,0.10)" : "transparent",
+        borderRadius: "12px",
+      }}
+    >
+      {/* animated number */}
+      <div
+        style={{
+          fontSize: "52px",
+          fontWeight: 900,
+          lineHeight: 1,
+          marginBottom: "8px",
+          letterSpacing: "-1px",
+          fontVariantNumeric: "tabular-nums",
+          color: hovered ? "#f97316" : "#ffffff",
+          transition: "color 0.3s ease",
+        }}
+      >
+        <Counter value={stat.value} prefix={stat.prefix} suffix={stat.suffix} />
+      </div>
+
+      {/* divider line */}
+      <div
+        style={{
+          width: "32px",
+          height: "2px",
+          borderRadius: "2px",
+          margin: "0 auto 10px",
+          background: hovered
+            ? "linear-gradient(90deg, #f97316, #e53e2f)"
+            : "rgba(255,255,255,0.25)",
+          transition: "background 0.3s ease",
+        }}
+      />
+
+      <span
+        style={{
+          fontSize: "15px",
+          fontWeight: 700,
+          color: hovered ? "#ffffff" : "rgba(255,255,255,0.95)",
+          marginBottom: "4px",
+          display: "block",
+          transition: "color 0.3s ease",
+        }}
+      >
+        {stat.label}
+      </span>
+
+      <span
+        style={{
+          fontSize: "12px",
+          color: hovered ? "rgba(255,255,255,0.7)" : "rgba(255,255,255,0.4)",
+          lineHeight: 1.4,
+          transition: "color 0.3s ease",
+        }}
+      >
+        {stat.sub}
+      </span>
+    </motion.div>
   );
 }
 
@@ -101,88 +174,7 @@ export function ClientsBar() {
         className="clients-bar-inner"
       >
         {stats.map((stat, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.5, delay: i * 0.1 }}
-            style={{
-              flex: 1,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              textAlign: "center",
-              padding: "28px 20px",
-              borderRight: i < stats.length - 1 ? "1px solid rgba(255,255,255,0.15)" : "none",
-              position: "relative",
-            }}
-          >
-            {stat.accent && (
-              <div
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  borderRadius: "12px",
-                  background: "rgba(249,115,22,0.08)",
-                  pointerEvents: "none",
-                }}
-              />
-            )}
-
-            <div
-              style={{
-                fontSize: "52px",
-                fontWeight: 900,
-                lineHeight: 1,
-                color: stat.accent ? "#f97316" : "#ffffff",
-                marginBottom: "8px",
-                letterSpacing: "-1px",
-                fontVariantNumeric: "tabular-nums",
-              }}
-            >
-              <Counter
-                value={stat.value}
-                prefix={stat.prefix}
-                suffix={stat.suffix}
-                accent={stat.accent}
-              />
-            </div>
-
-            <div
-              style={{
-                width: "32px",
-                height: "2px",
-                background: stat.accent
-                  ? "linear-gradient(90deg, #f97316, #e53e2f)"
-                  : "rgba(255,255,255,0.3)",
-                borderRadius: "2px",
-                margin: "0 auto 10px",
-              }}
-            />
-
-            <span
-              style={{
-                fontSize: "15px",
-                fontWeight: 700,
-                color: "rgba(255,255,255,0.95)",
-                marginBottom: "4px",
-                display: "block",
-              }}
-            >
-              {stat.label}
-            </span>
-
-            <span
-              style={{
-                fontSize: "12px",
-                color: "rgba(255,255,255,0.45)",
-                lineHeight: 1.4,
-              }}
-            >
-              {stat.sub}
-            </span>
-          </motion.div>
+          <StatCard key={i} stat={stat} index={i} />
         ))}
       </div>
 
