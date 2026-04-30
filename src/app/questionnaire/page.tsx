@@ -33,6 +33,7 @@ export default function QuestionnairePage() {
   const [current, setCurrent] = useState(0);
   const [answers, setAnswers] = useState<string[]>(["", ""]);
   const [done, setDone] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
@@ -47,11 +48,30 @@ export default function QuestionnairePage() {
     });
   }
 
-  function handleNext() {
+  async function handleNext() {
     if (current < questions.length - 1) {
       setCurrent((c) => c + 1);
     } else {
-      setDone(true);
+      setSubmitting(true);
+      try {
+        const stored = sessionStorage.getItem("forum_form");
+        const formData = stored ? JSON.parse(stored) : {};
+        await fetch("/api/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            ...formData,
+            q1: answers[0],
+            q2: answers[1],
+          }),
+        });
+        sessionStorage.removeItem("forum_form");
+      } catch (e) {
+        console.error("Submit failed:", e);
+      } finally {
+        setSubmitting(false);
+        setDone(true);
+      }
     }
   }
 
@@ -289,7 +309,7 @@ export default function QuestionnairePage() {
                     fontFamily: "inherit",
                   }}
                 >
-                  {current < questions.length - 1 ? "המשך" : "שלח תשובות"} →
+                  {submitting ? "שולח..." : current < questions.length - 1 ? "המשך" : "שלח תשובות"} →
                 </motion.button>
 
                 <span style={{ fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>

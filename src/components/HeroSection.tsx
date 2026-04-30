@@ -116,7 +116,20 @@ export function HeroSection() {
             padding: "24px",
           } as React.CSSProperties}
           >
-            <form onSubmit={(e) => { e.preventDefault(); router.push("/questionnaire"); }} className="flex flex-col gap-3">
+            <form onSubmit={(e) => {
+              e.preventDefault();
+              const fd = new FormData(e.currentTarget);
+              sessionStorage.setItem("forum_form", JSON.stringify({
+                name: fd.get("firstname") ?? "",
+                division: fd.get("division") ?? "",
+                phone: fd.get("phone") ?? "",
+                email: fd.get("email") ?? "",
+                forum: fd.get("forum") ?? "",
+                agreed: (e.currentTarget.querySelector('input[name="terms"]') as HTMLInputElement)?.checked ?? false,
+                source: "hero",
+              }));
+              router.push("/questionnaire");
+            }} className="flex flex-col gap-3">
               <div className="flex gap-3 flex-col md:flex-row">
                 <input type="text" name="firstname" placeholder="שם מלא" className="hero-input" style={{ backgroundColor: "#0c1a2e", border: "1px solid #ffffff", borderRadius: "50px", padding: "14px 20px", fontSize: "18px", color: "#ffffff", width: "100%", outline: "none", direction: "rtl" }} />
                 <input type="text" name="division" placeholder="חטיבה / מחלקה" className="hero-input" style={{ backgroundColor: "#0c1a2e", border: "1px solid #ffffff", borderRadius: "50px", padding: "14px 20px", fontSize: "18px", color: "#ffffff", width: "100%", outline: "none", direction: "rtl" }} />

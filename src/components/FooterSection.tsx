@@ -17,6 +17,11 @@ export function FooterSection() {
   const router = useRouter();
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    sessionStorage.setItem("forum_form", JSON.stringify({
+      name, division, phone, email, forum,
+      agreed,
+      source: "footer",
+    }));
     router.push("/questionnaire");
   }
 

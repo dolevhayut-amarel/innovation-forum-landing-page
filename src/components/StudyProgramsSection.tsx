@@ -139,7 +139,20 @@ export function StudyProgramsSection() {
           </div>
 
           <div style={{ flex: 1 }} id="registration">
-            <form onSubmit={(e) => { e.preventDefault(); router.push("/questionnaire"); }} className="flex flex-col gap-3" style={{ direction: "rtl" }}>
+            <form onSubmit={(e) => {
+              e.preventDefault();
+              const fd = new FormData(e.currentTarget);
+              sessionStorage.setItem("forum_form", JSON.stringify({
+                name: fd.get("firstname") ?? "",
+                division: fd.get("division") ?? "",
+                phone: fd.get("phone") ?? "",
+                email: fd.get("email") ?? "",
+                forum: fd.get("forum") ?? "",
+                agreed: (e.currentTarget.querySelector('input[name="gdpr"]') as HTMLInputElement)?.checked ?? false,
+                source: "registration",
+              }));
+              router.push("/questionnaire");
+            }} className="flex flex-col gap-3" style={{ direction: "rtl" }}>
               <input type="text" name="firstname" placeholder="שם מלא" className="study-input" style={inputStyle} />
               <input type="text" name="division" placeholder="חטיבה / מחלקה" className="study-input" style={inputStyle} />
               <input type="tel" name="phone" placeholder="טלפון נייד" className="study-input" style={inputStyle} />
