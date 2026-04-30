@@ -5,7 +5,7 @@ export function CtaBar() {
     <section
       className={cn("w-full")}
       style={{
-        backgroundColor: "#2563eb",
+        backgroundColor: "#2a5377",
         padding: "30px 60px",
         direction: "rtl",
       }}
@@ -36,8 +36,8 @@ export function CtaBar() {
         <a
           href="#registration"
           style={{
-            backgroundColor: "#f97316",
-            color: "#0f172a",
+            background: "linear-gradient(135deg, #f97316 0%, #e53e2f 100%)",
+            color: "#ffffff",
             borderRadius: 50,
             padding: "14px 32px",
             fontSize: 18,

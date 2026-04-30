@@ -80,12 +80,13 @@
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
 
-  /* HackerU brand tokens */
-  --color-brand-purple: #2563eb;
-  --color-brand-purple-dark: #1e3048;
-  --color-brand-purple-deep: #0c1222;
-  --color-brand-purple-input: #0c1222;
-  --color-brand-green: #f97316;
+  /* Amarel brand tokens */
+  --color-brand-navy: #2a5377;
+  --color-brand-navy-dark: #1e3a52;
+  --color-brand-navy-deep: #0c1a2e;
+  --color-brand-navy-input: #0c1a2e;
+  --color-brand-orange: #f97316;
+  --color-brand-red: #e53e2f;
   --color-brand-cream: #f1f5f9;
   --color-brand-text: #0f172a;
 }
@@ -97,27 +98,27 @@
   --card-foreground: #0f172a;
   --popover: #ffffff;
   --popover-foreground: #0f172a;
-  --primary: #2563eb;
+  --primary: #2a5377;
   --primary-foreground: #ffffff;
   --secondary: #f1f5f9;
   --secondary-foreground: #0f172a;
   --muted: #f1f5f9;
   --muted-foreground: #666666;
   --accent: #f97316;
-  --accent-foreground: #0f172a;
+  --accent-foreground: #ffffff;
   --destructive: oklch(0.577 0.245 27.325);
   --border: #e5e5e5;
   --input: #e5e5e5;
-  --ring: #2563eb;
+  --ring: #2a5377;
   --radius: 0.625rem;
   --sidebar: #f1f5f9;
   --sidebar-foreground: #0f172a;
-  --sidebar-primary: #2563eb;
+  --sidebar-primary: #2a5377;
   --sidebar-primary-foreground: #ffffff;
   --sidebar-accent: #f1f5f9;
   --sidebar-accent-foreground: #0f172a;
   --sidebar-border: #e5e5e5;
-  --sidebar-ring: #2563eb;
+  --sidebar-ring: #2a5377;
 }
 
 @layer base {
@@ -139,4 +140,4 @@
 /* Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: #f1f1f1; }
-::-webkit-scrollbar-thumb { background: #2563eb; border-radius: 3px; }
+::-webkit-scrollbar-thumb { background: #2a5377; border-radius: 3px; }

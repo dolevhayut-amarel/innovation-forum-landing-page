@@ -15,7 +15,7 @@ const programCards: ProgramCard[] = [
     text: "כל מפגש מניב תוצרים מוחשיים — Use Cases, אוטומציות וכלים שנכנסים ישירות לשימוש בחטיבות. לא רק שיח רעיוני, אלא פתרונות שמיושמים.",
   },
   {
-    plusColor: "#2563eb",
+    plusColor: "#2a5377",
     title: "הכשרות מקצועיות מהשטח",
     text: "סדרת הדרכות מובנית ישירות ממנטורים, סמנכ\"לים ומומחים מהתעשייה. תכנים בתחומי AI, אפיון מוצר, מיפוי תהליכים וחשיבה יזמית.",
   },
@@ -27,7 +27,7 @@ const programCards: ProgramCard[] = [
 ];
 
 const inputStyle: React.CSSProperties = {
-  backgroundColor: "#0c1222",
+  backgroundColor: "#0c1a2e",
   border: "1px solid #ffffff",
   borderRadius: "50px",
   padding: "14px 20px",
@@ -152,7 +152,7 @@ export function StudyProgramsSection() {
               }}
             >
               עשרות עובדים ומנהלים מכל החטיבות כבר נרשמו —{" "}
-              <span style={{ color: "#2563eb" }}>עכשיו תורכם</span>
+              <span style={{ color: "#2a5377" }}>עכשיו תורכם</span>
             </p>
           </div>
 
@@ -224,8 +224,8 @@ export function StudyProgramsSection() {
               <button
                 type="submit"
                 style={{
-                  backgroundColor: "#f97316",
-                  color: "#0f172a",
+                  background: "linear-gradient(135deg, #f97316 0%, #e53e2f 100%)",
+                  color: "#ffffff",
                   borderRadius: "50px",
                   padding: "14px 30px",
                   fontSize: "18px",
@@ -249,7 +249,7 @@ export function StudyProgramsSection() {
           color: rgba(255, 255, 255, 0.7);
         }
         .study-input option {
-          background-color: #0c1222;
+          background-color: #0c1a2e;
           color: white;
         }
 

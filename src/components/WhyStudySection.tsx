@@ -4,7 +4,7 @@ import { Zap, RefreshCw, Lightbulb, Users } from "lucide-react";
 const benefits = [
   {
     Icon: Zap,
-    iconBg: "#2563eb",
+    iconBg: "#2a5377",
     title: "מינוף AI ושיפור פרודוקטיביות",
     text: "הפורום הטכנולוגי יפתח כלים ויישומים מבוססי AI שייעלו תהליכים בחטיבות ויהפכו את הטכנולוגיה לנכס עבודה יומיומי.",
   },
@@ -16,7 +16,7 @@ const benefits = [
   },
   {
     Icon: Lightbulb,
-    iconBg: "#2563eb",
+    iconBg: "#2a5377",
     title: "שיתוף ידע ותרבות חדשנות",
     text: "שני הפורומים יחזקו שיתוף Best Practices בין חטיבות ויטמיעו תרבות של יוזמה ולמידה מתמדת בקרב העובדים.",
   },

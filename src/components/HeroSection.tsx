@@ -49,10 +49,19 @@ export function HeroSection() {
         <div className="hero-content ml-auto" style={{ maxWidth: "660px" }}>
 
           <h1
-            className="hero-h1 text-white font-black text-right"
-            dangerouslySetInnerHTML={{ __html: "פורום חדשנות,<br>באמרל 2026!" }}
-            style={{ lineHeight: 1, marginBottom: "20px" }}
-          />
+            className="hero-h1 font-black text-right"
+            style={{ lineHeight: 1.05, marginBottom: "20px" }}
+          >
+            <span style={{ display: "block", background: "linear-gradient(135deg, #f97316 0%, #e53e2f 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+              MAKE IT POSSIBLE
+            </span>
+            <span style={{ display: "block", color: "#ffffff", fontSize: "0.42em", fontWeight: 700, lineHeight: 1.3, marginTop: "10px" }}>
+              AMAREL INNOVATION FORUM — IS ONBOARDING NOW!
+            </span>
+            <span style={{ display: "block", color: "rgba(255,255,255,0.85)", fontSize: "0.38em", fontWeight: 600, lineHeight: 1.4, marginTop: "6px" }}>
+              פורום החדשנות באמרל — יוצא לדרך
+            </span>
+          </h1>
 
           <h2
             className="text-white text-right"
@@ -87,14 +96,14 @@ export function HeroSection() {
           }}>
             <form onSubmit={(e) => e.preventDefault()} className="flex flex-col gap-3">
               <div className="flex gap-3 flex-col md:flex-row">
-                <input type="text" name="firstname" placeholder="שם מלא" className="hero-input" style={{ backgroundColor: "#0c1222", border: "1px solid #ffffff", borderRadius: "50px", padding: "14px 20px", fontSize: "18px", color: "#ffffff", width: "100%", outline: "none", direction: "rtl" }} />
-                <input type="text" name="division" placeholder="חטיבה / מחלקה" className="hero-input" style={{ backgroundColor: "#0c1222", border: "1px solid #ffffff", borderRadius: "50px", padding: "14px 20px", fontSize: "18px", color: "#ffffff", width: "100%", outline: "none", direction: "rtl" }} />
+                <input type="text" name="firstname" placeholder="שם מלא" className="hero-input" style={{ backgroundColor: "#0c1a2e", border: "1px solid #ffffff", borderRadius: "50px", padding: "14px 20px", fontSize: "18px", color: "#ffffff", width: "100%", outline: "none", direction: "rtl" }} />
+                <input type="text" name="division" placeholder="חטיבה / מחלקה" className="hero-input" style={{ backgroundColor: "#0c1a2e", border: "1px solid #ffffff", borderRadius: "50px", padding: "14px 20px", fontSize: "18px", color: "#ffffff", width: "100%", outline: "none", direction: "rtl" }} />
               </div>
               <div className="flex gap-3 flex-col md:flex-row">
-                <input type="tel" name="phone" placeholder="טלפון נייד" className="hero-input" style={{ backgroundColor: "#0c1222", border: "1px solid #ffffff", borderRadius: "50px", padding: "14px 20px", fontSize: "18px", color: "#ffffff", width: "100%", outline: "none", direction: "rtl" }} />
-                <input type="email" name="email" placeholder="כתובת מייל" className="hero-input" style={{ backgroundColor: "#0c1222", border: "1px solid #ffffff", borderRadius: "50px", padding: "14px 20px", fontSize: "18px", color: "#ffffff", width: "100%", outline: "none", direction: "rtl" }} />
+                <input type="tel" name="phone" placeholder="טלפון נייד" className="hero-input" style={{ backgroundColor: "#0c1a2e", border: "1px solid #ffffff", borderRadius: "50px", padding: "14px 20px", fontSize: "18px", color: "#ffffff", width: "100%", outline: "none", direction: "rtl" }} />
+                <input type="email" name="email" placeholder="כתובת מייל" className="hero-input" style={{ backgroundColor: "#0c1a2e", border: "1px solid #ffffff", borderRadius: "50px", padding: "14px 20px", fontSize: "18px", color: "#ffffff", width: "100%", outline: "none", direction: "rtl" }} />
               </div>
-              <select name="forum" className="hero-input" style={{ backgroundColor: "#0c1222", border: "1px solid #ffffff", borderRadius: "50px", padding: "14px 20px", fontSize: "18px", color: "#ffffff", width: "100%", outline: "none", direction: "rtl", appearance: "none" }}>
+              <select name="forum" className="hero-input" style={{ backgroundColor: "#0c1a2e", border: "1px solid #ffffff", borderRadius: "50px", padding: "14px 20px", fontSize: "18px", color: "#ffffff", width: "100%", outline: "none", direction: "rtl", appearance: "none" }}>
                 <option value="">לאיזה פורום אני מתעניין/ת?</option>
                 <option value="tech">פורום חדשנות טכנולוגית (AI)</option>
                 <option value="process">פורום חדשנות תהליכית</option>
@@ -104,7 +113,7 @@ export function HeroSection() {
                 <input type="checkbox" name="terms" defaultChecked />
                 <span>אני מאשר/ת קבלת עדכונים מפורום החדשנות של אמרל</span>
               </label>
-              <button type="submit" style={{ backgroundColor: "#f97316", color: "#0f172a", borderRadius: "50px", padding: "14px 30px", fontSize: "18px", fontWeight: 700, border: "none", cursor: "pointer", width: "100%", display: "block", textAlign: "center" }}>
+              <button type="submit" style={{ background: "linear-gradient(135deg, #f97316 0%, #e53e2f 100%)", color: "#ffffff", borderRadius: "50px", padding: "14px 30px", fontSize: "18px", fontWeight: 700, border: "none", cursor: "pointer", width: "100%", display: "block", textAlign: "center" }}>
                 אני רוצה להצטרף לפורום &gt;&gt;
               </button>
             </form>

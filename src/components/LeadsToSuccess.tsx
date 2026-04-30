@@ -6,13 +6,13 @@ const cards = [
     Icon: Bot,
     title: "פורום חדשנות טכנולוגית",
     text: 'להפוך את AI לכלי עבודה יומיומי — בניית "ארגז חול" ארגוני שבו מפתחים תוצרים, אוטומציות וכלים חדשניים.',
-    color: "#2563eb",
+    color: "#2a5377",
   },
   {
     Icon: Workflow,
     title: "פורום חדשנות תהליכית",
     text: "לזהות, לשפר ולייעל תהליכים ארגוניים — מיפוי פערים מהשטח ופיתוח פתרונות לשיפור מתמיד.",
-    color: "#0f172a",
+    color: "#2a5377",
   },
 ];
 
@@ -72,8 +72,8 @@ export function LeadsToSuccess() {
           href="#registration"
           style={{
             display: "inline-block",
-            backgroundColor: "#f97316",
-            color: "#0f172a",
+            background: "linear-gradient(135deg, #f97316 0%, #e53e2f 100%)",
+            color: "#ffffff",
             borderRadius: "50px",
             padding: "14px 40px",
             fontSize: "18px",
