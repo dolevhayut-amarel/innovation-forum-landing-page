@@ -1,10 +1,14 @@
+"use client";
+
 import { cn } from "@/lib/utils";
 import { Bot, Workflow, Star } from "lucide-react";
+import { motion } from "framer-motion";
 
 const outcomes = [
   {
     forum: "פורום חדשנות טכנולוגית",
-    color: "#2a5377",
+    color: "#f97316",
+    splash: "rgba(249,115,22,0.09)",
     Icon: Bot,
     tagline: "AI ככלי עבודה יומיומי",
     deliverables: [
@@ -18,6 +22,7 @@ const outcomes = [
   {
     forum: "פורום חדשנות תהליכית",
     color: "#2a5377",
+    splash: "rgba(42,83,119,0.09)",
     Icon: Workflow,
     tagline: "שיפור תהליכים מהשטח",
     deliverables: [
@@ -30,7 +35,8 @@ const outcomes = [
   },
   {
     forum: "מה תרוויחו?",
-    color: "#2a5377",
+    color: "#f97316",
+    splash: "rgba(249,115,22,0.09)",
     Icon: Star,
     tagline: "ערך אישי ומקצועי",
     deliverables: [
@@ -43,6 +49,10 @@ const outcomes = [
   },
 ];
 
+const view = { once: true, amount: 0.15 } as const;
+const hidden = { opacity: 0, y: 36 };
+const show = { opacity: 1, y: 0 };
+
 export function TestimonialsSection() {
   return (
     <section
@@ -53,7 +63,11 @@ export function TestimonialsSection() {
         direction: "rtl",
       }}
     >
-      <h2
+      <motion.h2
+        initial={hidden}
+        whileInView={show}
+        viewport={view}
+        transition={{ duration: 0.55 }}
         style={{
           fontSize: "45px",
           fontWeight: 900,
@@ -63,9 +77,13 @@ export function TestimonialsSection() {
         }}
       >
         מה הפורום מייצר?
-      </h2>
+      </motion.h2>
 
-      <p
+      <motion.p
+        initial={hidden}
+        whileInView={show}
+        viewport={view}
+        transition={{ duration: 0.55, delay: 0.1 }}
         style={{
           fontSize: "20px",
           textAlign: "center",
@@ -74,7 +92,7 @@ export function TestimonialsSection() {
         }}
       >
         תוצרים מדידים שמשנים את הארגון — לא רק שיח, אלא שינוי אמיתי.
-      </p>
+      </motion.p>
 
       <div
         style={{
@@ -87,15 +105,19 @@ export function TestimonialsSection() {
         }}
         className="testimonials-grid"
       >
-        {outcomes.map((item) => (
-          <div
+        {outcomes.map((item, i) => (
+          <motion.div
             key={item.forum}
+            initial={hidden}
+            whileInView={show}
+            viewport={view}
+            transition={{ duration: 0.55, delay: 0.1 + i * 0.12 }}
             style={{
-              backgroundColor: "#ffffff",
+              background: `radial-gradient(circle at top right, ${item.splash} 0%, #ffffff 55%)`,
               borderRadius: "16px",
               padding: "32px 24px",
-              borderTop: `4px solid ${item.color}`,
-              boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
+              border: `1px solid ${item.color}22`,
+              boxShadow: "0 4px 20px rgba(0,0,0,0.07)",
             }}
           >
             <div
@@ -112,14 +134,7 @@ export function TestimonialsSection() {
             >
               <item.Icon size={24} color="#ffffff" strokeWidth={1.75} />
             </div>
-            <h3
-              style={{
-                fontSize: "20px",
-                fontWeight: 700,
-                color: item.color,
-                marginBottom: "8px",
-              }}
-            >
+            <h3 style={{ fontSize: "20px", fontWeight: 700, color: item.color, marginBottom: "8px" }}>
               {item.forum}
             </h3>
             <p
@@ -157,13 +172,21 @@ export function TestimonialsSection() {
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
         ))}
       </div>
 
-      <div style={{ textAlign: "center", marginTop: "50px" }}>
-        <a
+      <motion.div
+        initial={hidden}
+        whileInView={show}
+        viewport={view}
+        transition={{ duration: 0.5, delay: 0.3 }}
+        style={{ textAlign: "center", marginTop: "50px" }}
+      >
+        <motion.a
           href="#registration"
+          whileHover={{ scale: 1.04 }}
+          whileTap={{ scale: 0.97 }}
           style={{
             background: "linear-gradient(135deg, #f97316 0%, #e53e2f 100%)",
             color: "#ffffff",
@@ -178,13 +201,14 @@ export function TestimonialsSection() {
           }}
         >
           אני רוצה להשתתף בפורום &gt;&gt;
-        </a>
-      </div>
+        </motion.a>
+      </motion.div>
 
       <style>{`
         @media (max-width: 768px) {
           .testimonials-grid {
             grid-template-columns: 1fr !important;
+            padding: 0 20px !important;
           }
         }
       `}</style>

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Layers, CalendarDays, Users } from "lucide-react";
+import { motion } from "framer-motion";
 
 const heroFeatures = [
   { Icon: Layers,      title: "שני פורומים\nמקבילים בארגון" },
@@ -49,8 +50,11 @@ export function HeroSection() {
       <div className="hero-content-inner relative mx-auto w-full px-6 pb-10" style={{ maxWidth: "1200px", zIndex: 5 }}>
         <div className="hero-content ml-auto" style={{ maxWidth: "660px" }}>
 
-          <h1
+          <motion.h1
             className="hero-h1 font-black text-right"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
             style={{ lineHeight: 1.05, marginBottom: "20px" }}
           >
             <span dir="ltr" style={{ display: "block", background: "linear-gradient(135deg, #f97316 0%, #e53e2f 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", textAlign: "right" }}>
@@ -62,17 +66,26 @@ export function HeroSection() {
             <span style={{ display: "block", color: "rgba(255,255,255,0.85)", fontSize: "0.34em", fontWeight: 500, lineHeight: 1.5, marginTop: "8px" }}>
               פורום החדשנות באמרל — ההרשמה פתוחה
             </span>
-          </h1>
+          </motion.h1>
 
-          <h2
+          <motion.h2
             className="hero-subtitle text-white text-right"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
             style={{ fontSize: "28px", fontWeight: 400, lineHeight: 1.4, marginBottom: "30px" }}
           >
             מנגנון ארגוני מובנה להצפת רעיונות, פיתוח פתרונות ושיפור מתמיד של תהליכים.
-          </h2>
+          </motion.h2>
 
           {/* Feature icons */}
-          <div className="hero-features flex flex-row" style={{ direction: "rtl", marginBottom: "30px" }}>
+          <motion.div
+            className="hero-features flex flex-row"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.35, ease: "easeOut" }}
+            style={{ direction: "rtl", marginBottom: "30px" }}
+          >
             {heroFeatures.map((feature, index) => (
               <div key={index} className="flex flex-col items-center" style={{ flex: "1 1 0%" }}>
                 <div style={{ marginBottom: "10px", textAlign: "center", width: 56, height: 56, borderRadius: "14px", background: "rgba(255,255,255,0.12)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 10px" }}>
@@ -83,10 +96,15 @@ export function HeroSection() {
                 </p>
               </div>
             ))}
-          </div>
+          </motion.div>
 
           {/* Form */}
-          <section className="hero-form-wrap" style={{
+          <motion.section
+            className="hero-form-wrap"
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
+            style={{
             direction: "rtl",
             background: "rgba(255, 255, 255, 0.08)",
             backdropFilter: "blur(16px)",
@@ -94,7 +112,8 @@ export function HeroSection() {
             border: "1px solid rgba(255, 255, 255, 0.18)",
             borderRadius: "20px",
             padding: "24px",
-          }}>
+          } as React.CSSProperties}
+          >
             <form onSubmit={(e) => e.preventDefault()} className="flex flex-col gap-3">
               <div className="flex gap-3 flex-col md:flex-row">
                 <input type="text" name="firstname" placeholder="שם מלא" className="hero-input" style={{ backgroundColor: "#0c1a2e", border: "1px solid #ffffff", borderRadius: "50px", padding: "14px 20px", fontSize: "18px", color: "#ffffff", width: "100%", outline: "none", direction: "rtl" }} />
@@ -121,7 +140,7 @@ export function HeroSection() {
                 אני רוצה להצטרף לפורום &gt;&gt;
               </button>
             </form>
-          </section>
+          </motion.section>
         </div>
       </div>
 

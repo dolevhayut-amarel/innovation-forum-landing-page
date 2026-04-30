@@ -1,4 +1,7 @@
+"use client";
+
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 
 const stats = [
   { num: "2", label: "פורומים מקבילים" },
@@ -15,9 +18,13 @@ export function ClientsBar() {
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         <div className="flex flex-row flex-wrap items-center justify-center" style={{ gap: "0 48px" }}>
           {stats.map((stat, i) => (
-            <div
+            <motion.div
               key={i}
               className="text-center"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.5, delay: i * 0.1, ease: "easeOut" }}
               style={{
                 padding: "16px 24px",
                 background: "rgba(255, 255, 255, 0.12)",
@@ -34,7 +41,7 @@ export function ClientsBar() {
               <div style={{ fontSize: "14px", fontWeight: 600, color: "rgba(255,255,255,0.85)" }}>
                 {stat.label}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

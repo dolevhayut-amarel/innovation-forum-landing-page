@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>השוואת עיצובי כרטיסים</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, "Segoe UI", Arial, sans-serif;
+      background: #f1f5f9;
+      padding: 48px 24px;
+      direction: rtl;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 900;
+      color: #0f172a;
+      margin-bottom: 8px;
+    }
+
+    .page-sub {
+      text-align: center;
+      color: #64748b;
+      font-size: 15px;
+      margin-bottom: 56px;
+    }
+
+    /* ─── Section label ─── */
+    .section-label {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #94a3b8;
+      text-align: center;
+      margin-bottom: 6px;
+    }
+
+    .option-title {
+      font-size: 22px;
+      font-weight: 900;
+      color: #0f172a;
+      text-align: center;
+      margin-bottom: 6px;
+    }
+
+    .option-desc {
+      font-size: 14px;
+      color: #64748b;
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .option-block {
+      margin-bottom: 72px;
+    }
+
+    .cards-row {
+      display: flex;
+      flex-direction: row;
+      gap: 24px;
+      justify-content: center;
+    }
+
+    /* ─── Base card ─── */
+    .card {
+      flex: 1;
+      max-width: 380px;
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 32px 28px;
+      text-align: right;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      border-radius: 6px;
+      padding: 4px 10px;
+      margin-bottom: 16px;
+    }
+
+    .icon-wrap {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      font-size: 24px;
+    }
+
+    .card h3 {
+      font-size: 22px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 10px;
+    }
+
+    .audience {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 8px;
+      padding: 6px 12px;
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    .card p {
+      font-size: 15px;
+      color: #555;
+      line-height: 1.7;
+    }
+
+    /* ══════════════════════════════════════
+       OPTION A — Gradient Border
+    ══════════════════════════════════════ */
+    .card-a-orange {
+      background:
+        linear-gradient(#ffffff, #ffffff) padding-box,
+        linear-gradient(135deg, #f97316, #e53e2f) border-box;
+      border: 2px solid transparent;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+
+    .card-a-navy {
+      background:
+        linear-gradient(#ffffff, #ffffff) padding-box,
+        linear-gradient(135deg, #326a9e, #1e3a52) border-box;
+      border: 2px solid transparent;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+
+    /* ══════════════════════════════════════
+       OPTION B — Glow (colored box-shadow)
+    ══════════════════════════════════════ */
+    .card-b-orange {
+      border: 1px solid rgba(249,115,22,0.2);
+      box-shadow:
+        0 0 0 1px rgba(249,115,22,0.1),
+        0 8px 32px rgba(249,115,22,0.22),
+        0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .card-b-navy {
+      border: 1px solid rgba(42,83,119,0.2);
+      box-shadow:
+        0 0 0 1px rgba(42,83,119,0.1),
+        0 8px 32px rgba(42,83,119,0.22),
+        0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    /* ══════════════════════════════════════
+       OPTION C — Corner Splash
+    ══════════════════════════════════════ */
+    .card-c-orange {
+      background: radial-gradient(circle at top right, rgba(249,115,22,0.1) 0%, #ffffff 55%);
+      border: 1px solid rgba(249,115,22,0.15);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+
+    .card-c-navy {
+      background: radial-gradient(circle at top right, rgba(42,83,119,0.12) 0%, #ffffff 55%);
+      border: 1px solid rgba(42,83,119,0.15);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+
+    /* ══════════════════════════════════════
+       OPTION D — Bonus: Glassmorphism on light bg
+    ══════════════════════════════════════ */
+    .option-d-bg {
+      background: linear-gradient(135deg, #326a9e 0%, #2a5377 50%, #1e3a52 100%);
+      border-radius: 24px;
+      padding: 48px 32px;
+    }
+
+    .card-d-orange {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(249,115,22,0.4);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.15);
+    }
+
+    .card-d-navy {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.25);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.15);
+    }
+
+    .card-d-orange h3,
+    .card-d-navy h3,
+    .card-d-orange p,
+    .card-d-navy p {
+      color: #ffffff;
+    }
+
+    .card-d-orange p,
+    .card-d-navy p {
+      color: rgba(255,255,255,0.75);
+    }
+
+    /* ──── divider ──── */
+    .divider {
+      border: none;
+      border-top: 1px solid #e2e8f0;
+      margin: 0 auto 72px;
+      max-width: 800px;
+    }
+
+    @media (max-width: 700px) {
+      .cards-row { flex-direction: column; align-items: center; }
+      .card { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>השוואת עיצובי כרטיסים</h1>
+  <p class="page-sub">כרגע: גג צבעוני. הנה 4 אלטרנטיבות — בחרו מה שהכי מתאים</p>
+
+  <!-- ──────────────── CURRENT ──────────────── -->
+  <div class="option-block">
+    <p class="section-label">כרגע בדף</p>
+    <h2 class="option-title">גג צבעוני (borderTop)</h2>
+    <p class="option-desc">הסטנדרט הנפוץ — border-top בצבע מלא</p>
+    <div class="cards-row">
+      <div class="card" style="border-top: 5px solid #f97316; box-shadow: 0 4px 24px rgba(0,0,0,0.06);">
+        <span class="badge" style="color:#f97316; background:rgba(249,115,22,0.1);">פורום 01</span>
+        <div class="icon-wrap" style="background:linear-gradient(135deg,#f97316,#e53e2f);">🤖</div>
+        <h3>פורום חדשנות טכנולוגית</h3>
+        <span class="audience" style="color:#f97316; background:rgba(249,115,22,0.1);">מיועד ל: עובדים עם עניין ב-AI</span>
+        <p>להפוך את AI לכלי עבודה יומיומי — פיתוח אוטומציות, כלים חכמים וניתוח נתונים.</p>
+      </div>
+      <div class="card" style="border-top: 5px solid #2a5377; box-shadow: 0 4px 24px rgba(0,0,0,0.06);">
+        <span class="badge" style="color:#2a5377; background:rgba(42,83,119,0.1);">פורום 02</span>
+        <div class="icon-wrap" style="background:linear-gradient(135deg,#2a5377,#1e3a52);">🔄</div>
+        <h3>פורום חדשנות תהליכית</h3>
+        <span class="audience" style="color:#2a5377; background:rgba(42,83,119,0.1);">מיועד ל: בעלי חשיבה ניהולית</span>
+        <p>לזהות, לשפר ולייעל תהליכים ארגוניים — מיפוי פערים ופתרונות שמשפיעים על כולם.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ──────────────── OPTION A ──────────────── -->
+  <div class="option-block">
+    <p class="section-label">אפשרות א׳</p>
+    <h2 class="option-title">✨ Gradient Border</h2>
+    <p class="option-desc">ה-border עצמו הוא gradient — יוקרתי ולא שגרתי</p>
+    <div class="cards-row">
+      <div class="card card-a-orange">
+        <span class="badge" style="color:#f97316; background:rgba(249,115,22,0.1);">פורום 01</span>
+        <div class="icon-wrap" style="background:linear-gradient(135deg,#f97316,#e53e2f);">🤖</div>
+        <h3>פורום חדשנות טכנולוגית</h3>
+        <span class="audience" style="color:#f97316; background:rgba(249,115,22,0.1);">מיועד ל: עובדים עם עניין ב-AI</span>
+        <p>להפוך את AI לכלי עבודה יומיומי — פיתוח אוטומציות, כלים חכמים וניתוח נתונים.</p>
+      </div>
+      <div class="card card-a-navy">
+        <span class="badge" style="color:#2a5377; background:rgba(42,83,119,0.1);">פורום 02</span>
+        <div class="icon-wrap" style="background:linear-gradient(135deg,#2a5377,#1e3a52);">🔄</div>
+        <h3>פורום חדשנות תהליכית</h3>
+        <span class="audience" style="color:#2a5377; background:rgba(42,83,119,0.1);">מיועד ל: בעלי חשיבה ניהולית</span>
+        <p>לזהות, לשפר ולייעל תהליכים ארגוניים — מיפוי פערים ופתרונות שמשפיעים על כולם.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ──────────────── OPTION B ──────────────── -->
+  <div class="option-block">
+    <p class="section-label">אפשרות ב׳</p>
+    <h2 class="option-title">💡 Glow Card</h2>
+    <p class="option-desc">ללא border בכלל — הכרטיס זוהר בצבע הפורום</p>
+    <div class="cards-row">
+      <div class="card card-b-orange">
+        <span class="badge" style="color:#f97316; background:rgba(249,115,22,0.1);">פורום 01</span>
+        <div class="icon-wrap" style="background:linear-gradient(135deg,#f97316,#e53e2f);">🤖</div>
+        <h3>פורום חדשנות טכנולוגית</h3>
+        <span class="audience" style="color:#f97316; background:rgba(249,115,22,0.1);">מיועד ל: עובדים עם עניין ב-AI</span>
+        <p>להפוך את AI לכלי עבודה יומיומי — פיתוח אוטומציות, כלים חכמים וניתוח נתונים.</p>
+      </div>
+      <div class="card card-b-navy">
+        <span class="badge" style="color:#2a5377; background:rgba(42,83,119,0.1);">פורום 02</span>
+        <div class="icon-wrap" style="background:linear-gradient(135deg,#2a5377,#1e3a52);">🔄</div>
+        <h3>פורום חדשנות תהליכית</h3>
+        <span class="audience" style="color:#2a5377; background:rgba(42,83,119,0.1);">מיועד ל: בעלי חשיבה ניהולית</span>
+        <p>לזהות, לשפר ולייעל תהליכים ארגוניים — מיפוי פערים ופתרונות שמשפיעים על כולם.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ──────────────── OPTION C ──────────────── -->
+  <div class="option-block">
+    <p class="section-label">אפשרות ג׳</p>
+    <h2 class="option-title">🎯 Corner Splash</h2>
+    <p class="option-desc">gradient עדין שיוצא מהפינה — אורגני ולא מכני</p>
+    <div class="cards-row">
+      <div class="card card-c-orange">
+        <span class="badge" style="color:#f97316; background:rgba(249,115,22,0.1);">פורום 01</span>
+        <div class="icon-wrap" style="background:linear-gradient(135deg,#f97316,#e53e2f);">🤖</div>
+        <h3>פורום חדשנות טכנולוגית</h3>
+        <span class="audience" style="color:#f97316; background:rgba(249,115,22,0.1);">מיועד ל: עובדים עם עניין ב-AI</span>
+        <p>להפוך את AI לכלי עבודה יומיומי — פיתוח אוטומציות, כלים חכמים וניתוח נתונים.</p>
+      </div>
+      <div class="card card-c-navy">
+        <span class="badge" style="color:#2a5377; background:rgba(42,83,119,0.1);">פורום 02</span>
+        <div class="icon-wrap" style="background:linear-gradient(135deg,#2a5377,#1e3a52);">🔄</div>
+        <h3>פורום חדשנות תהליכית</h3>
+        <span class="audience" style="color:#2a5377; background:rgba(42,83,119,0.1);">מיועד ל: בעלי חשיבה ניהולית</span>
+        <p>לזהות, לשפר ולייעל תהליכים ארגוניים — מיפוי פערים ופתרונות שמשפיעים על כולם.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ──────────────── OPTION D (BONUS) ──────────────── -->
+  <div class="option-block">
+    <p class="section-label">בונוס — אפשרות ד׳</p>
+    <h2 class="option-title">🌊 Glassmorphism על רקע כחול</h2>
+    <p class="option-desc">הסקשן כולו על רקע נייבי — הכרטיסים שקופים עם border צבעוני לכל פורום</p>
+    <div class="option-d-bg">
+      <div class="cards-row">
+        <div class="card card-d-orange">
+          <span class="badge" style="color:#f97316; background:rgba(249,115,22,0.2);">פורום 01</span>
+          <div class="icon-wrap" style="background:linear-gradient(135deg,#f97316,#e53e2f);">🤖</div>
+          <h3>פורום חדשנות טכנולוגית</h3>
+          <span class="audience" style="color:#f97316; background:rgba(249,115,22,0.15);">מיועד ל: עובדים עם עניין ב-AI</span>
+          <p>להפוך את AI לכלי עבודה יומיומי — פיתוח אוטומציות, כלים חכמים וניתוח נתונים.</p>
+        </div>
+        <div class="card card-d-navy">
+          <span class="badge" style="color:rgba(255,255,255,0.9); background:rgba(255,255,255,0.12);">פורום 02</span>
+          <div class="icon-wrap" style="background:linear-gradient(135deg,rgba(255,255,255,0.2),rgba(255,255,255,0.08));">🔄</div>
+          <h3>פורום חדשנות תהליכית</h3>
+          <span class="audience" style="color:rgba(255,255,255,0.85); background:rgba(255,255,255,0.1);">מיועד ל: בעלי חשיבה ניהולית</span>
+          <p>לזהות, לשפר ולייעל תהליכים ארגוניים — מיפוי פערים ופתרונות שמשפיעים על כולם.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,5 +1,8 @@
+"use client";
+
 import { cn } from "@/lib/utils";
 import { Bot, Workflow } from "lucide-react";
+import { motion } from "framer-motion";
 
 const cards = [
   {
@@ -10,7 +13,7 @@ const cards = [
     text: "להפוך את AI לכלי עבודה יומיומי — פיתוח אוטומציות, כלים חכמים וכלי ניתוח שמשנים את אופן העבודה.",
     accent: "#f97316",
     iconBg: "linear-gradient(135deg, #f97316 0%, #e53e2f 100%)",
-    borderColor: "#f97316",
+    splash: "rgba(249,115,22,0.10)",
   },
   {
     Icon: Workflow,
@@ -20,9 +23,13 @@ const cards = [
     text: "לזהות, לשפר ולייעל תהליכים ארגוניים — מיפוי פערים מהשטח ופיתוח פתרונות שמשפיעים על כל המחלקות.",
     accent: "#2a5377",
     iconBg: "linear-gradient(135deg, #2a5377 0%, #1e3a52 100%)",
-    borderColor: "#2a5377",
+    splash: "rgba(42,83,119,0.10)",
   },
 ];
+
+const view = { once: true, amount: 0.2 } as const;
+const hidden = { opacity: 0, y: 36 };
+const show = { opacity: 1, y: 0 };
 
 export function LeadsToSuccess() {
   return (
@@ -45,26 +52,43 @@ export function LeadsToSuccess() {
 
       <div className="leads-outer">
         <div className="leads-inner">
-          <h2 className="leads-h2">מה זה בכלל פורום חדשנות?</h2>
-          <p className="leads-sub">
+          <motion.h2
+            className="leads-h2"
+            initial={hidden}
+            whileInView={show}
+            viewport={view}
+            transition={{ duration: 0.55 }}
+          >
+            מה זה בכלל פורום חדשנות?
+          </motion.h2>
+          <motion.p
+            className="leads-sub"
+            initial={hidden}
+            whileInView={show}
+            viewport={view}
+            transition={{ duration: 0.55, delay: 0.12 }}
+          >
             מנגנון ארגוני מובנה שבו עובדים ומנהלים נבחרים מתכנסים כדי להציף רעיונות, לפתח פתרונות ולהניע שיפורים אמיתיים — הן בתחום הטכנולוגיה (AI) והן בתחום התהליכים הארגוניים.
-          </p>
+          </motion.p>
 
           <div className="leads-grid">
             {cards.map((card, i) => (
-              <div
+              <motion.div
                 key={i}
+                initial={hidden}
+                whileInView={show}
+                viewport={view}
+                transition={{ duration: 0.55, delay: 0.1 + i * 0.12 }}
                 style={{
                   flex: 1,
-                  backgroundColor: "#f8fafc",
+                  background: `radial-gradient(circle at top right, ${card.splash} 0%, #ffffff 55%)`,
                   borderRadius: "20px",
                   padding: "32px 28px",
                   textAlign: "right",
-                  borderTop: `5px solid ${card.borderColor}`,
+                  border: `1px solid ${card.accent}22`,
                   boxShadow: "0 4px 24px rgba(0,0,0,0.06)",
                 }}
               >
-                {/* Badge */}
                 <div style={{ marginBottom: "16px" }}>
                   <span
                     style={{
@@ -82,7 +106,6 @@ export function LeadsToSuccess() {
                   </span>
                 </div>
 
-                {/* Icon */}
                 <div
                   style={{
                     width: 52,
@@ -98,12 +121,10 @@ export function LeadsToSuccess() {
                   <card.Icon size={26} color="#ffffff" strokeWidth={1.75} />
                 </div>
 
-                {/* Title */}
                 <h3 style={{ fontSize: "22px", fontWeight: 800, color: "#0f172a", marginBottom: "10px" }}>
                   {card.title}
                 </h3>
 
-                {/* Audience */}
                 <div
                   style={{
                     fontSize: "13px",
@@ -120,14 +141,19 @@ export function LeadsToSuccess() {
                   מיועד ל: {card.audience}
                 </div>
 
-                {/* Description */}
                 <p style={{ fontSize: "16px", color: "#555", lineHeight: 1.7 }}>{card.text}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
 
-          <a
+          <motion.a
             href="#registration"
+            initial={hidden}
+            whileInView={show}
+            viewport={view}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.97 }}
             style={{
               display: "inline-block",
               background: "linear-gradient(135deg, #f97316 0%, #e53e2f 100%)",
@@ -140,7 +166,7 @@ export function LeadsToSuccess() {
             }}
           >
             אני רוצה להצטרף לפורום &gt;&gt;
-          </a>
+          </motion.a>
         </div>
       </div>
     </section>

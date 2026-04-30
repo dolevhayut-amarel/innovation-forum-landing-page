@@ -1,6 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 
 interface ProgramCard {
   plusColor: string;
@@ -38,6 +39,10 @@ const inputStyle: React.CSSProperties = {
   direction: "rtl",
 };
 
+const view = { once: true, amount: 0.1 } as const;
+const hidden = { opacity: 0, y: 32 };
+const show = { opacity: 1, y: 0 };
+
 export function StudyProgramsSection() {
   return (
     <section
@@ -48,43 +53,38 @@ export function StudyProgramsSection() {
         position: "relative",
       }}
     >
-      <div
-        style={{
-          maxWidth: "1200px",
-          margin: "0 auto",
-          padding: "0 40px",
-        }}
-      >
-        <h2
+      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 40px" }}>
+        <motion.h2
           className="study-programs-h2"
-          style={{
-            fontSize: "45px",
-            fontWeight: 900,
-            color: "#0f172a",
-            textAlign: "center",
-            marginBottom: "8px",
-          }}
+          initial={hidden}
+          whileInView={show}
+          viewport={view}
+          transition={{ duration: 0.55 }}
+          style={{ fontSize: "45px", fontWeight: 900, color: "#0f172a", textAlign: "center", marginBottom: "8px" }}
         >
           מה מקבלים בפורום?
-        </h2>
+        </motion.h2>
 
-        <p
+        <motion.p
           className="study-programs-sub"
-          style={{
-            fontSize: "20px",
-            color: "#0f172a",
-            textAlign: "center",
-            marginBottom: "50px",
-          }}
+          initial={hidden}
+          whileInView={show}
+          viewport={view}
+          transition={{ duration: 0.55, delay: 0.1 }}
+          style={{ fontSize: "20px", color: "#0f172a", textAlign: "center", marginBottom: "50px" }}
         >
           6-7 מפגשים שמניבים תוצרים אמיתיים ומשנים את הארגון
-        </p>
+        </motion.p>
 
         <div className="study-programs-boxes">
           {programCards.map((card, index) => (
-            <div
+            <motion.div
               key={index}
               className="study-programs-box"
+              initial={hidden}
+              whileInView={show}
+              viewport={view}
+              transition={{ duration: 0.5, delay: 0.05 + index * 0.1 }}
               style={{
                 backgroundColor: "#ffffff",
                 borderRadius: "16px",
@@ -112,124 +112,53 @@ export function StudyProgramsSection() {
               >
                 +
               </div>
-
-              <h3
-                style={{
-                  fontSize: "22px",
-                  fontWeight: 700,
-                  color: "#0f172a",
-                  marginBottom: "12px",
-                  textAlign: "right",
-                }}
-              >
+              <h3 style={{ fontSize: "22px", fontWeight: 700, color: "#0f172a", marginBottom: "12px", textAlign: "right" }}>
                 {card.title}
               </h3>
-
-              <p
-                style={{
-                  fontSize: "16px",
-                  color: "#444444",
-                  lineHeight: 1.6,
-                  textAlign: "right",
-                }}
-              >
+              <p style={{ fontSize: "16px", color: "#444444", lineHeight: 1.6, textAlign: "right" }}>
                 {card.text}
               </p>
-            </div>
+            </motion.div>
           ))}
         </div>
 
-        <div className={cn("study-programs-bottom")}>
-          <div
-            style={{
-              flex: 1,
-              direction: "rtl",
-            }}
-          >
-            <p
-              style={{
-                fontSize: "26px",
-                fontWeight: 700,
-                color: "#0f172a",
-              }}
-            >
+        <motion.div
+          className={cn("study-programs-bottom")}
+          initial={hidden}
+          whileInView={show}
+          viewport={view}
+          transition={{ duration: 0.55, delay: 0.1 }}
+        >
+          <div style={{ flex: 1, direction: "rtl" }}>
+            <p style={{ fontSize: "26px", fontWeight: 700, color: "#0f172a" }}>
               עשרות עובדים ומנהלים מכל החטיבות כבר נרשמו —{" "}
               <span style={{ color: "#2a5377" }}>עכשיו תורכם</span>
             </p>
           </div>
 
           <div style={{ flex: 1 }} id="registration">
-            <form
-              onSubmit={(e) => e.preventDefault()}
-              className="flex flex-col gap-3"
-              style={{ direction: "rtl" }}
-            >
-              <input
-                type="text"
-                name="firstname"
-                placeholder="שם מלא"
-                className="study-input"
-                style={inputStyle}
-              />
-
-              <input
-                type="text"
-                name="division"
-                placeholder="חטיבה / מחלקה"
-                className="study-input"
-                style={inputStyle}
-              />
-
-              <input
-                type="tel"
-                name="phone"
-                placeholder="טלפון נייד"
-                className="study-input"
-                style={inputStyle}
-              />
-
-              <input
-                type="email"
-                name="email"
-                placeholder="כתובת מייל"
-                className="study-input"
-                style={inputStyle}
-              />
-
-              <select
-                name="forum"
-                className="study-input"
-                style={{ ...inputStyle, appearance: "none" }}
-              >
+            <form onSubmit={(e) => e.preventDefault()} className="flex flex-col gap-3" style={{ direction: "rtl" }}>
+              <input type="text" name="firstname" placeholder="שם מלא" className="study-input" style={inputStyle} />
+              <input type="text" name="division" placeholder="חטיבה / מחלקה" className="study-input" style={inputStyle} />
+              <input type="tel" name="phone" placeholder="טלפון נייד" className="study-input" style={inputStyle} />
+              <input type="email" name="email" placeholder="כתובת מייל" className="study-input" style={inputStyle} />
+              <select name="forum" className="study-input" style={{ ...inputStyle, appearance: "none" }}>
                 <option value="">לאיזה פורום אני מתעניין/ת?</option>
                 <option value="tech">פורום חדשנות טכנולוגית (AI)</option>
                 <option value="process">פורום חדשנות תהליכית</option>
-                <option value="both">שניהם — תחליטו בשבילי</option>
               </select>
-
-              <label
-                style={{
-                  fontSize: "14px",
-                  color: "#0f172a",
-                  direction: "rtl",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "8px",
-                  marginBottom: "12px",
-                  cursor: "pointer",
-                }}
-              >
+              <label style={{ fontSize: "14px", color: "#0f172a", direction: "rtl", display: "flex", alignItems: "center", gap: "8px", marginBottom: "12px", cursor: "pointer" }}>
                 <input type="checkbox" name="gdpr" defaultChecked />
                 <span>אני מאשר/ת קבלת עדכונים מפורום החדשנות של אמרל</span>
               </label>
-
               <div style={{ background: "rgba(42,83,119,0.07)", border: "1px solid rgba(42,83,119,0.2)", borderRadius: "10px", padding: "10px 14px", fontSize: "12px", color: "#2a5377", lineHeight: 1.6, direction: "rtl", marginBottom: "12px" }}>
                 <strong>שימו לב: </strong>
                 הצטרפות לפורום מחייבת התחייבות להמשך עבודה באמרל לשנה מיום ההצטרפות, שכן מדובר בהכשרה ייחודית שהארגון משקיע בה משאבים רבים.
               </div>
-
-              <button
+              <motion.button
                 type="submit"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
                 style={{
                   background: "linear-gradient(135deg, #f97316 0%, #e53e2f 100%)",
                   color: "#ffffff",
@@ -245,43 +174,28 @@ export function StudyProgramsSection() {
                 }}
               >
                 אני רוצה להצטרף לפורום &gt;&gt;
-              </button>
+              </motion.button>
             </form>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       <style>{`
-        .study-input::placeholder {
-          color: rgba(255, 255, 255, 0.7);
-        }
-        .study-input option {
-          background-color: #0c1a2e;
-          color: white;
-        }
-
-        .study-programs-section { padding: 80px 10px 60px; }
-        .study-programs-container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
-        .study-programs-h2 { font-size: 45px; }
-        .study-programs-sub { font-size: 20px; }
-
+        .study-input::placeholder { color: rgba(255, 255, 255, 0.7); }
+        .study-input option { background-color: #0c1a2e; color: white; }
         .study-programs-boxes {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
           gap: 24px;
           margin-bottom: 60px;
         }
-
         .study-programs-bottom {
           display: flex;
           flex-direction: row;
           gap: 40px;
           align-items: center;
         }
-
         @media (max-width: 768px) {
-          .study-programs-section { padding: 60px 0; }
-          .study-programs-container { padding: 0 20px; }
           .study-programs-h2 { font-size: 28px !important; }
           .study-programs-sub { font-size: 16px !important; }
           .study-programs-boxes { grid-template-columns: 1fr; }

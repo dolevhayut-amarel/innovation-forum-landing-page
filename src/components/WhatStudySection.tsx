@@ -1,4 +1,7 @@
+"use client";
+
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 
 const steps = [
   {
@@ -20,6 +23,10 @@ const steps = [
     note: "כ-15 משתתפים לכל פורום",
   },
 ];
+
+const view = { once: true, amount: 0.15 } as const;
+const hidden = { opacity: 0, y: 36 };
+const show = { opacity: 1, y: 0 };
 
 export function WhatStudySection() {
   return (
@@ -46,13 +53,33 @@ export function WhatStudySection() {
 
       <div className="process-outer">
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-          <h2 className="process-h2">איך מצטרפים?</h2>
-          <p className="process-sub">תהליך פשוט ומהיר — שלושה שלבים להצטרפות לפורום</p>
+          <motion.h2
+            className="process-h2"
+            initial={hidden}
+            whileInView={show}
+            viewport={view}
+            transition={{ duration: 0.55 }}
+          >
+            איך מצטרפים?
+          </motion.h2>
+          <motion.p
+            className="process-sub"
+            initial={hidden}
+            whileInView={show}
+            viewport={view}
+            transition={{ duration: 0.55, delay: 0.1 }}
+          >
+            תהליך פשוט ומהיר — שלושה שלבים להצטרפות לפורום
+          </motion.p>
 
           <div className="process-grid">
-            {steps.map((step) => (
-              <div
+            {steps.map((step, i) => (
+              <motion.div
                 key={step.number}
+                initial={hidden}
+                whileInView={show}
+                viewport={view}
+                transition={{ duration: 0.55, delay: 0.1 + i * 0.12 }}
                 style={{
                   background: "rgba(255, 255, 255, 0.08)",
                   backdropFilter: "blur(12px)",
@@ -108,7 +135,7 @@ export function WhatStudySection() {
                 >
                   {step.note}
                 </span>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

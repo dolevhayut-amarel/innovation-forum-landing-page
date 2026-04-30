@@ -1,5 +1,8 @@
+"use client";
+
 import { cn } from "@/lib/utils";
 import { Bot, GraduationCap, Mic, Wrench } from "lucide-react";
+import { motion } from "framer-motion";
 
 const benefits = [
   {
@@ -28,6 +31,10 @@ const benefits = [
   },
 ];
 
+const view = { once: true, amount: 0.15 } as const;
+const hidden = { opacity: 0, y: 32 };
+const show = { opacity: 1, y: 0 };
+
 export function WhyStudySection() {
   return (
     <section className={cn("relative overflow-hidden")}>
@@ -49,13 +56,33 @@ export function WhyStudySection() {
 
       <div className="why-outer" style={{ backgroundColor: "#ffffff", direction: "rtl" }}>
         <div className="why-inner">
-          <h2 className="why-h2">מה תרוויחו מהפורום?</h2>
-          <p className="why-sub">הצטרפות לפורום פותחת בפניכם הזדמנות מקצועית ייחודית.</p>
+          <motion.h2
+            className="why-h2"
+            initial={hidden}
+            whileInView={show}
+            viewport={view}
+            transition={{ duration: 0.55 }}
+          >
+            מה תרוויחו מהפורום?
+          </motion.h2>
+          <motion.p
+            className="why-sub"
+            initial={hidden}
+            whileInView={show}
+            viewport={view}
+            transition={{ duration: 0.55, delay: 0.1 }}
+          >
+            הצטרפות לפורום פותחת בפניכם הזדמנות מקצועית ייחודית.
+          </motion.p>
 
           <div className="why-grid">
-            {benefits.map((benefit) => (
-              <div
+            {benefits.map((benefit, i) => (
+              <motion.div
                 key={benefit.title}
+                initial={hidden}
+                whileInView={show}
+                viewport={view}
+                transition={{ duration: 0.5, delay: 0.05 + i * 0.1 }}
                 style={{
                   display: "flex",
                   flexDirection: "row",
@@ -92,7 +119,7 @@ export function WhyStudySection() {
                     {benefit.text}
                   </p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

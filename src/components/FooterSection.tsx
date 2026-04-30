@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 
 export function FooterSection() {
   const [name, setName] = useState("");
@@ -92,7 +93,13 @@ export function FooterSection() {
             gap: "60px",
           }}
         >
-          <div style={{ flex: 1 }}>
+          <motion.div
+            style={{ flex: 1 }}
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
             <h2
               style={{
                 fontSize: "50px",
@@ -113,11 +120,15 @@ export function FooterSection() {
             >
               השאירו פרטים ונחזור אליכם בהקדם עם כל הפרטים על הרשמה לפורום
             </p>
-          </div>
+          </motion.div>
 
-          <div
+          <motion.div
             className="footer-form-col"
             style={{ flex: 1, maxWidth: "500px" }}
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
           >
             <form onSubmit={handleSubmit}>
               <input
@@ -207,7 +218,7 @@ export function FooterSection() {
                 אני רוצה להצטרף לפורום &gt;&gt;
               </button>
             </form>
-          </div>
+          </motion.div>
         </div>
       </section>
 

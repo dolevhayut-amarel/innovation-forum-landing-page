@@ -1,4 +1,7 @@
+"use client";
+
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 
 export function CtaBar() {
   return (
@@ -17,8 +20,12 @@ export function CtaBar() {
           .cta-bar-text  { min-width: unset !important; text-align: center !important; }
         }
       `}</style>
-      <div
+      <motion.div
         className="cta-bar-inner"
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
         style={{
           maxWidth: 1200,
           margin: "0 auto",
@@ -42,9 +49,11 @@ export function CtaBar() {
         >
           הפורומים מחכים לכם — הצטרפו עכשיו לפורום החדשנות של אמרל ועצבו את עתיד הארגון
         </p>
-        <a
+        <motion.a
           href="#registration"
           className="cta-bar-btn"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.97 }}
           style={{
             background: "linear-gradient(135deg, #f97316 0%, #e53e2f 100%)",
             color: "#ffffff",
@@ -61,8 +70,8 @@ export function CtaBar() {
           }}
         >
           אני רוצה להצטרף לפורום &gt;&gt;
-        </a>
-      </div>
+        </motion.a>
+      </motion.div>
     </section>
   );
 }
