@@ -108,7 +108,6 @@ export function HeroSection() {
                 <option value="">לאיזה פורום אני מתעניין/ת?</option>
                 <option value="tech">פורום חדשנות טכנולוגית (AI)</option>
                 <option value="process">פורום חדשנות תהליכית</option>
-                <option value="both">שניהם — תחליטו בשבילי</option>
               </select>
               <label style={{ fontSize: "14px", color: "#ffffff", direction: "rtl", display: "flex", alignItems: "center", gap: "8px", marginBottom: "4px", cursor: "pointer" }}>
                 <input type="checkbox" name="terms" defaultChecked />

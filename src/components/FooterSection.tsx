@@ -161,7 +161,6 @@ export function FooterSection() {
                 <option value="">לאיזה פורום אני מתעניין/ת?</option>
                 <option value="tech">פורום חדשנות טכנולוגית (AI)</option>
                 <option value="process">פורום חדשנות תהליכית</option>
-                <option value="both">שניהם — תחליטו בשבילי</option>
               </select>
 
               <label
