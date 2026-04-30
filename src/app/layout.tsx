@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "LP General | 2025 - HackerU - החממה להכשרה למקצועות ההייטק",
-  description: "HackerU - פחות דיבורים, יותר תכל'ס! זה הזמן לרכוש מקצוע תוך מספר חודשים ולהתחיל לעבוד בהייטק.",
+  title: "פורום חדשנות | אמרל 2026",
+  description: "הצטרפו לפורום החדשנות של אמרל — מנגנון ארגוני מובנה להצפת רעיונות, פיתוח פתרונות ושיפור מתמיד של תהליכים.",
 };
 
 export default function RootLayout({

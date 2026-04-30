@@ -11,18 +11,18 @@ interface ProgramCard {
 const programCards: ProgramCard[] = [
   {
     plusColor: "#85E577",
-    title: "בונים לך יתרון תחרותי, לא רק ידע",
-    text: "בונים תיק עבודות מנצח, תרגולים מעשיים וסימולציות מהעולם האמיתי, כדי שתגיעו מוכנים לשוק העבודה",
+    title: "עבודה מעשית ותוצרים אמיתיים",
+    text: "כל מפגש מניב תוצרים מוחשיים — Use Cases, אוטומציות וכלים שנכנסים ישירות לשימוש בחטיבות. לא רק שיח רעיוני, אלא פתרונות שמיושמים.",
   },
   {
     plusColor: "#7D69FF",
-    title: "100% תרגול מעשי, 0% בזבוז זמן",
-    text: "קורס Live עם תרגול מעשי, שימוש בכלים מקצועיים ויישום מעשי של החומר",
+    title: "הכשרות מקצועיות מהשטח",
+    text: "סדרת הדרכות מובנית ישירות ממנטורים, סמנכ\"לים ומומחים מהתעשייה. תכנים בתחומי AI, אפיון מוצר, מיפוי תהליכים וחשיבה יזמית.",
   },
   {
     plusColor: "#85E577",
-    title: "תכנים מעודכנים בהתאם לדרישות התעשייה",
-    text: "כל קורס נבנה יחד עם מנטורים ומרצים מומחים מהשטח",
+    title: "שיתוף ידע בין-חטיבתי",
+    text: "כינוס עובדים ומנהלים מכל החטיבות לחשיבה משותפת. שני הפורומים פועלים במקביל ומחזקים שיתוף Best Practices בכל הארגון.",
   },
 ];
 
@@ -55,7 +55,6 @@ export function StudyProgramsSection() {
           padding: "0 40px",
         }}
       >
-        {/* Heading */}
         <h2
           style={{
             fontSize: "45px",
@@ -65,7 +64,7 @@ export function StudyProgramsSection() {
             marginBottom: "8px",
           }}
         >
-          תוכניות לימודים מעשיות שמכינות אתכם לדבר האמיתי
+          מה מקבלים בפורום?
         </h2>
 
         <p
@@ -76,10 +75,9 @@ export function StudyProgramsSection() {
             marginBottom: "50px",
           }}
         >
-          מהתרגול הראשון ועד הכניסה לתעשייה
+          6-7 מפגשים שמניבים תוצרים אמיתיים ומשנים את הארגון
         </p>
 
-        {/* Cards grid */}
         <div className="study-programs-boxes">
           {programCards.map((card, index) => (
             <div
@@ -94,7 +92,6 @@ export function StudyProgramsSection() {
                 marginTop: "28px",
               }}
             >
-              {/* + icon floated above card */}
               <div
                 style={{
                   width: "56px",
@@ -140,9 +137,7 @@ export function StudyProgramsSection() {
           ))}
         </div>
 
-        {/* Bottom split: CTA text (left) + Form (right) */}
         <div className={cn("study-programs-bottom")}>
-          {/* CTA text column */}
           <div
             style={{
               flex: 1,
@@ -156,13 +151,12 @@ export function StudyProgramsSection() {
                 color: "#131316",
               }}
             >
-              עשרות אלפי בוגרים כבר השתלבו בתפקידי מפתח בהייטק -{" "}
+              עשרות עובדים ומנהלים מכל החטיבות כבר נרשמו —{" "}
               <span style={{ color: "#7D69FF" }}>עכשיו תורכם</span>
             </p>
           </div>
 
-          {/* Form column */}
-          <div style={{ flex: 1 }}>
+          <div style={{ flex: 1 }} id="registration">
             <form
               onSubmit={(e) => e.preventDefault()}
               className="flex flex-col gap-3"
@@ -171,7 +165,15 @@ export function StudyProgramsSection() {
               <input
                 type="text"
                 name="firstname"
-                placeholder="מה השם שלך?"
+                placeholder="שם מלא"
+                className="study-input"
+                style={inputStyle}
+              />
+
+              <input
+                type="text"
+                name="division"
+                placeholder="חטיבה / מחלקה"
                 className="study-input"
                 style={inputStyle}
               />
@@ -179,7 +181,7 @@ export function StudyProgramsSection() {
               <input
                 type="tel"
                 name="phone"
-                placeholder="מה הטלפון שלך?"
+                placeholder="טלפון נייד"
                 className="study-input"
                 style={inputStyle}
               />
@@ -187,10 +189,21 @@ export function StudyProgramsSection() {
               <input
                 type="email"
                 name="email"
-                placeholder="ומה המייל?"
+                placeholder="כתובת מייל"
                 className="study-input"
                 style={inputStyle}
               />
+
+              <select
+                name="forum"
+                className="study-input"
+                style={{ ...inputStyle, appearance: "none" }}
+              >
+                <option value="">לאיזה פורום אני מתעניין/ת?</option>
+                <option value="tech">פורום חדשנות טכנולוגית (AI)</option>
+                <option value="process">פורום חדשנות תהליכית</option>
+                <option value="both">שניהם — תחליטו בשבילי</option>
+              </select>
 
               <label
                 style={{
@@ -205,10 +218,7 @@ export function StudyProgramsSection() {
                 }}
               >
                 <input type="checkbox" name="gdpr" defaultChecked />
-                <span>
-                  אני מאשר/ת קבלת דיוורים ישירים ודברי פרסומות מהאקריו בכפוף
-                  למדיניות הגנת הפרטיות
-                </span>
+                <span>אני מאשר/ת קבלת עדכונים מפורום החדשנות של אמרל</span>
               </label>
 
               <button
@@ -227,7 +237,7 @@ export function StudyProgramsSection() {
                   textAlign: "center",
                 }}
               >
-                אני רוצה ללמוד מקצוע מבוקש &gt;&gt;
+                אני רוצה להצטרף לפורום &gt;&gt;
               </button>
             </form>
           </div>
@@ -237,6 +247,10 @@ export function StudyProgramsSection() {
       <style>{`
         .study-input::placeholder {
           color: rgba(255, 255, 255, 0.7);
+        }
+        .study-input option {
+          background-color: #221C4A;
+          color: white;
         }
 
         .study-programs-boxes {

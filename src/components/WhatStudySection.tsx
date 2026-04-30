@@ -1,46 +1,35 @@
-import Image from "next/image";
 import { cn } from "@/lib/utils";
 
-const courses = [
+const meetings = [
   {
-    icon: "/images/course-icon4.png",
-    title: "סייבר ואבטחת מידע",
-    text: "קורס הסייבר של HackerU נלמד גם באוניברסיטאות מובילות בעולם, ומשלב התמחות מעשית בהגנה ותקיפה, תרגול בסימולטור מתקדם וכלי AI – כדי שתיכנסו לתעשייה עם ניסיון מהשטח. לא נדרש רקע קודם.",
+    number: "מפגש 1",
+    title: "פתיחה וחשיבה יצירתית",
+    text: "היכרות בין-חטיבתית, יישור קו על מטרות הפורום, הרצאה חיצונית בנושא חשיבה יצירתית ואבחון צרכים ארגוניים.",
   },
   {
-    icon: "/images/course-icon2.png",
-    title: "עיצוב גרפי ו-UX/UI",
-    text: "המסלול המלא של HackerU לעיצוב בדיגיטל – משלב התמחות כפולה בעיצוב גרפי וחוויית משתמש, תרגול מעשי, בניית תיק עבודות מנצח ולימוד כלי AI מתקדמים. מסיימים עם יתרון תחרותי אמיתי והכנה לעבודה בתעשייה. לא נדרש רקע קודם.",
+    number: "מפגש 2",
+    title: "Marketplace של אתגרים",
+    text: "כל משתתף מציג צרכים מחטיבתו. תיעדוף אסטרטגי עם מנטורים — ופיצול פנימי לעבודה לפי מסלול (AI / תהליכי).",
   },
   {
-    icon: "/images/course-icon1.png",
-    title: "מאסטר בשיווק דיגיטלי",
-    text: "המסלול המקיף של HackerU לשיווק דיגיטלי מעשי – כולל התמחות ב-3 מקצועות מבוקשים: SEO, PPC וניהול סושיאל, תרגול עם כלים מבוססי AI, פרויקט גמר שידמה עבודה אמיתית בשטח. לא נדרש רקע קודם.",
+    number: "מפגש 3+",
+    title: "עבודה מעשית בקבוצות",
+    text: "שני הפורומים מתכנסים יחד עם פיצול פנימי. כל מסלול מעמיק כלים ומתחיל לאפיין פתרונות אמיתיים לאתגרי החטיבות.",
   },
   {
-    icon: "/images/course-icon3.png",
-    title: "Data Analyst & BI",
-    text: "המסלול המקיף של HackerU למקצועות הדאטה – כולל תרגול מעשי, כלים מתקדמים (SQL, Python, BI, DBT) ועבודה עם טכנולוגיות AI, בהנחיית מומחים מהתעשייה. לא נדרש רקע קודם.",
+    number: "מפגש אמצע",
+    title: "הצגה לסמנכ\"לים",
+    text: "במפגש הרביעי מוצג מה נעשה עד כה במליאה. הסמנכ\"לים נותנים משוב ומכוונים את הפורומים לתוצאות עסקיות.",
   },
   {
-    icon: "/images/course-icon8.png",
-    title: "בדיקות תוכנה QA",
-    text: "המסלול של HackerU שמכשיר אתכם לאחד המקצועות הכי נדרשים בהייטק – כולל תרגול Hands-On על פרויקטים אמיתיים, הכנה להסמכת ISTQB, שימוש בכלי AI וליווי עד למציאת עבודה. לא נדרש רקע קודם.",
+    number: "מפגש סיום",
+    title: "הצגת תוצרים סופיים",
+    text: "כל קבוצה מציגה את התוצר שפיתחה. הכלים, האוטומציות והתהליכים שנבנו נכנסים לתכנית הטמעה בחטיבות.",
   },
   {
-    icon: "/images/course-icon6.png",
-    title: "מאסטר Full Stack",
-    text: "המסלול המתקדם של HackerU לפיתוח פולסטאק – כולל התמחות ב-Python, Node.js ו-React, תרגול Hands-On, בניית פרויקטי גמר וכלי AI שיעזרו לכם להשתלב מהר ובביטחון בשוק העבודה. לא נדרש רקע קודם.",
-  },
-  {
-    icon: "/images/course-icon7.png",
-    title: "ניהול רשתות תקשורת",
-    text: "המסלול המלא שמכין אתכם לשני מקצועות מבוקשים – עם התמחות מעשית ב-Cisco ובענן של Microsoft Azure, הכנה להסמכות רשמיות ותרגול Hands-On בסביבות וירטואליות.",
-  },
-  {
-    icon: "/images/course-icon5.png",
-    title: "פיתוח משחקים ואנימציה בתלת מימד",
-    text: "המסלול של HackerU לעולם הגיימינג – משלב פיתוח משחקים עם התמחות באנימציה, תרגול מעשי במנועי Unity ו-Unreal, פרויקט גמר מרשים וכלים מבוססי AI. לא נדרש רקע קודם.",
+    number: "לוח זמנים",
+    title: "יוני – דצמבר 2026",
+    text: "6-7 מפגשים, אחת לשבועיים, שלוש שעות כל מפגש. כיסוי 100% חטיבתי עם ייצוג מכל מחלקה בארגון.",
   },
 ];
 
@@ -50,8 +39,7 @@ export function WhatStudySection() {
       className={cn("relative")}
       style={{
         backgroundColor: "#8364FF",
-        padding: "100px 110px",
-        minHeight: "900px",
+        padding: "100px 40px",
         direction: "rtl",
         position: "relative",
       }}
@@ -68,22 +56,30 @@ export function WhatStudySection() {
             fontWeight: 900,
             color: "#ffffff",
             textAlign: "right",
+            marginBottom: "8px",
+          }}
+        >
+          מבנה המפגשים
+        </h2>
+        <p
+          style={{
+            fontSize: "20px",
+            color: "rgba(255,255,255,0.85)",
+            textAlign: "right",
             marginBottom: "40px",
           }}
         >
-          מסלולי הלימוד שלנו
-        </h2>
+          סדרה מובנית של 6-7 מפגשים שמובילה מרעיון לתוצר מוטמע
+        </p>
 
-        {/* Grid — 4 cols desktop, 2 cols tablet, 1 col mobile */}
         <div
           className="what-study-boxes"
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(4, 1fr)",
+            gridTemplateColumns: "repeat(3, 1fr)",
             gap: "20px",
           }}
         >
-          {/* Responsive overrides via Tailwind (Tailwind v4 arbitrary values) */}
           <style>{`
             @media (max-width: 1024px) {
               .what-study-boxes {
@@ -94,16 +90,12 @@ export function WhatStudySection() {
               .what-study-boxes {
                 grid-template-columns: repeat(1, 1fr) !important;
               }
-              section[data-section="what-study"] {
-                padding: 60px 24px !important;
-              }
             }
           `}</style>
 
-          {courses.map((course) => (
+          {meetings.map((meeting) => (
             <div
-              key={course.title}
-              className="what-study-box"
+              key={meeting.number}
               style={{
                 backgroundColor: "#ffffff",
                 borderRadius: "16px",
@@ -114,23 +106,23 @@ export function WhatStudySection() {
                 textAlign: "right",
               }}
             >
-              {/* Icon */}
-              <div
-                className="what-study-box__icon"
-                style={{ marginBottom: "16px" }}
-              >
-                <Image
-                  src={course.icon}
-                  alt={course.title}
-                  width={56}
-                  height={56}
-                  style={{ objectFit: "contain" }}
-                />
-              </div>
-
-              {/* Title */}
               <p
-                className="what-study-box__title"
+                style={{
+                  fontSize: "13px",
+                  fontWeight: 700,
+                  color: "#7D69FF",
+                  backgroundColor: "#f0edff",
+                  borderRadius: "50px",
+                  padding: "4px 12px",
+                  display: "inline-block",
+                  marginBottom: "12px",
+                  width: "fit-content",
+                }}
+              >
+                {meeting.number}
+              </p>
+
+              <p
                 style={{
                   fontSize: "20px",
                   fontWeight: 700,
@@ -138,42 +130,19 @@ export function WhatStudySection() {
                   marginBottom: "10px",
                 }}
               >
-                {course.title}
+                {meeting.title}
               </p>
 
-              {/* Body text */}
               <p
-                className="what-study-box__text"
                 style={{
                   fontSize: "14px",
                   color: "#444444",
                   lineHeight: 1.6,
                   flex: 1,
-                  marginBottom: "16px",
                 }}
               >
-                {course.text}
+                {meeting.text}
               </p>
-
-              {/* CTA button */}
-              <a
-                href="#"
-                className="what-study-box__btn"
-                style={{
-                  display: "inline-block",
-                  backgroundColor: "#85E577",
-                  color: "#131316",
-                  borderRadius: "50px",
-                  padding: "10px 20px",
-                  fontSize: "14px",
-                  fontWeight: 700,
-                  textDecoration: "none",
-                  textAlign: "center",
-                  marginTop: "auto",
-                }}
-              >
-                לפרטים נוספים &gt;&gt;
-              </a>
             </div>
           ))}
         </div>

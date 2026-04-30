@@ -26,17 +26,17 @@ export function CtaBar() {
           style={{
             fontSize: 20,
             fontWeight: 700,
-            color: "#131316",
+            color: "#ffffff",
             flex: 1,
             minWidth: 280,
           }}
         >
-          ההתחייבות שלנו: להפוך חלום למציאות וללוות אתכם עד לעבודה הראשונה שלכם בהייטק
+          הפורומים מחכים לכם — הצטרפו עכשיו לפורום החדשנות של אמרל ועצבו את עתיד הארגון
         </p>
-        <button
-          type="button"
+        <a
+          href="#registration"
           style={{
-            backgroundColor: "#F1F2ED",
+            backgroundColor: "#85E577",
             color: "#131316",
             borderRadius: 50,
             padding: "14px 32px",
@@ -46,10 +46,12 @@ export function CtaBar() {
             cursor: "pointer",
             flexShrink: 0,
             whiteSpace: "nowrap",
+            textDecoration: "none",
+            display: "inline-block",
           }}
         >
-          קליק לקריירה בהייטק &gt;&gt;
-        </button>
+          אני רוצה להצטרף לפורום &gt;&gt;
+        </a>
       </div>
     </section>
   );

@@ -6,13 +6,14 @@ import { cn } from "@/lib/utils";
 
 export function FooterSection() {
   const [name, setName] = useState("");
+  const [division, setDivision] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
+  const [forum, setForum] = useState("");
   const [agreed, setAgreed] = useState(false);
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // TODO: wire up form submission
   }
 
   const inputStyle: React.CSSProperties = {
@@ -30,7 +31,6 @@ export function FooterSection() {
 
   return (
     <>
-      {/* Main contact section */}
       <section
         id="footer-contact"
         data-section="footer-contact"
@@ -45,7 +45,6 @@ export function FooterSection() {
           minHeight: "670px",
         }}
       >
-        {/* Decorative plus signs */}
         <Image
           src="/images/bpluses.png"
           alt=""
@@ -61,7 +60,6 @@ export function FooterSection() {
           }}
         />
 
-        {/* Responsive styles */}
         <style>{`
           @media (max-width: 768px) {
             .footer-inner {
@@ -72,6 +70,13 @@ export function FooterSection() {
               max-width: 100% !important;
               width: 100% !important;
             }
+          }
+          .footer-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+          }
+          .footer-input option {
+            background-color: #221C4A;
+            color: white;
           }
         `}</style>
 
@@ -87,7 +92,6 @@ export function FooterSection() {
             gap: "60px",
           }}
         >
-          {/* Right column: text content */}
           <div style={{ flex: 1 }}>
             <h2
               style={{
@@ -98,7 +102,7 @@ export function FooterSection() {
                 marginBottom: "16px",
               }}
             >
-              אנחנו כאן כדי להזניק אתכם לקריירה בהייטק!
+              הצטרפו לפורום החדשנות של אמרל!
             </h2>
             <p
               style={{
@@ -107,11 +111,10 @@ export function FooterSection() {
                 marginBottom: "32px",
               }}
             >
-              השאירו פרטים והצטרפו למסלול שישנה את הקריירה שלכם
+              השאירו פרטים ונחזור אליכם בהקדם עם כל הפרטים על הרשמה לפורום
             </p>
           </div>
 
-          {/* Left column: form */}
           <div
             className="footer-form-col"
             style={{ flex: 1, maxWidth: "500px" }}
@@ -119,27 +122,48 @@ export function FooterSection() {
             <form onSubmit={handleSubmit}>
               <input
                 type="text"
-                placeholder="מה השם שלך?"
+                placeholder="שם מלא"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 style={inputStyle}
+                className="footer-input"
+              />
+              <input
+                type="text"
+                placeholder="חטיבה / מחלקה"
+                value={division}
+                onChange={(e) => setDivision(e.target.value)}
+                style={inputStyle}
+                className="footer-input"
               />
               <input
                 type="tel"
-                placeholder="מה הטלפון שלך?"
+                placeholder="טלפון נייד"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 style={inputStyle}
+                className="footer-input"
               />
               <input
                 type="email"
-                placeholder="ומה המייל?"
+                placeholder="כתובת מייל"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 style={inputStyle}
+                className="footer-input"
               />
+              <select
+                value={forum}
+                onChange={(e) => setForum(e.target.value)}
+                style={{ ...inputStyle, appearance: "none" }}
+                className="footer-input"
+              >
+                <option value="">לאיזה פורום אני מתעניין/ת?</option>
+                <option value="tech">פורום חדשנות טכנולוגית (AI)</option>
+                <option value="process">פורום חדשנות תהליכית</option>
+                <option value="both">שניהם — תחליטו בשבילי</option>
+              </select>
 
-              {/* Checkbox */}
               <label
                 style={{
                   display: "flex",
@@ -158,13 +182,9 @@ export function FooterSection() {
                   onChange={(e) => setAgreed(e.target.checked)}
                   style={{ marginTop: "2px", flexShrink: 0, cursor: "pointer" }}
                 />
-                <span>
-                  אני מאשר/ת קבלת דיוורים ישירים ודברי פרסומות מהאקריו בכפוף
-                  למדיניות הגנת הפרטיות
-                </span>
+                <span>אני מאשר/ת קבלת עדכונים מפורום החדשנות של אמרל</span>
               </label>
 
-              {/* Submit */}
               <button
                 type="submit"
                 style={{
@@ -180,14 +200,13 @@ export function FooterSection() {
                   textAlign: "center",
                 }}
               >
-                אני רוצה ללמוד מקצוע מבוקש &gt;&gt;
+                אני רוצה להצטרף לפורום &gt;&gt;
               </button>
             </form>
           </div>
         </div>
       </section>
 
-      {/* Bottom footer bar */}
       <footer
         style={{
           backgroundColor: "#131316",
@@ -200,21 +219,18 @@ export function FooterSection() {
           gap: "16px",
         }}
       >
-        {/* RTL right side = logo */}
         <div>
           <Image
             src="/images/logo-white.png"
-            alt="HackerU Logo"
+            alt="Amarel Logo"
             width={140}
             height={40}
             style={{ objectFit: "contain" }}
           />
         </div>
 
-        {/* Center — empty spacer */}
         <div style={{ flex: 1 }} />
 
-        {/* RTL left side = address block */}
         <div
           style={{
             textAlign: "left",
@@ -223,22 +239,16 @@ export function FooterSection() {
             gap: "4px",
           }}
         >
-          <span
-            style={{ color: "#ffffff", fontWeight: 700, fontSize: "15px" }}
-          >
-            מתחם HackerU
+          <span style={{ color: "#ffffff", fontWeight: 700, fontSize: "15px" }}>
+            אמרל בע״מ
           </span>
-          <span style={{ color: "#ffffff", fontSize: "15px" }}>0722584928</span>
-          <span
-            style={{ color: "#aaaaaa", fontSize: "13px", maxWidth: "340px" }}
-          >
-            רחוב שוהם 5, מגדלי פז, קומה 3, מתחם הבורסה, רמת גן, בצמוד לרכבת
-            מרכז
+          <span style={{ color: "#ffffff", fontSize: "15px" }}>innovation@amarel.net</span>
+          <span style={{ color: "#aaaaaa", fontSize: "13px", maxWidth: "340px" }}>
+            פורום חדשנות Q2 2026 — נכתב ע"י קרן גטלובסקי, דולב חיוט ומעיין כבל
           </span>
         </div>
       </footer>
 
-      {/* Bottom links bar */}
       <div
         style={{
           backgroundColor: "#131316",
@@ -251,25 +261,11 @@ export function FooterSection() {
           direction: "rtl",
         }}
       >
-        <a
-          href="#"
-          style={{
-            color: "#ffffff",
-            fontSize: "14px",
-            textDecoration: "none",
-          }}
-        >
+        <a href="#" style={{ color: "#ffffff", fontSize: "14px", textDecoration: "none" }}>
           מדיניות פרטיות
         </a>
         <span style={{ color: "#555555" }}>|</span>
-        <a
-          href="#"
-          style={{
-            color: "#ffffff",
-            fontSize: "14px",
-            textDecoration: "none",
-          }}
-        >
+        <a href="#" style={{ color: "#ffffff", fontSize: "14px", textDecoration: "none" }}>
           הצהרת נגישות
         </a>
       </div>

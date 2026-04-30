@@ -4,78 +4,69 @@ export function LeadsToSuccess() {
   return (
     <section
       className={cn("w-full")}
-      style={{
-        backgroundColor: "#ffffff",
-        padding: "100px 0",
-        direction: "rtl",
-        textAlign: "center",
-      }}
+      style={{ backgroundColor: "#ffffff", padding: "100px 0", direction: "rtl", textAlign: "center" }}
     >
-      <div
-        style={{
-          maxWidth: "900px",
-          margin: "0 auto",
-          padding: "0 20px",
-        }}
-      >
-        <h2
-          style={{
-            fontSize: "45px",
-            fontWeight: 900,
-            color: "#131316",
-            marginBottom: "16px",
-          }}
-        >
-          מסלול שמוביל להצלחה
+      <div style={{ maxWidth: "900px", margin: "0 auto", padding: "0 20px" }}>
+        <h2 style={{ fontSize: "45px", fontWeight: 900, color: "#131316", marginBottom: "16px" }}>
+          מה זה בכלל פורום חדשנות?
         </h2>
-
-        <p
-          style={{
-            fontSize: "20px",
-            color: "#131316",
-            fontWeight: 400,
-            marginBottom: "40px",
-          }}
-        >
-          הכירו את השיטה שעזרה לעשרות אלפי בוגרים להשתלב בהייטק
+        <p style={{ fontSize: "20px", color: "#131316", marginBottom: "48px", lineHeight: 1.6 }}>
+          מנגנון ארגוני מובנה שבו עובדים ומנהלים נבחרים מתכנסים כדי להציף רעיונות, לפתח פתרונות ולהניע שיפורים אמיתיים — הן בתחום הטכנולוגיה (AI) והן בתחום התהליכים הארגוניים.
         </p>
 
         <div
-          style={{
-            maxWidth: "720px",
-            margin: "0 auto 40px",
-            borderRadius: "16px",
-            overflow: "hidden",
-            aspectRatio: "16/9",
-            backgroundColor: "#f5f5f5",
-          }}
+          className="flex flex-col md:flex-row"
+          style={{ gap: "24px", justifyContent: "center", marginBottom: "48px" }}
         >
-          <iframe
-            src="https://www.youtube.com/embed/QlSAJ3kFaKc"
-            width="100%"
-            height="100%"
-            allowFullScreen
-            frameBorder={0}
-            style={{ display: "block" }}
-          />
+          {[
+            {
+              icon: "🔬",
+              title: "פורום חדשנות טכנולוגית",
+              text: 'להפוך את AI לכלי עבודה יומיומי — בניית "ארגז חול" ארגוני שבו מפתחים תוצרים, אוטומציות וכלים חדשניים.',
+              color: "#7D69FF",
+            },
+            {
+              icon: "⚙️",
+              title: "פורום חדשנות תהליכית",
+              text: "לזהות, לשפר ולייעל תהליכים ארגוניים — מיפוי פערים מהשטח ופיתוח פתרונות לשיפור מתמיד.",
+              color: "#131316",
+            },
+          ].map((card, i) => (
+            <div
+              key={i}
+              style={{
+                flex: 1,
+                backgroundColor: "#F1F2ED",
+                borderRadius: "16px",
+                padding: "32px 24px",
+                textAlign: "right",
+                borderTop: `4px solid ${card.color}`,
+              }}
+            >
+              <div style={{ fontSize: "40px", marginBottom: "12px" }}>{card.icon}</div>
+              <h3 style={{ fontSize: "22px", fontWeight: 700, color: card.color, marginBottom: "12px" }}>
+                {card.title}
+              </h3>
+              <p style={{ fontSize: "16px", color: "#444", lineHeight: 1.7 }}>{card.text}</p>
+            </div>
+          ))}
         </div>
 
-        <button
-          type="button"
+        <a
+          href="#registration"
           style={{
+            display: "inline-block",
             backgroundColor: "#85E577",
             color: "#131316",
             borderRadius: "50px",
             padding: "14px 40px",
             fontSize: "18px",
             fontWeight: 700,
-            border: "none",
-            cursor: "pointer",
-            display: "inline-block",
+            textDecoration: "none",
           }}
         >
-          אני רוצה ללמוד מקצוע מבוקש &gt;&gt;
-        </button>
+          אני רוצה להצטרף לפורום &gt;&gt;
+        </a>
       </div>
     </section>
   );
