@@ -172,7 +172,7 @@ export function FooterSection() {
                   color: "#ffffff",
                   fontSize: "14px",
                   lineHeight: 1.5,
-                  marginBottom: "20px",
+                  marginBottom: "12px",
                   cursor: "pointer",
                 }}
               >
@@ -184,6 +184,11 @@ export function FooterSection() {
                 />
                 <span>אני מאשר/ת קבלת עדכונים מפורום החדשנות של אמרל</span>
               </label>
+
+              <div style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(249,115,22,0.4)", borderRadius: "10px", padding: "10px 14px", fontSize: "12px", color: "rgba(255,255,255,0.8)", lineHeight: 1.6, direction: "rtl", marginBottom: "16px" }}>
+                <strong style={{ color: "#f97316" }}>שימו לב: </strong>
+                הצטרפות לפורום מחייבת התחייבות להמשך עבודה באמרל לשנה מיום ההצטרפות, שכן מדובר בהכשרה ייחודית שהארגון משקיע בה משאבים רבים.
+              </div>
 
               <button
                 type="submit"
@@ -209,7 +214,7 @@ export function FooterSection() {
 
       <footer
         style={{
-          backgroundColor: "#0f172a",
+          backgroundColor: "#0c1a2e",
           padding: "24px 40px",
           display: "flex",
           justifyContent: "space-between",
@@ -219,56 +224,23 @@ export function FooterSection() {
           gap: "16px",
         }}
       >
-        <div>
-          <Image
-            src="/images/logo-white.png"
-            alt="Amarel Logo"
-            width={140}
-            height={40}
-            style={{ objectFit: "contain" }}
-          />
-        </div>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="https://www.amarel.net/wp-content/uploads/2024/03/Logo_Amarel_white-Orange-1.svg"
+          alt="Amarel"
+          style={{ height: "40px", width: "auto", objectFit: "contain" }}
+        />
 
         <div style={{ flex: 1 }} />
 
-        <div
-          style={{
-            textAlign: "left",
-            display: "flex",
-            flexDirection: "column",
-            gap: "4px",
-          }}
-        >
-          <span style={{ color: "#ffffff", fontWeight: 700, fontSize: "15px" }}>
-            אמרל בע״מ
-          </span>
+        <div style={{ display: "flex", flexDirection: "column", gap: "4px", textAlign: "left" }}>
+          <span style={{ color: "#ffffff", fontWeight: 700, fontSize: "15px" }}>אמרל בע״מ</span>
           <span style={{ color: "#ffffff", fontSize: "15px" }}>innovation@amarel.net</span>
-          <span style={{ color: "#aaaaaa", fontSize: "13px", maxWidth: "340px" }}>
-            פורום חדשנות Q2 2026 — נכתב ע"י קרן גטלובסקי, דולב חיוט ומעיין כבל
+          <span style={{ color: "#aaaaaa", fontSize: "13px" }}>
+            נבנה באהבה על ידי מחלקת חדשנות ♥
           </span>
         </div>
       </footer>
-
-      <div
-        style={{
-          backgroundColor: "#0f172a",
-          borderTop: "1px solid #2a2a2a",
-          padding: "12px 40px",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          gap: "24px",
-          direction: "rtl",
-        }}
-      >
-        <a href="#" style={{ color: "#ffffff", fontSize: "14px", textDecoration: "none" }}>
-          מדיניות פרטיות
-        </a>
-        <span style={{ color: "#555555" }}>|</span>
-        <a href="#" style={{ color: "#ffffff", fontSize: "14px", textDecoration: "none" }}>
-          הצהרת נגישות
-        </a>
-      </div>
     </>
   );
 }

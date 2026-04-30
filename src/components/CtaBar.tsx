@@ -5,12 +5,20 @@ export function CtaBar() {
     <section
       className={cn("w-full")}
       style={{
-        backgroundColor: "#2a5377",
+        background: "linear-gradient(135deg, #326a9e 0%, #2a5377 50%, #1e3a52 100%)",
         padding: "30px 60px",
         direction: "rtl",
       }}
     >
+      <style>{`
+        @media (max-width: 640px) {
+          .cta-bar-inner { flex-direction: column !important; text-align: center; }
+          .cta-bar-btn   { width: 100% !important; text-align: center !important; }
+          .cta-bar-text  { min-width: unset !important; text-align: center !important; }
+        }
+      `}</style>
       <div
+        className="cta-bar-inner"
         style={{
           maxWidth: 1200,
           margin: "0 auto",
@@ -23,6 +31,7 @@ export function CtaBar() {
         }}
       >
         <p
+          className="cta-bar-text"
           style={{
             fontSize: 20,
             fontWeight: 700,
@@ -35,6 +44,7 @@ export function CtaBar() {
         </p>
         <a
           href="#registration"
+          className="cta-bar-btn"
           style={{
             background: "linear-gradient(135deg, #f97316 0%, #e53e2f 100%)",
             color: "#ffffff",

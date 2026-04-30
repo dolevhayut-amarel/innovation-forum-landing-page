@@ -56,6 +56,7 @@ export function StudyProgramsSection() {
         }}
       >
         <h2
+          className="study-programs-h2"
           style={{
             fontSize: "45px",
             fontWeight: 900,
@@ -68,6 +69,7 @@ export function StudyProgramsSection() {
         </h2>
 
         <p
+          className="study-programs-sub"
           style={{
             fontSize: "20px",
             color: "#0f172a",
@@ -213,13 +215,18 @@ export function StudyProgramsSection() {
                   display: "flex",
                   alignItems: "center",
                   gap: "8px",
-                  marginBottom: "16px",
+                  marginBottom: "12px",
                   cursor: "pointer",
                 }}
               >
                 <input type="checkbox" name="gdpr" defaultChecked />
                 <span>אני מאשר/ת קבלת עדכונים מפורום החדשנות של אמרל</span>
               </label>
+
+              <div style={{ background: "rgba(42,83,119,0.07)", border: "1px solid rgba(42,83,119,0.2)", borderRadius: "10px", padding: "10px 14px", fontSize: "12px", color: "#2a5377", lineHeight: 1.6, direction: "rtl", marginBottom: "12px" }}>
+                <strong>שימו לב: </strong>
+                הצטרפות לפורום מחייבת התחייבות להמשך עבודה באמרל לשנה מיום ההצטרפות, שכן מדובר בהכשרה ייחודית שהארגון משקיע בה משאבים רבים.
+              </div>
 
               <button
                 type="submit"
@@ -253,6 +260,11 @@ export function StudyProgramsSection() {
           color: white;
         }
 
+        .study-programs-section { padding: 80px 10px 60px; }
+        .study-programs-container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+        .study-programs-h2 { font-size: 45px; }
+        .study-programs-sub { font-size: 20px; }
+
         .study-programs-boxes {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
@@ -268,13 +280,12 @@ export function StudyProgramsSection() {
         }
 
         @media (max-width: 768px) {
-          .study-programs-boxes {
-            grid-template-columns: 1fr;
-          }
-
-          .study-programs-bottom {
-            flex-direction: column;
-          }
+          .study-programs-section { padding: 60px 0; }
+          .study-programs-container { padding: 0 20px; }
+          .study-programs-h2 { font-size: 28px !important; }
+          .study-programs-sub { font-size: 16px !important; }
+          .study-programs-boxes { grid-template-columns: 1fr; }
+          .study-programs-bottom { flex-direction: column; }
         }
       `}</style>
     </section>

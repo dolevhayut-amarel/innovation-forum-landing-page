@@ -10,7 +10,7 @@ export function ClientsBar() {
   return (
     <section
       className={cn("w-full")}
-      style={{ backgroundColor: "#2a5377", padding: "32px 40px", direction: "rtl" }}
+      style={{ background: "linear-gradient(135deg, #326a9e 0%, #2a5377 50%, #1e3a52 100%)", padding: "32px 40px", direction: "rtl" }}
     >
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         <div className="flex flex-row flex-wrap items-center justify-center" style={{ gap: "0 48px" }}>

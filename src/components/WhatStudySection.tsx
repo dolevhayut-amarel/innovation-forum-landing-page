@@ -1,149 +1,116 @@
 import { cn } from "@/lib/utils";
 
-const meetings = [
+const steps = [
   {
-    number: "מפגש 1",
-    title: "פתיחה וחשיבה יצירתית",
-    text: "היכרות בין-חטיבתית, יישור קו על מטרות הפורום, הרצאה חיצונית בנושא חשיבה יצירתית ואבחון צרכים ארגוניים.",
+    number: "01",
+    title: "קול קורא והרשמה",
+    text: "ממלאים את הטופס, מציינים לאיזה פורום מתעניינים ומוסיפים פרטים קצרים על הרקע שלכם ומה מושך אתכם ליוזמה.",
+    note: "פתוח לכלל עובדי אמרל",
   },
   {
-    number: "מפגש 2",
-    title: "Marketplace של אתגרים",
-    text: "כל משתתף מציג צרכים מחטיבתו. תיעדוף אסטרטגי עם מנטורים — ופיצול פנימי לעבודה לפי מסלול (AI / תהליכי).",
+    number: "02",
+    title: "סינון ראשוני",
+    text: "הצוות יעבור על הבקשות ויצור קשר עם המועמדים. הסינון מתמקד בפתיחות מחשבתית ורצון אמיתי לתרום — לא בידע טכנולוגי.",
+    note: "מועמדים שלא נבחרו יקבלו עדיפות בסבבים הבאים",
   },
   {
-    number: "מפגש 3+",
-    title: "עבודה מעשית בקבוצות",
-    text: "שני הפורומים מתכנסים יחד עם פיצול פנימי. כל מסלול מעמיק כלים ומתחיל לאפיין פתרונות אמיתיים לאתגרי החטיבות.",
-  },
-  {
-    number: "מפגש אמצע",
-    title: "הצגת התקדמות",
-    text: "כל קבוצה מציגה את הפתרון שפיתחה בפני שאר המשתתפים — מקבלת פידבק, מחדדת כיוונים ומתכוננת לגרסה הסופית.",
-  },
-  {
-    number: "מפגש סיום",
-    title: "הצגת תוצרים סופיים",
-    text: "כל קבוצה מציגה את התוצר המוכן. הכלים, האוטומציות והתהליכים שנבנו נכנסים לתכנית הטמעה אמיתית בחטיבות.",
+    number: "03",
+    title: "הודעה על קבלה לפורום",
+    text: "מי שהתקבל יקבל הודעה רשמית עם כל הפרטים — תאריכי המפגשים, מיקום ומה לצפות למפגש הפתיחה.",
+    note: "כ-15 משתתפים לכל פורום",
   },
 ];
 
 export function WhatStudySection() {
   return (
-    <section
-      className={cn("relative")}
-      style={{
-        backgroundColor: "#2a5377",
-        padding: "100px 40px",
-        direction: "rtl",
-        position: "relative",
-      }}
-    >
-      <div
-        style={{
-          maxWidth: "1200px",
-          margin: "0 auto",
-        }}
-      >
-        <h2
-          style={{
-            fontSize: "45px",
-            fontWeight: 900,
-            color: "#ffffff",
-            textAlign: "right",
-            marginBottom: "8px",
-          }}
-        >
-          מבנה המפגשים
-        </h2>
-        <p
-          style={{
-            fontSize: "20px",
-            color: "rgba(255,255,255,0.85)",
-            textAlign: "right",
-            marginBottom: "40px",
-          }}
-        >
-          סדרה מובנית של 6-7 מפגשים שמובילה מרעיון לתוצר מוטמע
-        </p>
+    <section className={cn("relative")}>
+      <style>{`
+        .process-outer {
+          background:
+            radial-gradient(ellipse at 85% 15%, rgba(249,115,22,0.12) 0%, transparent 50%),
+            radial-gradient(ellipse at 10% 80%, rgba(50,106,158,0.3) 0%, transparent 50%),
+            linear-gradient(160deg, #326a9e 0%, #2a5377 40%, #1e3252 100%);
+          padding: 100px 40px; direction: rtl;
+        }
+        .process-h2   { font-size: 45px; font-weight: 900; color: #ffffff; text-align: right; margin-bottom: 8px; }
+        .process-sub  { font-size: 20px; color: rgba(255,255,255,0.85); text-align: right; margin-bottom: 48px; }
+        .process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 
-        <div
-          className="what-study-boxes"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: "20px",
-          }}
-        >
-          <style>{`
-            @media (max-width: 1024px) {
-              .what-study-boxes {
-                grid-template-columns: repeat(2, 1fr) !important;
-              }
-            }
-            @media (max-width: 480px) {
-              .what-study-boxes {
-                grid-template-columns: repeat(1, 1fr) !important;
-              }
-            }
-          `}</style>
+        @media (max-width: 768px) {
+          .process-outer { padding: 60px 20px; }
+          .process-h2   { font-size: 28px; }
+          .process-sub  { font-size: 16px; margin-bottom: 28px; }
+          .process-grid { grid-template-columns: 1fr; }
+        }
+      `}</style>
 
-          {meetings.map((meeting) => (
-            <div
-              key={meeting.number}
-              style={{
-                background: "rgba(255, 255, 255, 0.07)",
-                backdropFilter: "blur(12px)",
-                WebkitBackdropFilter: "blur(12px)",
-                border: "1px solid rgba(255, 255, 255, 0.15)",
-                borderRadius: "16px",
-                padding: "24px",
-                display: "flex",
-                flexDirection: "column",
-                direction: "rtl",
-                textAlign: "right",
-              }}
-            >
-              <p
+      <div className="process-outer">
+        <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+          <h2 className="process-h2">איך מצטרפים?</h2>
+          <p className="process-sub">תהליך פשוט ומהיר — שלושה שלבים להצטרפות לפורום</p>
+
+          <div className="process-grid">
+            {steps.map((step) => (
+              <div
+                key={step.number}
                 style={{
-                  fontSize: "13px",
-                  fontWeight: 700,
-                  color: "#f97316",
-                  backgroundColor: "rgba(249, 115, 22, 0.15)",
-                  border: "1px solid rgba(249, 115, 22, 0.3)",
-                  borderRadius: "50px",
-                  padding: "4px 12px",
-                  display: "inline-block",
-                  marginBottom: "12px",
-                  width: "fit-content",
+                  background: "rgba(255, 255, 255, 0.08)",
+                  backdropFilter: "blur(12px)",
+                  WebkitBackdropFilter: "blur(12px)",
+                  border: "1px solid rgba(255, 255, 255, 0.15)",
+                  borderRadius: "16px",
+                  padding: "28px 24px",
+                  display: "flex",
+                  flexDirection: "column",
+                  direction: "rtl",
+                  textAlign: "right",
                 }}
               >
-                {meeting.number}
-              </p>
+                <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
+                  <div
+                    style={{
+                      width: "44px",
+                      height: "44px",
+                      borderRadius: "10px",
+                      background: "linear-gradient(135deg, #f97316 0%, #e53e2f 100%)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontWeight: 900,
+                      fontSize: "17px",
+                      color: "#ffffff",
+                      flexShrink: 0,
+                    }}
+                  >
+                    {step.number}
+                  </div>
+                  <p style={{ fontSize: "20px", fontWeight: 700, color: "#ffffff", margin: 0 }}>
+                    {step.title}
+                  </p>
+                </div>
 
-              <p
-                style={{
-                  fontSize: "20px",
-                  fontWeight: 700,
-                  color: "#ffffff",
-                  marginBottom: "10px",
-                }}
-              >
-                {meeting.title}
-              </p>
+                <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.75)", lineHeight: 1.7, marginBottom: "16px", flex: 1 }}>
+                  {step.text}
+                </p>
 
-              <p
-                style={{
-                  fontSize: "14px",
-                  color: "rgba(255, 255, 255, 0.7)",
-                  lineHeight: 1.6,
-                  flex: 1,
-                }}
-              >
-                {meeting.text}
-              </p>
-            </div>
-          ))}
+                <span
+                  style={{
+                    fontSize: "12px",
+                    fontWeight: 600,
+                    color: "#f97316",
+                    backgroundColor: "rgba(249,115,22,0.12)",
+                    border: "1px solid rgba(249,115,22,0.25)",
+                    borderRadius: "8px",
+                    padding: "5px 12px",
+                    display: "inline-block",
+                    width: "fit-content",
+                  }}
+                >
+                  {step.note}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
