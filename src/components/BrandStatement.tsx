@@ -7,28 +7,34 @@ const view = { once: true, amount: 0.2 } as const;
 const hidden = { opacity: 0, y: 36 };
 const show = { opacity: 1, y: 0 };
 
-const PulsingStar = () => (
+const PulsingStar = ({ whiteBg = false }: { whiteBg?: boolean }) => (
   <motion.div
     animate={{
       scale: [1, 1.22, 1],
-      boxShadow: [
-        "0 0 0px 0px rgba(249,115,22,0)",
-        "0 0 20px 8px rgba(249,115,22,0.5)",
-        "0 0 0px 0px rgba(249,115,22,0)",
-      ],
+      boxShadow: whiteBg
+        ? [
+            "0 0 0px 0px rgba(249,115,22,0)",
+            "0 0 16px 6px rgba(249,115,22,0.35)",
+            "0 0 0px 0px rgba(249,115,22,0)",
+          ]
+        : [
+            "0 0 0px 0px rgba(249,115,22,0)",
+            "0 0 20px 8px rgba(249,115,22,0.5)",
+            "0 0 0px 0px rgba(249,115,22,0)",
+          ],
     }}
     transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
     style={{
       width: "52px",
       height: "52px",
       borderRadius: "50%",
-      background: "linear-gradient(135deg, #f97316, #e53e2f)",
+      background: whiteBg ? "#ffffff" : "linear-gradient(135deg, #f97316, #e53e2f)",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
       fontSize: "22px",
       fontWeight: 900,
-      color: "#ffffff",
+      color: whiteBg ? "#f97316" : "#ffffff",
       flexShrink: 0,
     }}
   >
@@ -155,18 +161,21 @@ export function BrandStatement() {
           transition={{ duration: 0.6, delay: 0.3 }}
         >
           {isMobile ? (
-            /* ── Mobile: column with star perfectly between ── */
-            <div style={{ display: "flex", flexDirection: "column", borderRadius: "16px", overflow: "hidden", boxShadow: "0 4px 24px rgba(0,0,0,0.08)" }}>
-              <div style={{ background: "linear-gradient(135deg, #f97316 0%, #e53e2f 100%)", padding: "28px 24px", textAlign: "center" }}>
+            /* ── Mobile: cards flush, white circle punches through the seam ── */
+            <div style={{ position: "relative", borderRadius: "16px", overflow: "visible", boxShadow: "0 4px 24px rgba(0,0,0,0.08)" }}>
+              <div style={{ background: "linear-gradient(135deg, #f97316 0%, #e53e2f 100%)", padding: "28px 24px 36px", textAlign: "center", borderRadius: "16px 16px 0 0" }}>
                 <div style={{ fontSize: "26px", fontWeight: 900, color: "#ffffff", marginBottom: "6px" }}>פורום טכנולוגי</div>
                 <div style={{ fontSize: "14px", color: "rgba(255,255,255,0.85)" }}>AI · Automation · Agents</div>
               </div>
 
-              <div style={{ height: "64px", background: "#ffffff", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <PulsingStar />
+              {/* Seam — zero height, star centered exactly on the boundary */}
+              <div style={{ position: "relative", height: 0, display: "flex", justifyContent: "center", zIndex: 2 }}>
+                <div style={{ position: "absolute", top: "-26px" }}>
+                  <PulsingStar whiteBg />
+                </div>
               </div>
 
-              <div style={{ background: "linear-gradient(135deg, #326a9e 0%, #1e3a52 100%)", padding: "28px 24px", textAlign: "center" }}>
+              <div style={{ background: "linear-gradient(135deg, #326a9e 0%, #1e3a52 100%)", padding: "36px 24px 28px", textAlign: "center", borderRadius: "0 0 16px 16px" }}>
                 <div style={{ fontSize: "26px", fontWeight: 900, color: "#ffffff", marginBottom: "6px" }}>פורום תהליכי</div>
                 <div style={{ fontSize: "14px", color: "rgba(255,255,255,0.85)" }}>חשיבה יזמית · שיפור תהליכים · שינוי ארגוני</div>
               </div>
