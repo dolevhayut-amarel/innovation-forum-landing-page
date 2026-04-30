@@ -79,7 +79,7 @@ export function BrandStatement() {
           }}
           className="brand-h2"
         >
-          חדשנות לא קורית במקרה —<br />
+          חדשנות לא קורית במקרה<br />
           <span
             style={{
               background: "linear-gradient(135deg, #f97316 0%, #e53e2f 100%)",
@@ -155,25 +155,33 @@ export function BrandStatement() {
               position: "relative",
             }}
           >
-            <div
+            <motion.div
+              animate={{
+                scale: [1, 1.22, 1],
+                boxShadow: [
+                  "0 0 0px 0px rgba(249,115,22,0)",
+                  "0 0 20px 8px rgba(249,115,22,0.5)",
+                  "0 0 0px 0px rgba(249,115,22,0)",
+                ],
+              }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
               style={{
                 position: "absolute",
-                width: "28px",
-                height: "28px",
+                width: "52px",
+                height: "52px",
                 borderRadius: "50%",
-                background: "#ffffff",
+                background: "linear-gradient(135deg, #f97316, #e53e2f)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                fontSize: "13px",
+                fontSize: "22px",
                 fontWeight: 900,
-                color: "#0f172a",
-                boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
+                color: "#ffffff",
                 zIndex: 1,
               }}
             >
               ✦
-            </div>
+            </motion.div>
           </div>
 
           <div
