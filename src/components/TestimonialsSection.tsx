@@ -1,12 +1,12 @@
 import { cn } from "@/lib/utils";
-import { Bot, Workflow, CalendarDays } from "lucide-react";
+import { Bot, Workflow, Star } from "lucide-react";
 
 const outcomes = [
   {
     forum: "פורום חדשנות טכנולוגית",
-    color: "#2563eb",
+    color: "#2a5377",
     Icon: Bot,
-    kpi: "KPI: תוצר AI אחד לכל חטיבה",
+    tagline: "AI ככלי עבודה יומיומי",
     deliverables: [
       "בניית Use Cases ארגוניים מבוססי AI",
       "אוטומציות בתהליכי עבודה",
@@ -17,28 +17,28 @@ const outcomes = [
   },
   {
     forum: "פורום חדשנות תהליכית",
-    color: "#0f172a",
+    color: "#2a5377",
     Icon: Workflow,
-    kpi: "KPI: קיצור 30%+ בזמן ביצוע תהליך",
+    tagline: "שיפור תהליכים מהשטח",
     deliverables: [
       "קיצור תהליכים תפעוליים בחטיבות",
       "שיפור תהליכי Onboarding",
       "שיפור ממשקי עבודה בין מחלקות",
       "אוטומציה של תהליכים ידניים",
-      "תהליך אחד בסינרגיה עם הפורום הטכנולוגי",
+      "חדשנות בסינרגיה בין החטיבות",
     ],
   },
   {
-    forum: "לוח זמנים",
-    color: "#2563eb",
-    Icon: CalendarDays,
-    kpi: "Q4 2026: הצגת תוצרים להנהלה",
+    forum: "מה תרוויחו?",
+    color: "#2a5377",
+    Icon: Star,
+    tagline: "ערך אישי ומקצועי",
     deliverables: [
-      "מאי 2026: פרסום קול קורא ופתיחת הרשמה",
-      "יוני 2026: מפגש פתיחה ראשון",
-      "יולי–ספטמבר: הכשרות ועבודה מעשית",
-      "אוקטובר–דצמבר: הטמעה ומדידת KPI",
-      "תכנון 2027 על בסיס התובנות",
+      "הכשרות ממנטורים ומומחים מהתעשייה",
+      "הכרות עם עובדים ומנהלים מכל החטיבות",
+      "פיתוח כישורי חדשנות ויזמות",
+      "תרומה אמיתית לארגון שאתם חלק ממנו",
+      "גאווה בתוצרים שהובלתם מרעיון למציאות",
     ],
   },
 ];
@@ -48,7 +48,7 @@ export function TestimonialsSection() {
     <section
       className={cn("w-full")}
       style={{
-        background: "linear-gradient(180deg, #ffffff 0%, #eff6ff 50%, #ffffff 100%)",
+        background: "linear-gradient(180deg, #ffffff 0%, #eef3f8 50%, #ffffff 100%)",
         padding: "100px 0",
         direction: "rtl",
       }}
@@ -134,7 +134,7 @@ export function TestimonialsSection() {
                 marginBottom: "20px",
               }}
             >
-              {item.kpi}
+              {item.tagline}
             </p>
             <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
               {item.deliverables.map((d) => (
@@ -165,8 +165,8 @@ export function TestimonialsSection() {
         <a
           href="#registration"
           style={{
-            backgroundColor: "#f97316",
-            color: "#0f172a",
+            background: "linear-gradient(135deg, #f97316 0%, #e53e2f 100%)",
+            color: "#ffffff",
             borderRadius: "50px",
             padding: "14px 40px",
             fontSize: "18px",

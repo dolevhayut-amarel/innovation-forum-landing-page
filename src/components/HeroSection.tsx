@@ -52,10 +52,10 @@ export function HeroSection() {
             className="hero-h1 font-black text-right"
             style={{ lineHeight: 1.05, marginBottom: "20px" }}
           >
-            <span style={{ display: "block", background: "linear-gradient(135deg, #f97316 0%, #e53e2f 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+            <span dir="ltr" style={{ display: "block", background: "linear-gradient(135deg, #f97316 0%, #e53e2f 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", textAlign: "right" }}>
               MAKE IT POSSIBLE
             </span>
-            <span style={{ display: "block", color: "#ffffff", fontSize: "0.42em", fontWeight: 700, lineHeight: 1.3, marginTop: "10px" }}>
+            <span dir="ltr" style={{ display: "block", color: "#ffffff", fontSize: "0.42em", fontWeight: 700, lineHeight: 1.3, marginTop: "10px", textAlign: "right" }}>
               AMAREL INNOVATION FORUM — IS ONBOARDING NOW!
             </span>
             <span style={{ display: "block", color: "rgba(255,255,255,0.85)", fontSize: "0.38em", fontWeight: 600, lineHeight: 1.4, marginTop: "6px" }}>

@@ -4,15 +4,13 @@ const stats = [
   { num: "2", label: "פורומים מקבילים" },
   { num: "6-7", label: "מפגשי עבודה בסדרה" },
   { num: "3", label: "שעות לכל מפגש" },
-  { num: "30%+", label: "יעד קיצור תהליכים" },
-  { num: "100%", label: "כיסוי חטיבתי" },
 ];
 
 export function ClientsBar() {
   return (
     <section
       className={cn("w-full")}
-      style={{ backgroundColor: "#2563eb", padding: "32px 40px", direction: "rtl" }}
+      style={{ backgroundColor: "#2a5377", padding: "32px 40px", direction: "rtl" }}
     >
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         <div className="flex flex-row flex-wrap items-center justify-center" style={{ gap: "0 48px" }}>
