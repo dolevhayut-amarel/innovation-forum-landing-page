@@ -30,12 +30,12 @@ const programCards: ProgramCard[] = [
 ];
 
 const inputStyle: React.CSSProperties = {
-  backgroundColor: "#0c1a2e",
-  border: "1px solid #ffffff",
+  backgroundColor: "#ffffff",
+  border: "1px solid #2a5377",
   borderRadius: "50px",
   padding: "14px 20px",
   fontSize: "18px",
-  color: "#ffffff",
+  color: "#2a5377",
   width: "100%",
   outline: "none",
   direction: "rtl",
@@ -203,8 +203,8 @@ export function StudyProgramsSection() {
       </div>
 
       <style>{`
-        .study-input::placeholder { color: rgba(255, 255, 255, 0.7); }
-        .study-input option { background-color: #0c1a2e; color: white; }
+        .study-input::placeholder { color: rgba(42, 83, 119, 0.55); }
+        .study-input option { background-color: #ffffff; color: #2a5377; }
         .study-programs-boxes {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
