@@ -4,6 +4,7 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Layers, CalendarDays, Users } from "lucide-react";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 const heroFeatures = [
   { Icon: Layers,      title: "שני פורומים\nמקבילים בארגון" },
@@ -12,6 +13,7 @@ const heroFeatures = [
 ];
 
 export function HeroSection() {
+  const router = useRouter();
   return (
     <section
       className={cn("hero-main relative overflow-hidden flex flex-col justify-end w-full")}
@@ -114,7 +116,7 @@ export function HeroSection() {
             padding: "24px",
           } as React.CSSProperties}
           >
-            <form onSubmit={(e) => e.preventDefault()} className="flex flex-col gap-3">
+            <form onSubmit={(e) => { e.preventDefault(); router.push("/questionnaire"); }} className="flex flex-col gap-3">
               <div className="flex gap-3 flex-col md:flex-row">
                 <input type="text" name="firstname" placeholder="שם מלא" className="hero-input" style={{ backgroundColor: "#0c1a2e", border: "1px solid #ffffff", borderRadius: "50px", padding: "14px 20px", fontSize: "18px", color: "#ffffff", width: "100%", outline: "none", direction: "rtl" }} />
                 <input type="text" name="division" placeholder="חטיבה / מחלקה" className="hero-input" style={{ backgroundColor: "#0c1a2e", border: "1px solid #ffffff", borderRadius: "50px", padding: "14px 20px", fontSize: "18px", color: "#ffffff", width: "100%", outline: "none", direction: "rtl" }} />

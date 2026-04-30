@@ -2,6 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 interface ProgramCard {
   plusColor: string;
@@ -44,6 +45,7 @@ const hidden = { opacity: 0, y: 32 };
 const show = { opacity: 1, y: 0 };
 
 export function StudyProgramsSection() {
+  const router = useRouter();
   return (
     <section
       style={{
@@ -137,7 +139,7 @@ export function StudyProgramsSection() {
           </div>
 
           <div style={{ flex: 1 }} id="registration">
-            <form onSubmit={(e) => e.preventDefault()} className="flex flex-col gap-3" style={{ direction: "rtl" }}>
+            <form onSubmit={(e) => { e.preventDefault(); router.push("/questionnaire"); }} className="flex flex-col gap-3" style={{ direction: "rtl" }}>
               <input type="text" name="firstname" placeholder="שם מלא" className="study-input" style={inputStyle} />
               <input type="text" name="division" placeholder="חטיבה / מחלקה" className="study-input" style={inputStyle} />
               <input type="tel" name="phone" placeholder="טלפון נייד" className="study-input" style={inputStyle} />

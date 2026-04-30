@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 export function FooterSection() {
   const [name, setName] = useState("");
@@ -13,8 +14,10 @@ export function FooterSection() {
   const [forum, setForum] = useState("");
   const [agreed, setAgreed] = useState(false);
 
+  const router = useRouter();
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    router.push("/questionnaire");
   }
 
   const inputStyle: React.CSSProperties = {
