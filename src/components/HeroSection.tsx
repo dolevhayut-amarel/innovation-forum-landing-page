@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Layers, CalendarDays, Users } from "lucide-react";
@@ -14,6 +15,7 @@ const heroFeatures = [
 
 export function HeroSection() {
   const router = useRouter();
+  const [forum, setForum] = useState("");
   return (
     <section
       className={cn("hero-main relative overflow-hidden flex flex-col justify-end w-full")}
@@ -138,7 +140,7 @@ export function HeroSection() {
                 <input type="tel" name="phone" placeholder="טלפון נייד" className="hero-input" style={{ backgroundColor: "#0c1a2e", border: "1px solid #ffffff", borderRadius: "50px", padding: "14px 20px", fontSize: "18px", color: "#ffffff", width: "100%", outline: "none", direction: "rtl" }} />
                 <input type="email" name="email" placeholder="כתובת מייל" className="hero-input" style={{ backgroundColor: "#0c1a2e", border: "1px solid #ffffff", borderRadius: "50px", padding: "14px 20px", fontSize: "18px", color: "#ffffff", width: "100%", outline: "none", direction: "rtl" }} />
               </div>
-              <select name="forum" className="hero-input" style={{ backgroundColor: "#0c1a2e", border: "1px solid #ffffff", borderRadius: "50px", padding: "14px 20px", fontSize: "18px", color: "#ffffff", width: "100%", outline: "none", direction: "rtl", appearance: "none" }}>
+              <select name="forum" className="hero-input" style={{ backgroundColor: "#0c1a2e", border: "1px solid #ffffff", borderRadius: "50px", padding: "14px 20px", fontSize: "18px", color: "#ffffff", width: "100%", outline: "none", direction: "rtl", appearance: "none" }} value={forum} onChange={(e) => setForum(e.target.value)}>
                 <option value="">לאיזה פורום אני מתעניין/ת?</option>
                 <option value="tech">פורום חדשנות טכנולוגית (AI)</option>
                 <option value="process">פורום חדשנות תהליכית</option>
@@ -147,10 +149,12 @@ export function HeroSection() {
                 <input type="checkbox" name="terms" defaultChecked />
                 <span>אני מאשר/ת קבלת עדכונים מפורום החדשנות של אמרל</span>
               </label>
-              <div style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(249,115,22,0.4)", borderRadius: "10px", padding: "10px 14px", fontSize: "12px", color: "rgba(255,255,255,0.8)", lineHeight: 1.6, direction: "rtl" }}>
-                <strong style={{ color: "#f97316" }}>שימו לב: </strong>
-                הצטרפות לפורום מחייבת התחייבות להמשך עבודה באמרל לשנה מיום ההצטרפות, שכן מדובר בהכשרה ייחודית שהארגון משקיע בה משאבים רבים.
-              </div>
+              {forum === "tech" && (
+                <div style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(249,115,22,0.4)", borderRadius: "10px", padding: "10px 14px", fontSize: "12px", color: "rgba(255,255,255,0.8)", lineHeight: 1.6, direction: "rtl" }}>
+                  <strong style={{ color: "#f97316" }}>שימו לב: </strong>
+                  הצטרפות לפורום מחייבת התחייבות להמשך עבודה באמרל לשנה מיום ההצטרפות, שכן מדובר בהכשרה ייחודית שהארגון משקיע בה משאבים רבים.
+                </div>
+              )}
               <button type="submit" style={{ background: "linear-gradient(135deg, #f97316 0%, #e53e2f 100%)", color: "#ffffff", borderRadius: "50px", padding: "14px 30px", fontSize: "18px", fontWeight: 700, border: "none", cursor: "pointer", width: "100%", display: "block", textAlign: "center" }}>
                 אני רוצה להצטרף לפורום &gt;&gt;
               </button>
