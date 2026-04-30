@@ -1,4 +1,20 @@
 import { cn } from "@/lib/utils";
+import { Bot, Workflow } from "lucide-react";
+
+const cards = [
+  {
+    Icon: Bot,
+    title: "פורום חדשנות טכנולוגית",
+    text: 'להפוך את AI לכלי עבודה יומיומי — בניית "ארגז חול" ארגוני שבו מפתחים תוצרים, אוטומציות וכלים חדשניים.',
+    color: "#2563eb",
+  },
+  {
+    Icon: Workflow,
+    title: "פורום חדשנות תהליכית",
+    text: "לזהות, לשפר ולייעל תהליכים ארגוניים — מיפוי פערים מהשטח ופיתוח פתרונות לשיפור מתמיד.",
+    color: "#0f172a",
+  },
+];
 
 export function LeadsToSuccess() {
   return (
@@ -18,20 +34,7 @@ export function LeadsToSuccess() {
           className="flex flex-col md:flex-row"
           style={{ gap: "24px", justifyContent: "center", marginBottom: "48px" }}
         >
-          {[
-            {
-              icon: "🔬",
-              title: "פורום חדשנות טכנולוגית",
-              text: 'להפוך את AI לכלי עבודה יומיומי — בניית "ארגז חול" ארגוני שבו מפתחים תוצרים, אוטומציות וכלים חדשניים.',
-              color: "#2563eb",
-            },
-            {
-              icon: "⚙️",
-              title: "פורום חדשנות תהליכית",
-              text: "לזהות, לשפר ולייעל תהליכים ארגוניים — מיפוי פערים מהשטח ופיתוח פתרונות לשיפור מתמיד.",
-              color: "#0f172a",
-            },
-          ].map((card, i) => (
+          {cards.map((card, i) => (
             <div
               key={i}
               style={{
@@ -43,7 +46,20 @@ export function LeadsToSuccess() {
                 borderTop: `4px solid ${card.color}`,
               }}
             >
-              <div style={{ fontSize: "40px", marginBottom: "12px" }}>{card.icon}</div>
+              <div
+                style={{
+                  width: 48,
+                  height: 48,
+                  borderRadius: "12px",
+                  backgroundColor: card.color,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginBottom: "16px",
+                }}
+              >
+                <card.Icon size={26} color="#ffffff" strokeWidth={1.75} />
+              </div>
               <h3 style={{ fontSize: "22px", fontWeight: 700, color: card.color, marginBottom: "12px" }}>
                 {card.title}
               </h3>

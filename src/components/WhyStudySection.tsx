@@ -1,26 +1,27 @@
 import { cn } from "@/lib/utils";
+import { Zap, RefreshCw, Lightbulb, Users } from "lucide-react";
 
 const benefits = [
   {
-    icon: "⚡",
+    Icon: Zap,
     iconBg: "#2563eb",
     title: "מינוף AI ושיפור פרודוקטיביות",
     text: "הפורום הטכנולוגי יפתח כלים ויישומים מבוססי AI שייעלו תהליכים בחטיבות ויהפכו את הטכנולוגיה לנכס עבודה יומיומי.",
   },
   {
-    icon: "🔄",
+    Icon: RefreshCw,
     iconBg: "#f97316",
     title: "ייעול תהליכים ארגוניים",
     text: "הפורום התהליכי ימפה פערים ויפתח פתרונות לשיפור תהליכים קיימים — עם יעד צמצום של 30%+ בזמן ביצוע.",
   },
   {
-    icon: "💡",
+    Icon: Lightbulb,
     iconBg: "#2563eb",
     title: "שיתוף ידע ותרבות חדשנות",
     text: "שני הפורומים יחזקו שיתוף Best Practices בין חטיבות ויטמיעו תרבות של יוזמה ולמידה מתמדת בקרב העובדים.",
   },
   {
-    icon: "🤝",
+    Icon: Users,
     iconBg: "#f97316",
     title: "שייכות לארגון",
     text: "השתייכות לפורום יוצרת תחושת גאווה ומחויבות — עובדים ומנהלים נבחרים שותפים לעיצוב עתיד הארגון ומגבירים מעורבות ושימור.",
@@ -88,18 +89,17 @@ export function WhyStudySection() {
             >
               <div
                 style={{
-                  width: 56,
-                  height: 56,
-                  borderRadius: "50%",
+                  width: 52,
+                  height: 52,
+                  borderRadius: "12px",
                   backgroundColor: benefit.iconBg,
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  fontSize: 28,
                   flexShrink: 0,
                 }}
               >
-                {benefit.icon}
+                <benefit.Icon size={24} color="#ffffff" strokeWidth={1.75} />
               </div>
               <div>
                 <p

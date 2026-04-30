@@ -1,10 +1,11 @@
 import { cn } from "@/lib/utils";
+import { Bot, Workflow, CalendarDays } from "lucide-react";
 
 const outcomes = [
   {
     forum: "פורום חדשנות טכנולוגית",
     color: "#2563eb",
-    icon: "🔬",
+    Icon: Bot,
     kpi: "KPI: תוצר AI אחד לכל חטיבה",
     deliverables: [
       "בניית Use Cases ארגוניים מבוססי AI",
@@ -17,7 +18,7 @@ const outcomes = [
   {
     forum: "פורום חדשנות תהליכית",
     color: "#0f172a",
-    icon: "⚙️",
+    Icon: Workflow,
     kpi: "KPI: קיצור 30%+ בזמן ביצוע תהליך",
     deliverables: [
       "קיצור תהליכים תפעוליים בחטיבות",
@@ -30,7 +31,7 @@ const outcomes = [
   {
     forum: "לוח זמנים",
     color: "#2563eb",
-    icon: "📅",
+    Icon: CalendarDays,
     kpi: "Q4 2026: הצגת תוצרים להנהלה",
     deliverables: [
       "מאי 2026: פרסום קול קורא ופתיחת הרשמה",
@@ -97,7 +98,20 @@ export function TestimonialsSection() {
               boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
             }}
           >
-            <div style={{ fontSize: "40px", marginBottom: "12px" }}>{item.icon}</div>
+            <div
+              style={{
+                width: 48,
+                height: 48,
+                borderRadius: "12px",
+                backgroundColor: item.color,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                marginBottom: "16px",
+              }}
+            >
+              <item.Icon size={24} color="#ffffff" strokeWidth={1.75} />
+            </div>
             <h3
               style={{
                 fontSize: "20px",
@@ -138,7 +152,7 @@ export function TestimonialsSection() {
                     gap: "8px",
                   }}
                 >
-                  <span style={{ color: item.color, flexShrink: 0 }}>✓</span>
+                  <span style={{ color: item.color, flexShrink: 0, fontWeight: 700 }}>✓</span>
                   {d}
                 </li>
               ))}
