@@ -12,7 +12,7 @@ export function ClientsBar() {
   return (
     <section
       className={cn("w-full")}
-      style={{ backgroundColor: "#7D69FF", padding: "32px 40px", direction: "rtl" }}
+      style={{ backgroundColor: "#2563eb", padding: "32px 40px", direction: "rtl" }}
     >
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         <div className="flex flex-row flex-wrap items-center justify-center" style={{ gap: "0 48px" }}>

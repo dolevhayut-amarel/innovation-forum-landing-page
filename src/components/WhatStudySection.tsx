@@ -38,7 +38,7 @@ export function WhatStudySection() {
     <section
       className={cn("relative")}
       style={{
-        backgroundColor: "#8364FF",
+        backgroundColor: "#1e3048",
         padding: "100px 40px",
         direction: "rtl",
         position: "relative",
@@ -110,8 +110,8 @@ export function WhatStudySection() {
                 style={{
                   fontSize: "13px",
                   fontWeight: 700,
-                  color: "#7D69FF",
-                  backgroundColor: "#f0edff",
+                  color: "#2563eb",
+                  backgroundColor: "#eff6ff",
                   borderRadius: "50px",
                   padding: "4px 12px",
                   display: "inline-block",
@@ -126,7 +126,7 @@ export function WhatStudySection() {
                 style={{
                   fontSize: "20px",
                   fontWeight: 700,
-                  color: "#131316",
+                  color: "#0f172a",
                   marginBottom: "10px",
                 }}
               >

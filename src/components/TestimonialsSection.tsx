@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 const outcomes = [
   {
     forum: "פורום חדשנות טכנולוגית",
-    color: "#7D69FF",
+    color: "#2563eb",
     icon: "🔬",
     kpi: "KPI: תוצר AI אחד לכל חטיבה",
     deliverables: [
@@ -16,7 +16,7 @@ const outcomes = [
   },
   {
     forum: "פורום חדשנות תהליכית",
-    color: "#131316",
+    color: "#0f172a",
     icon: "⚙️",
     kpi: "KPI: קיצור 30%+ בזמן ביצוע תהליך",
     deliverables: [
@@ -29,7 +29,7 @@ const outcomes = [
   },
   {
     forum: "לוח זמנים",
-    color: "#7D69FF",
+    color: "#2563eb",
     icon: "📅",
     kpi: "Q4 2026: הצגת תוצרים להנהלה",
     deliverables: [
@@ -47,7 +47,7 @@ export function TestimonialsSection() {
     <section
       className={cn("w-full")}
       style={{
-        background: "linear-gradient(180deg, #ffffff 0%, #f0edff 50%, #ffffff 100%)",
+        background: "linear-gradient(180deg, #ffffff 0%, #eff6ff 50%, #ffffff 100%)",
         padding: "100px 0",
         direction: "rtl",
       }}
@@ -56,7 +56,7 @@ export function TestimonialsSection() {
         style={{
           fontSize: "45px",
           fontWeight: 900,
-          color: "#131316",
+          color: "#0f172a",
           textAlign: "center",
           marginBottom: "8px",
         }}
@@ -69,7 +69,7 @@ export function TestimonialsSection() {
           fontSize: "20px",
           textAlign: "center",
           marginBottom: "50px",
-          color: "#131316",
+          color: "#0f172a",
         }}
       >
         תוצרים מדידים שמשנים את הארגון — לא רק שיח, אלא שינוי אמיתי.
@@ -151,8 +151,8 @@ export function TestimonialsSection() {
         <a
           href="#registration"
           style={{
-            backgroundColor: "#85E577",
-            color: "#131316",
+            backgroundColor: "#f97316",
+            color: "#0f172a",
             borderRadius: "50px",
             padding: "14px 40px",
             fontSize: "18px",

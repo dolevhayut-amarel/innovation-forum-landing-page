@@ -17,7 +17,7 @@ export function FooterSection() {
   }
 
   const inputStyle: React.CSSProperties = {
-    backgroundColor: "#221C4A",
+    backgroundColor: "#0c1222",
     border: "1px solid #ffffff",
     borderRadius: "50px",
     padding: "14px 20px",
@@ -38,7 +38,7 @@ export function FooterSection() {
           backgroundImage: "url('/images/footer-bg.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
-          backgroundColor: "#140B51",
+          backgroundColor: "#0c1222",
           padding: "100px 0 50px",
           direction: "rtl",
           position: "relative",
@@ -75,7 +75,7 @@ export function FooterSection() {
             color: rgba(255, 255, 255, 0.7);
           }
           .footer-input option {
-            background-color: #221C4A;
+            background-color: #0c1222;
             color: white;
           }
         `}</style>
@@ -188,8 +188,8 @@ export function FooterSection() {
               <button
                 type="submit"
                 style={{
-                  backgroundColor: "#85E577",
-                  color: "#131316",
+                  backgroundColor: "#f97316",
+                  color: "#0f172a",
                   borderRadius: "50px",
                   padding: "16px 20px",
                   fontSize: "18px",
@@ -209,7 +209,7 @@ export function FooterSection() {
 
       <footer
         style={{
-          backgroundColor: "#131316",
+          backgroundColor: "#0f172a",
           padding: "24px 40px",
           display: "flex",
           justifyContent: "space-between",
@@ -251,7 +251,7 @@ export function FooterSection() {
 
       <div
         style={{
-          backgroundColor: "#131316",
+          backgroundColor: "#0f172a",
           borderTop: "1px solid #2a2a2a",
           padding: "12px 40px",
           display: "flex",

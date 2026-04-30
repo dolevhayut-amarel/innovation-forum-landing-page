@@ -3,25 +3,25 @@ import { cn } from "@/lib/utils";
 const benefits = [
   {
     icon: "⚡",
-    iconBg: "#7D69FF",
+    iconBg: "#2563eb",
     title: "מינוף AI ושיפור פרודוקטיביות",
     text: "הפורום הטכנולוגי יפתח כלים ויישומים מבוססי AI שייעלו תהליכים בחטיבות ויהפכו את הטכנולוגיה לנכס עבודה יומיומי.",
   },
   {
     icon: "🔄",
-    iconBg: "#85E577",
+    iconBg: "#f97316",
     title: "ייעול תהליכים ארגוניים",
     text: "הפורום התהליכי ימפה פערים ויפתח פתרונות לשיפור תהליכים קיימים — עם יעד צמצום של 30%+ בזמן ביצוע.",
   },
   {
     icon: "💡",
-    iconBg: "#7D69FF",
+    iconBg: "#2563eb",
     title: "שיתוף ידע ותרבות חדשנות",
     text: "שני הפורומים יחזקו שיתוף Best Practices בין חטיבות ויטמיעו תרבות של יוזמה ולמידה מתמדת בקרב העובדים.",
   },
   {
     icon: "🤝",
-    iconBg: "#85E577",
+    iconBg: "#f97316",
     title: "שייכות לארגון",
     text: "השתייכות לפורום יוצרת תחושת גאווה ומחויבות — עובדים ומנהלים נבחרים שותפים לעיצוב עתיד הארגון ומגבירים מעורבות ושימור.",
   },
@@ -46,7 +46,7 @@ export function WhyStudySection() {
           style={{
             fontSize: 45,
             fontWeight: 900,
-            color: "#131316",
+            color: "#0f172a",
             textAlign: "center",
             marginBottom: 8,
           }}
@@ -56,7 +56,7 @@ export function WhyStudySection() {
         <p
           style={{
             fontSize: 20,
-            color: "#131316",
+            color: "#0f172a",
             textAlign: "center",
             marginBottom: 60,
           }}
@@ -81,7 +81,7 @@ export function WhyStudySection() {
                 alignItems: "flex-start",
                 gap: 20,
                 direction: "rtl",
-                backgroundColor: "#F1F2ED",
+                backgroundColor: "#f1f5f9",
                 borderRadius: 16,
                 padding: "28px 24px",
               }}
@@ -106,7 +106,7 @@ export function WhyStudySection() {
                   style={{
                     fontSize: 20,
                     fontWeight: 700,
-                    color: "#131316",
+                    color: "#0f172a",
                     marginBottom: 6,
                     textAlign: "right",
                   }}

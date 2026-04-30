@@ -10,24 +10,24 @@ interface ProgramCard {
 
 const programCards: ProgramCard[] = [
   {
-    plusColor: "#85E577",
+    plusColor: "#f97316",
     title: "עבודה מעשית ותוצרים אמיתיים",
     text: "כל מפגש מניב תוצרים מוחשיים — Use Cases, אוטומציות וכלים שנכנסים ישירות לשימוש בחטיבות. לא רק שיח רעיוני, אלא פתרונות שמיושמים.",
   },
   {
-    plusColor: "#7D69FF",
+    plusColor: "#2563eb",
     title: "הכשרות מקצועיות מהשטח",
     text: "סדרת הדרכות מובנית ישירות ממנטורים, סמנכ\"לים ומומחים מהתעשייה. תכנים בתחומי AI, אפיון מוצר, מיפוי תהליכים וחשיבה יזמית.",
   },
   {
-    plusColor: "#85E577",
+    plusColor: "#f97316",
     title: "שיתוף ידע בין-חטיבתי",
     text: "כינוס עובדים ומנהלים מכל החטיבות לחשיבה משותפת. שני הפורומים פועלים במקביל ומחזקים שיתוף Best Practices בכל הארגון.",
   },
 ];
 
 const inputStyle: React.CSSProperties = {
-  backgroundColor: "#221C4A",
+  backgroundColor: "#0c1222",
   border: "1px solid #ffffff",
   borderRadius: "50px",
   padding: "14px 20px",
@@ -42,7 +42,7 @@ export function StudyProgramsSection() {
   return (
     <section
       style={{
-        backgroundColor: "#F1F2ED",
+        backgroundColor: "#f1f5f9",
         padding: "80px 10px 60px",
         direction: "rtl",
         position: "relative",
@@ -59,7 +59,7 @@ export function StudyProgramsSection() {
           style={{
             fontSize: "45px",
             fontWeight: 900,
-            color: "#131316",
+            color: "#0f172a",
             textAlign: "center",
             marginBottom: "8px",
           }}
@@ -70,7 +70,7 @@ export function StudyProgramsSection() {
         <p
           style={{
             fontSize: "20px",
-            color: "#131316",
+            color: "#0f172a",
             textAlign: "center",
             marginBottom: "50px",
           }}
@@ -115,7 +115,7 @@ export function StudyProgramsSection() {
                 style={{
                   fontSize: "22px",
                   fontWeight: 700,
-                  color: "#131316",
+                  color: "#0f172a",
                   marginBottom: "12px",
                   textAlign: "right",
                 }}
@@ -148,11 +148,11 @@ export function StudyProgramsSection() {
               style={{
                 fontSize: "26px",
                 fontWeight: 700,
-                color: "#131316",
+                color: "#0f172a",
               }}
             >
               עשרות עובדים ומנהלים מכל החטיבות כבר נרשמו —{" "}
-              <span style={{ color: "#7D69FF" }}>עכשיו תורכם</span>
+              <span style={{ color: "#2563eb" }}>עכשיו תורכם</span>
             </p>
           </div>
 
@@ -208,7 +208,7 @@ export function StudyProgramsSection() {
               <label
                 style={{
                   fontSize: "14px",
-                  color: "#131316",
+                  color: "#0f172a",
                   direction: "rtl",
                   display: "flex",
                   alignItems: "center",
@@ -224,8 +224,8 @@ export function StudyProgramsSection() {
               <button
                 type="submit"
                 style={{
-                  backgroundColor: "#85E577",
-                  color: "#131316",
+                  backgroundColor: "#f97316",
+                  color: "#0f172a",
                   borderRadius: "50px",
                   padding: "14px 30px",
                   fontSize: "18px",
@@ -249,7 +249,7 @@ export function StudyProgramsSection() {
           color: rgba(255, 255, 255, 0.7);
         }
         .study-input option {
-          background-color: #221C4A;
+          background-color: #0c1222;
           color: white;
         }
 

@@ -81,43 +81,43 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 
   /* HackerU brand tokens */
-  --color-brand-purple: #7D69FF;
-  --color-brand-purple-dark: #8364FF;
-  --color-brand-purple-deep: #140B51;
-  --color-brand-purple-input: #221C4A;
-  --color-brand-green: #85E577;
-  --color-brand-cream: #F1F2ED;
-  --color-brand-text: #131316;
+  --color-brand-purple: #2563eb;
+  --color-brand-purple-dark: #1e3048;
+  --color-brand-purple-deep: #0c1222;
+  --color-brand-purple-input: #0c1222;
+  --color-brand-green: #f97316;
+  --color-brand-cream: #f1f5f9;
+  --color-brand-text: #0f172a;
 }
 
 :root {
   --background: #ffffff;
-  --foreground: #131316;
+  --foreground: #0f172a;
   --card: #ffffff;
-  --card-foreground: #131316;
+  --card-foreground: #0f172a;
   --popover: #ffffff;
-  --popover-foreground: #131316;
-  --primary: #7D69FF;
+  --popover-foreground: #0f172a;
+  --primary: #2563eb;
   --primary-foreground: #ffffff;
-  --secondary: #F1F2ED;
-  --secondary-foreground: #131316;
-  --muted: #F1F2ED;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #0f172a;
+  --muted: #f1f5f9;
   --muted-foreground: #666666;
-  --accent: #85E577;
-  --accent-foreground: #131316;
+  --accent: #f97316;
+  --accent-foreground: #0f172a;
   --destructive: oklch(0.577 0.245 27.325);
   --border: #e5e5e5;
   --input: #e5e5e5;
-  --ring: #7D69FF;
+  --ring: #2563eb;
   --radius: 0.625rem;
-  --sidebar: #F1F2ED;
-  --sidebar-foreground: #131316;
-  --sidebar-primary: #7D69FF;
+  --sidebar: #f1f5f9;
+  --sidebar-foreground: #0f172a;
+  --sidebar-primary: #2563eb;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #F1F2ED;
-  --sidebar-accent-foreground: #131316;
+  --sidebar-accent: #f1f5f9;
+  --sidebar-accent-foreground: #0f172a;
   --sidebar-border: #e5e5e5;
-  --sidebar-ring: #7D69FF;
+  --sidebar-ring: #2563eb;
 }
 
 @layer base {
@@ -128,7 +128,7 @@
     @apply bg-background text-foreground;
     font-family: 'SimplerPro', 'Arial Hebrew', Arial, sans-serif;
     direction: rtl;
-    color: #131316;
+    color: #0f172a;
   }
   html {
     direction: rtl;
@@ -139,4 +139,4 @@
 /* Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: #f1f1f1; }
-::-webkit-scrollbar-thumb { background: #7D69FF; border-radius: 3px; }
+::-webkit-scrollbar-thumb { background: #2563eb; border-radius: 3px; }

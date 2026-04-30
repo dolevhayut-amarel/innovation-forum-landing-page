@@ -7,10 +7,10 @@ export function LeadsToSuccess() {
       style={{ backgroundColor: "#ffffff", padding: "100px 0", direction: "rtl", textAlign: "center" }}
     >
       <div style={{ maxWidth: "900px", margin: "0 auto", padding: "0 20px" }}>
-        <h2 style={{ fontSize: "45px", fontWeight: 900, color: "#131316", marginBottom: "16px" }}>
+        <h2 style={{ fontSize: "45px", fontWeight: 900, color: "#0f172a", marginBottom: "16px" }}>
           מה זה בכלל פורום חדשנות?
         </h2>
-        <p style={{ fontSize: "20px", color: "#131316", marginBottom: "48px", lineHeight: 1.6 }}>
+        <p style={{ fontSize: "20px", color: "#0f172a", marginBottom: "48px", lineHeight: 1.6 }}>
           מנגנון ארגוני מובנה שבו עובדים ומנהלים נבחרים מתכנסים כדי להציף רעיונות, לפתח פתרונות ולהניע שיפורים אמיתיים — הן בתחום הטכנולוגיה (AI) והן בתחום התהליכים הארגוניים.
         </p>
 
@@ -23,20 +23,20 @@ export function LeadsToSuccess() {
               icon: "🔬",
               title: "פורום חדשנות טכנולוגית",
               text: 'להפוך את AI לכלי עבודה יומיומי — בניית "ארגז חול" ארגוני שבו מפתחים תוצרים, אוטומציות וכלים חדשניים.',
-              color: "#7D69FF",
+              color: "#2563eb",
             },
             {
               icon: "⚙️",
               title: "פורום חדשנות תהליכית",
               text: "לזהות, לשפר ולייעל תהליכים ארגוניים — מיפוי פערים מהשטח ופיתוח פתרונות לשיפור מתמיד.",
-              color: "#131316",
+              color: "#0f172a",
             },
           ].map((card, i) => (
             <div
               key={i}
               style={{
                 flex: 1,
-                backgroundColor: "#F1F2ED",
+                backgroundColor: "#f1f5f9",
                 borderRadius: "16px",
                 padding: "32px 24px",
                 textAlign: "right",
@@ -56,8 +56,8 @@ export function LeadsToSuccess() {
           href="#registration"
           style={{
             display: "inline-block",
-            backgroundColor: "#85E577",
-            color: "#131316",
+            backgroundColor: "#f97316",
+            color: "#0f172a",
             borderRadius: "50px",
             padding: "14px 40px",
             fontSize: "18px",
