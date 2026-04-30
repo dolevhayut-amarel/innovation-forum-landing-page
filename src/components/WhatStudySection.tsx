@@ -97,7 +97,10 @@ export function WhatStudySection() {
             <div
               key={meeting.number}
               style={{
-                backgroundColor: "#ffffff",
+                background: "rgba(255, 255, 255, 0.07)",
+                backdropFilter: "blur(12px)",
+                WebkitBackdropFilter: "blur(12px)",
+                border: "1px solid rgba(255, 255, 255, 0.15)",
                 borderRadius: "16px",
                 padding: "24px",
                 display: "flex",
@@ -110,8 +113,9 @@ export function WhatStudySection() {
                 style={{
                   fontSize: "13px",
                   fontWeight: 700,
-                  color: "#2563eb",
-                  backgroundColor: "#eff6ff",
+                  color: "#f97316",
+                  backgroundColor: "rgba(249, 115, 22, 0.15)",
+                  border: "1px solid rgba(249, 115, 22, 0.3)",
                   borderRadius: "50px",
                   padding: "4px 12px",
                   display: "inline-block",
@@ -126,7 +130,7 @@ export function WhatStudySection() {
                 style={{
                   fontSize: "20px",
                   fontWeight: 700,
-                  color: "#0f172a",
+                  color: "#ffffff",
                   marginBottom: "10px",
                 }}
               >
@@ -136,7 +140,7 @@ export function WhatStudySection() {
               <p
                 style={{
                   fontSize: "14px",
-                  color: "#444444",
+                  color: "rgba(255, 255, 255, 0.7)",
                   lineHeight: 1.6,
                   flex: 1,
                 }}

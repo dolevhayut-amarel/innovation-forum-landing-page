@@ -76,7 +76,15 @@ export function HeroSection() {
           </div>
 
           {/* Form */}
-          <section style={{ direction: "rtl" }}>
+          <section style={{
+            direction: "rtl",
+            background: "rgba(255, 255, 255, 0.08)",
+            backdropFilter: "blur(16px)",
+            WebkitBackdropFilter: "blur(16px)",
+            border: "1px solid rgba(255, 255, 255, 0.18)",
+            borderRadius: "20px",
+            padding: "24px",
+          }}>
             <form onSubmit={(e) => e.preventDefault()} className="flex flex-col gap-3">
               <div className="flex gap-3 flex-col md:flex-row">
                 <input type="text" name="firstname" placeholder="שם מלא" className="hero-input" style={{ backgroundColor: "#0c1222", border: "1px solid #ffffff", borderRadius: "50px", padding: "14px 20px", fontSize: "18px", color: "#ffffff", width: "100%", outline: "none", direction: "rtl" }} />

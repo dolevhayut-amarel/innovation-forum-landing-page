@@ -17,7 +17,19 @@ export function ClientsBar() {
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         <div className="flex flex-row flex-wrap items-center justify-center" style={{ gap: "0 48px" }}>
           {stats.map((stat, i) => (
-            <div key={i} className="text-center" style={{ padding: "8px 0" }}>
+            <div
+              key={i}
+              className="text-center"
+              style={{
+                padding: "16px 24px",
+                background: "rgba(255, 255, 255, 0.12)",
+                backdropFilter: "blur(10px)",
+                WebkitBackdropFilter: "blur(10px)",
+                border: "1px solid rgba(255, 255, 255, 0.2)",
+                borderRadius: "12px",
+                minWidth: "120px",
+              }}
+            >
               <div style={{ fontSize: "36px", fontWeight: 900, color: "#ffffff", lineHeight: 1, marginBottom: "4px" }}>
                 {stat.num}
               </div>
