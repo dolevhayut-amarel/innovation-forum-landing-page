@@ -1,5 +1,6 @@
 import { HeroSection } from "@/components/HeroSection";
 import { ClientsBar } from "@/components/ClientsBar";
+import { BrandStatement } from "@/components/BrandStatement";
 import { LeadsToSuccess } from "@/components/LeadsToSuccess";
 import { WhyStudySection } from "@/components/WhyStudySection";
 import { CtaBar } from "@/components/CtaBar";
@@ -13,6 +14,7 @@ export default function Home() {
     <main dir="rtl" className="w-full overflow-x-hidden">
       <HeroSection />
       <ClientsBar />
+      <BrandStatement />
       <LeadsToSuccess />
       <WhyStudySection />
       <CtaBar />

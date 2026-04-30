@@ -1,13 +1,11 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { Layers, CalendarDays, Clock, Users } from "lucide-react";
 import { motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 const stats = [
   {
-    Icon: Layers,
     value: 2,
     suffix: "",
     label: "פורומים מקבילים",
@@ -15,7 +13,6 @@ const stats = [
     accent: false,
   },
   {
-    Icon: CalendarDays,
     value: 7,
     prefix: "עד ",
     suffix: " מפגשים",
@@ -24,7 +21,6 @@ const stats = [
     accent: true,
   },
   {
-    Icon: Clock,
     value: 3,
     suffix: " שעות",
     label: "לכל מפגש",
@@ -32,7 +28,6 @@ const stats = [
     accent: false,
   },
   {
-    Icon: Users,
     value: 15,
     prefix: "~",
     suffix: " משתתפים",
@@ -60,7 +55,7 @@ function Counter({
   useEffect(() => {
     if (!inView) return;
     let start = 0;
-    const duration = 1200;
+    const duration = 1400;
     const step = 16;
     const steps = Math.ceil(duration / step);
     const increment = value / steps;
@@ -77,18 +72,7 @@ function Counter({
   }, [inView, value]);
 
   return (
-    <span
-      ref={ref}
-      style={{
-        fontSize: "42px",
-        fontWeight: 900,
-        lineHeight: 1,
-        color: accent ? "#f97316" : "#ffffff",
-        display: "block",
-        marginBottom: "4px",
-        letterSpacing: "-0.5px",
-      }}
-    >
+    <span ref={ref}>
       {prefix}{count}{suffix}
     </span>
   );
@@ -129,7 +113,7 @@ export function ClientsBar() {
               flexDirection: "column",
               alignItems: "center",
               textAlign: "center",
-              padding: "24px 20px",
+              padding: "28px 20px",
               borderRight: i < stats.length - 1 ? "1px solid rgba(255,255,255,0.15)" : "none",
               position: "relative",
             }}
@@ -148,34 +132,42 @@ export function ClientsBar() {
 
             <div
               style={{
-                width: 40,
-                height: 40,
-                borderRadius: "10px",
-                background: stat.accent
-                  ? "linear-gradient(135deg, #f97316, #e53e2f)"
-                  : "rgba(255,255,255,0.12)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                marginBottom: "12px",
+                fontSize: "52px",
+                fontWeight: 900,
+                lineHeight: 1,
+                color: stat.accent ? "#f97316" : "#ffffff",
+                marginBottom: "8px",
+                letterSpacing: "-1px",
+                fontVariantNumeric: "tabular-nums",
               }}
             >
-              <stat.Icon size={20} color="#ffffff" strokeWidth={1.75} />
+              <Counter
+                value={stat.value}
+                prefix={stat.prefix}
+                suffix={stat.suffix}
+                accent={stat.accent}
+              />
             </div>
 
-            <Counter
-              value={stat.value}
-              prefix={stat.prefix}
-              suffix={stat.suffix}
-              accent={stat.accent}
+            <div
+              style={{
+                width: "32px",
+                height: "2px",
+                background: stat.accent
+                  ? "linear-gradient(90deg, #f97316, #e53e2f)"
+                  : "rgba(255,255,255,0.3)",
+                borderRadius: "2px",
+                margin: "0 auto 10px",
+              }}
             />
 
             <span
               style={{
-                fontSize: "14px",
+                fontSize: "15px",
                 fontWeight: 700,
                 color: "rgba(255,255,255,0.95)",
                 marginBottom: "4px",
+                display: "block",
               }}
             >
               {stat.label}
@@ -184,7 +176,7 @@ export function ClientsBar() {
             <span
               style={{
                 fontSize: "12px",
-                color: "rgba(255,255,255,0.5)",
+                color: "rgba(255,255,255,0.45)",
                 lineHeight: 1.4,
               }}
             >
@@ -196,9 +188,7 @@ export function ClientsBar() {
 
       <style>{`
         @media (max-width: 640px) {
-          .clients-bar-inner {
-            flex-wrap: wrap !important;
-          }
+          .clients-bar-inner { flex-wrap: wrap !important; }
           .clients-bar-inner > div {
             flex: 1 1 40% !important;
             border-right: none !important;
