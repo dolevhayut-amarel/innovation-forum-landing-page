@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Layers, CalendarDays, Users } from "lucide-react";
 import { motion } from "framer-motion";
@@ -23,29 +22,6 @@ export function HeroSection() {
       }}
       dir="rtl"
     >
-      {/* Man image — absolute, bottom-left */}
-      <div
-        className="absolute bottom-0 left-0 hidden md:block"
-        style={{ zIndex: 1, pointerEvents: "none", height: "85%" }}
-      >
-        <Image
-          src="/images/man.png"
-          alt=""
-          width={600}
-          height={760}
-          style={{ height: "100%", width: "auto", objectFit: "contain" }}
-          aria-hidden="true"
-        />
-      </div>
-
-      {/* Bpluses decoration */}
-      <div
-        className="absolute"
-        style={{ bottom: "40px", right: "0", zIndex: 2, pointerEvents: "none", opacity: 0.6 }}
-      >
-        <Image src="/images/bpluses.png" alt="" width={300} height={300} style={{ objectFit: "contain" }} aria-hidden="true" />
-      </div>
-
       {/* Main content */}
       <div className="hero-content-inner relative mx-auto w-full px-6 pb-10" style={{ maxWidth: "1200px", zIndex: 5 }}>
         <div className="hero-content ml-auto" style={{ maxWidth: "660px" }}>

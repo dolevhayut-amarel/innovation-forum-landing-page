@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
@@ -44,9 +43,6 @@ export function FooterSection() {
         id="footer-contact"
         data-section="footer-contact"
         style={{
-          backgroundImage: "url('/images/footer-bg.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
           backgroundColor: "#0c1a2e",
           padding: "100px 0 50px",
           direction: "rtl",
@@ -54,21 +50,6 @@ export function FooterSection() {
           minHeight: "670px",
         }}
       >
-        <Image
-          src="/images/bpluses.png"
-          alt=""
-          width={200}
-          height={200}
-          aria-hidden
-          style={{
-            position: "absolute",
-            top: "40px",
-            right: "40px",
-            opacity: 0.3,
-            pointerEvents: "none",
-          }}
-        />
-
         <style>{`
           @media (max-width: 768px) {
             .footer-inner {
