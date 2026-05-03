@@ -1,251 +1,246 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { Layers, CalendarDays, Users, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
+import { ArrowLeft, Play } from "lucide-react";
 
-const heroFeatures = [
-  { Icon: Layers,      title: "שני פורומים\nמקבילים בארגון" },
-  { Icon: CalendarDays, title: "6-7 מפגשים\nאחת לשבועיים" },
-  { Icon: Users,       title: "פתוח לעובדים\nומנהלים מכל החטיבות" },
+const stats = [
+  { value: "2", label: "פורומים מקבילים" },
+  { value: "6–7", label: "מפגשים בסדרה" },
+  { value: "100%", label: "פתוח לכל עובד" },
 ];
 
 function ScrollIndicator() {
   return (
-    <motion.div
-      className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer"
-      style={{ zIndex: 10 }}
-      initial={{ opacity: 0, y: -10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 1.2, duration: 0.6 }}
+    <motion.button
+      className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5"
+      style={{ zIndex: 10, background: "none", border: "none", cursor: "pointer" }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 1.4, duration: 0.6 }}
       onClick={() => window.scrollBy({ top: window.innerHeight * 0.85, behavior: "smooth" })}
+      aria-label="גלול למטה"
     >
-      {/* Mouse SVG */}
-      <svg width="28" height="42" viewBox="0 0 28 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="1" y="1" width="26" height="40" rx="13" stroke="rgba(255,255,255,0.5)" strokeWidth="2"/>
-        {/* Animated scroll wheel */}
+      <svg width="26" height="40" viewBox="0 0 26 40" fill="none">
+        <rect x="1" y="1" width="24" height="38" rx="12" stroke="rgba(255,255,255,0.35)" strokeWidth="1.5" />
         <motion.rect
-          x="12" y="8" width="4" height="8" rx="2"
-          fill="rgba(255,255,255,0.9)"
-          animate={{ y: [8, 16, 8], opacity: [1, 0.3, 1] }}
-          transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+          x="11" y="7" width="4" height="7" rx="2"
+          fill="rgba(255,255,255,0.8)"
+          animate={{ y: [7, 15, 7], opacity: [0.9, 0.2, 0.9] }}
+          transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
         />
       </svg>
-      {/* Animated chevrons */}
-      <motion.div
-        className="flex flex-col items-center"
-        animate={{ y: [0, 5, 0] }}
-        transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+      <motion.svg
+        width="16" height="20" viewBox="0 0 16 20" fill="none"
+        animate={{ y: [0, 4, 0] }}
+        transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
       >
-        <ChevronDown size={16} color="rgba(255,255,255,0.5)" strokeWidth={2} />
-        <ChevronDown size={16} color="rgba(255,255,255,0.25)" strokeWidth={2} style={{ marginTop: "-6px" }} />
-      </motion.div>
-    </motion.div>
+        <path d="M8 1L8 15M8 15L2 9M8 15L14 9" stroke="rgba(255,255,255,0.35)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      </motion.svg>
+    </motion.button>
   );
 }
 
 export function HeroSection() {
   return (
     <section
-      className={cn("hero-main relative overflow-hidden flex flex-col justify-center w-full")}
+      className={cn("hero-main relative w-full overflow-hidden")}
       style={{
-        backgroundImage: "url('/images/hero-bg.png')",
-        backgroundSize: "cover",
-        backgroundPosition: "center center",
+        background: "#05081a",
         minHeight: "100vh",
-        paddingTop: "80px",
-        paddingBottom: "100px",
       }}
       dir="rtl"
     >
-      {/* Dark gradient overlay — right side */}
+      {/* Background image — right half bleeds in from left */}
       <div
         className="absolute inset-0"
         style={{
-          background: "linear-gradient(to left, rgba(5,8,45,0.92) 0%, rgba(5,8,45,0.85) 30%, rgba(5,8,45,0.4) 55%, transparent 75%)",
-          zIndex: 2,
+          backgroundImage: "url('/images/hero-bg.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center center",
+          zIndex: 0,
         }}
       />
 
-      {/* Bottom fade for smooth transition to next section */}
+      {/* Overlay: strong dark on right, fades to transparent on left */}
       <div
-        className="absolute bottom-0 left-0 right-0"
+        className="absolute inset-0"
         style={{
-          height: "160px",
-          background: "linear-gradient(to top, rgba(5,8,45,0.6) 0%, transparent 100%)",
-          zIndex: 3,
+          background: "linear-gradient(to left, #05081a 0%, #05081a 35%, rgba(5,8,26,0.75) 55%, rgba(5,8,26,0.2) 75%, transparent 100%)",
+          zIndex: 1,
         }}
       />
 
-      {/* Main content */}
-      <div className="hero-content-inner relative mx-auto w-full px-6 pb-14" style={{ maxWidth: "1200px", zIndex: 5 }}>
-        <div className="hero-content ml-auto" style={{ maxWidth: "580px" }}>
+      {/* Bottom fade */}
+      <div className="absolute bottom-0 left-0 right-0" style={{ height: 120, background: "linear-gradient(to top, #05081a 0%, transparent 100%)", zIndex: 2 }} />
 
-          {/* Badge pill */}
+      {/* ── Content ── */}
+      <div
+        className="relative flex items-center"
+        style={{ minHeight: "100vh", zIndex: 5, maxWidth: "1240px", margin: "0 auto", padding: "0 40px" }}
+      >
+        {/* Right column — text */}
+        <div className="flex flex-col hero-text-col" style={{ maxWidth: "520px", width: "100%", paddingTop: "60px", paddingBottom: "60px" }}>
+
+          {/* Eyebrow badge */}
           <motion.div
-            className="flex justify-end mb-5"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
+            transition={{ duration: 0.5 }}
+            style={{ marginBottom: "24px" }}
           >
-            <span style={{
+            <span className="hero-badge" style={{
               display: "inline-flex",
               alignItems: "center",
               gap: "8px",
-              background: "rgba(249,115,22,0.15)",
-              border: "1px solid rgba(249,115,22,0.4)",
+              border: "1px solid rgba(249,115,22,0.35)",
               borderRadius: "999px",
-              padding: "6px 16px",
-              fontSize: "13px",
+              padding: "6px 14px",
+              fontSize: "12px",
               fontWeight: 600,
               color: "#f97316",
-              letterSpacing: "0.04em",
+              letterSpacing: "0.06em",
+              textTransform: "uppercase",
+              background: "rgba(249,115,22,0.08)",
             }}>
-              <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#f97316", display: "inline-block", boxShadow: "0 0 8px #f97316" }} />
-              פורום חדשנות 2026 | אמרל
+              <motion.span
+                style={{ width: 7, height: 7, borderRadius: "50%", background: "#f97316", display: "inline-block" }}
+                animate={{ opacity: [1, 0.3, 1], scale: [1, 1.3, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
+              פורום חדשנות 2026 — אמרל
             </span>
           </motion.div>
 
+          {/* Headline */}
           <motion.h1
-            className="hero-h1 font-black text-right"
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
-            style={{ lineHeight: 1.05, marginBottom: "20px" }}
+            transition={{ duration: 0.65, delay: 0.1 }}
+            className="hero-h1"
+            style={{ margin: "0 0 20px 0", lineHeight: 1.0, fontWeight: 900, textAlign: "right" }}
           >
-            <span dir="ltr" style={{ display: "block", background: "linear-gradient(135deg, #f97316 0%, #e53e2f 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", textAlign: "right" }}>
-              MAKE IT POSSIBLE
+            <span style={{
+              display: "block",
+              background: "linear-gradient(135deg, #f97316 0%, #ef4444 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+            }}>
+              MAKE IT
             </span>
-            <span dir="ltr" style={{ display: "block", color: "#ffffff", fontSize: "0.38em", fontWeight: 700, lineHeight: 1.35, marginTop: "10px", textAlign: "right", letterSpacing: "0.02em" }}>
-              YOUR IDEAS. YOUR IMPACT. YOUR FORUM.
-            </span>
-            <span style={{ display: "block", color: "rgba(255,255,255,0.8)", fontSize: "0.34em", fontWeight: 500, lineHeight: 1.5, marginTop: "8px" }}>
-              פורום החדשנות באמרל — ההרשמה פתוחה
+            <span style={{ display: "block", color: "#ffffff" }}>
+              POSSIBLE
             </span>
           </motion.h1>
 
-          <motion.h2
-            className="hero-subtitle text-white text-right"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.25, ease: "easeOut" }}
-            style={{ fontSize: "20px", fontWeight: 400, lineHeight: 1.6, marginBottom: "32px", color: "rgba(255,255,255,0.75)" }}
-          >
-            מנגנון ארגוני מובנה להצפת רעיונות, פיתוח פתרונות ושיפור מתמיד של תהליכים.
-          </motion.h2>
-
-          {/* CTA Buttons */}
-          <motion.div
-            className="flex flex-row gap-3 justify-end mb-10"
+          {/* Sub-headline */}
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.35, ease: "easeOut" }}
+            transition={{ duration: 0.6, delay: 0.22 }}
+            style={{
+              fontSize: "18px",
+              fontWeight: 400,
+              lineHeight: 1.7,
+              color: "rgba(255,255,255,0.6)",
+              margin: "0 0 36px 0",
+              textAlign: "right",
+            }}
           >
-            {/* Primary CTA */}
+            מנגנון ארגוני מובנה להצפת רעיונות, פיתוח פתרונות ושיפור מתמיד של תהליכים — פתוח לכל עובד ומנהל באמרל.
+          </motion.p>
+
+          {/* CTA buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.32 }}
+            className="hero-btns"
+            style={{ display: "flex", gap: "12px", flexDirection: "row", marginBottom: "48px" }}
+          >
             <motion.a
               href="#footer-contact"
-              whileHover={{ scale: 1.04, boxShadow: "0 8px 32px rgba(249,115,22,0.45)" }}
+              whileHover={{ scale: 1.04, boxShadow: "0 8px 36px rgba(249,115,22,0.5)" }}
               whileTap={{ scale: 0.97 }}
               style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "8px",
-                background: "linear-gradient(135deg, #f97316 0%, #e53e2f 100%)",
-                color: "#fff",
-                fontWeight: 700,
-                fontSize: "16px",
-                padding: "14px 28px",
-                borderRadius: "12px",
-                textDecoration: "none",
-                boxShadow: "0 4px 20px rgba(249,115,22,0.3)",
-                border: "none",
-                cursor: "pointer",
+                display: "inline-flex", alignItems: "center", gap: "8px",
+                background: "linear-gradient(135deg, #f97316 0%, #ef4444 100%)",
+                color: "#fff", fontWeight: 700, fontSize: "15px",
+                padding: "14px 26px", borderRadius: "10px",
+                textDecoration: "none", boxShadow: "0 4px 20px rgba(249,115,22,0.3)",
+                whiteSpace: "nowrap",
               }}
             >
               הצטרפו עכשיו
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
+              <ArrowLeft size={16} strokeWidth={2.5} />
             </motion.a>
 
-            {/* Secondary CTA */}
             <motion.a
               href="#brand-statement"
-              whileHover={{ scale: 1.03, background: "rgba(255,255,255,0.15)" }}
+              whileHover={{ scale: 1.03, borderColor: "rgba(255,255,255,0.4)" }}
               whileTap={{ scale: 0.97 }}
               style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "8px",
-                background: "rgba(255,255,255,0.08)",
-                color: "#fff",
-                fontWeight: 600,
-                fontSize: "16px",
-                padding: "14px 28px",
-                borderRadius: "12px",
-                textDecoration: "none",
-                border: "1px solid rgba(255,255,255,0.2)",
-                backdropFilter: "blur(8px)",
-                cursor: "pointer",
-                transition: "background 0.2s",
+                display: "inline-flex", alignItems: "center", gap: "8px",
+                background: "transparent",
+                color: "#fff", fontWeight: 600, fontSize: "15px",
+                padding: "14px 22px", borderRadius: "10px",
+                textDecoration: "none", border: "1px solid rgba(255,255,255,0.2)",
+                backdropFilter: "blur(8px)", whiteSpace: "nowrap",
+                transition: "border-color 0.2s",
               }}
             >
-              קרא עוד
+              <Play size={14} fill="white" strokeWidth={0} />
+              למד עוד
             </motion.a>
           </motion.div>
 
-          {/* Feature icons */}
+          {/* Stats row */}
           <motion.div
-            className="hero-features flex flex-row"
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
-            style={{ direction: "rtl" }}
+            transition={{ duration: 0.6, delay: 0.44 }}
+            style={{
+              display: "flex",
+              gap: "0",
+              borderTop: "1px solid rgba(255,255,255,0.08)",
+              paddingTop: "28px",
+            }}
           >
-            {heroFeatures.map((feature, index) => (
-              <motion.div
-                key={index}
-                className="flex flex-col items-center"
-                style={{ flex: "1 1 0%" }}
-                whileHover={{ y: -3 }}
-                transition={{ duration: 0.2 }}
-              >
-                <div style={{
-                  width: 52,
-                  height: 52,
-                  borderRadius: "14px",
-                  background: "rgba(255,255,255,0.08)",
-                  border: "1px solid rgba(255,255,255,0.15)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  margin: "0 auto 10px",
-                  backdropFilter: "blur(6px)",
-                }}>
-                  <feature.Icon size={24} color="#f97316" strokeWidth={1.5} />
+            {stats.map((s, i) => (
+              <div key={i} style={{
+                flex: 1,
+                textAlign: "center",
+                borderRight: i < stats.length - 1 ? "1px solid rgba(255,255,255,0.08)" : "none",
+                padding: "0 16px",
+              }}>
+                <div style={{ fontSize: "28px", fontWeight: 800, color: "#f97316", lineHeight: 1.1, marginBottom: "4px" }}>
+                  {s.value}
                 </div>
-                <p className="text-white text-center" style={{ fontSize: "12px", fontWeight: 600, whiteSpace: "pre-line", lineHeight: 1.4, color: "rgba(255,255,255,0.8)" }}>
-                  {feature.title}
-                </p>
-              </motion.div>
+                <div style={{ fontSize: "12px", color: "rgba(255,255,255,0.45)", fontWeight: 500 }}>
+                  {s.label}
+                </div>
+              </div>
             ))}
           </motion.div>
 
         </div>
+        {/* Left column is intentionally empty — background image fills it */}
       </div>
 
-      {/* Scroll indicator */}
       <ScrollIndicator />
 
       <style>{`
-        .hero-h1 { font-size: 96px; font-weight: 900; }
+        .hero-h1 { font-size: 86px; }
+        .hero-badge { white-space: nowrap; }
 
-        @media (max-width: 768px) {
-          .hero-h1 { font-size: 52px; }
-          .hero-main { min-height: 100svh !important; padding-top: 60px !important; padding-bottom: 80px !important; }
-          .hero-content-inner { padding: 0 16px !important; }
-          .hero-subtitle { font-size: 17px !important; margin-bottom: 24px !important; }
-          .hero-features { gap: 8px !important; }
+        @media (max-width: 900px) {
+          .hero-h1 { font-size: 58px !important; }
+          .hero-text-col { max-width: 100% !important; }
+        }
+        @media (max-width: 640px) {
+          .hero-h1 { font-size: 44px !important; }
+          .hero-btns { flex-direction: column !important; }
         }
       `}</style>
     </section>
