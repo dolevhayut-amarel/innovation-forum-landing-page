@@ -108,7 +108,7 @@ export function HeroSection() {
                 animate={{ opacity: [1, 0.3, 1], scale: [1, 1.3, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
               />
-              פורום חדשנות 2026 — אמרל
+              קול קורא — מוזמנים להירשם כעת
             </span>
           </motion.div>
 
