@@ -205,26 +205,25 @@ export function HeroSection() {
         }
 
         @media (max-width: 900px) {
-          .hero-h1 { font-size: 56px !important; }
+          .hero-h1 { font-size: 52px !important; }
           .hero-text-col { max-width: 100% !important; }
-          /* Mobile: darken whole image so text is always readable */
           .hero-overlay {
-            background: linear-gradient(to bottom, rgba(5,8,26,0.55) 0%, rgba(5,8,26,0.75) 40%, #05081a 80%) !important;
+            background: rgba(5,8,26,0.78) !important;
           }
           .hero-content-wrap {
             padding: 0 24px !important;
-            align-items: flex-end !important;
+            align-items: center !important;
+            justify-content: center !important;
           }
           .hero-text-col {
-            padding-top: 0 !important;
-            padding-bottom: 60px !important;
+            padding-top: 80px !important;
+            padding-bottom: 80px !important;
           }
-          .hero-badge { font-size: 11px !important; }
+          .hero-badge { font-size: 11px !important; white-space: normal !important; text-align: center; justify-content: center; }
         }
         @media (max-width: 480px) {
-          .hero-h1 { font-size: 44px !important; }
-          .hero-btns { flex-direction: column !important; }
-          .hero-btns a { justify-content: center !important; }
+          .hero-h1 { font-size: 40px !important; }
+          .hero-btns a { width: 100% !important; justify-content: center !important; }
         }
       `}</style>
     </section>
