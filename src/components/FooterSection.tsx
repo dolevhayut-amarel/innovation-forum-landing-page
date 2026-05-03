@@ -25,16 +25,15 @@ export function FooterSection() {
   }
 
   const inputStyle: React.CSSProperties = {
-    backgroundColor: "#0c1a2e",
-    border: "1px solid #ffffff",
+    backgroundColor: "#ffffff",
+    border: "1px solid #2a5377",
     borderRadius: "50px",
     padding: "14px 20px",
-    fontSize: "18px",
-    color: "white",
-    marginBottom: "16px",
+    fontSize: "16px",
+    color: "#2a5377",
     width: "100%",
     outline: "none",
-    boxSizing: "border-box",
+    direction: "rtl",
   };
 
   return (
@@ -43,173 +42,95 @@ export function FooterSection() {
         id="footer-contact"
         data-section="footer-contact"
         style={{
-          backgroundColor: "#0c1a2e",
-          padding: "100px 0 50px",
+          background: "linear-gradient(160deg, #326a9e 0%, #2a5377 40%, #1e3252 100%)",
+          padding: "80px 10px 80px",
           direction: "rtl",
-          position: "relative",
-          minHeight: "670px",
         }}
       >
         <style>{`
-          @media (max-width: 768px) {
-            .footer-inner {
-              flex-direction: column !important;
-              padding: 0 24px !important;
-            }
-            .footer-form-col {
-              max-width: 100% !important;
-              width: 100% !important;
-            }
-          }
-          .footer-input::placeholder {
-            color: rgba(255, 255, 255, 0.7);
-          }
-          .footer-input option {
-            background-color: #0c1a2e;
-            color: white;
-          }
+          .footer-input::placeholder { color: rgba(42, 83, 119, 0.55); }
+          .footer-input option { background-color: #ffffff; color: #2a5377; }
+          .footer-form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+          @media (max-width: 768px) { .footer-form-row-2 { grid-template-columns: 1fr; } }
         `}</style>
 
-        <div
-          className="footer-inner"
-          style={{
-            maxWidth: "1200px",
-            margin: "0 auto",
-            padding: "0 40px",
-            display: "flex",
-            alignItems: "flex-start",
-            justifyContent: "space-between",
-            gap: "60px",
-          }}
-        >
-          <motion.div
-            style={{ flex: 1 }}
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
+        <div style={{ maxWidth: "680px", margin: "0 auto", padding: "0 24px" }}>
+          <motion.p
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            transition={{ duration: 0.55 }}
+            style={{ fontSize: "28px", fontWeight: 700, color: "#ffffff", textAlign: "center", marginBottom: "8px" }}
           >
-            <h2
+            עדיין לא נרשמתם? —{" "}
+            <span style={{ color: "#f97316" }}>זה הזמן</span>
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.55, delay: 0.08 }}
+            style={{ fontSize: "16px", color: "rgba(255,255,255,0.65)", textAlign: "center", marginBottom: "40px" }}
+          >
+            השאירו פרטים ונחזור אליכם בהקדם עם כל הפרטים על הרשמה לפורום
+          </motion.p>
+
+          <motion.form
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.55, delay: 0.15 }}
+            onSubmit={handleSubmit}
+            className={cn("flex flex-col gap-3")}
+            style={{ direction: "rtl" }}
+          >
+            <div className="footer-form-row-2">
+              <input type="text" placeholder="שם מלא" value={name} onChange={(e) => setName(e.target.value)} style={inputStyle} className="footer-input" />
+              <input type="text" placeholder="חטיבה / מחלקה" value={division} onChange={(e) => setDivision(e.target.value)} style={inputStyle} className="footer-input" />
+            </div>
+            <div className="footer-form-row-2">
+              <input type="tel" placeholder="טלפון נייד" value={phone} onChange={(e) => setPhone(e.target.value)} style={inputStyle} className="footer-input" />
+              <input type="email" placeholder="כתובת מייל" value={email} onChange={(e) => setEmail(e.target.value)} style={inputStyle} className="footer-input" />
+            </div>
+            <select value={forum} onChange={(e) => setForum(e.target.value)} style={{ ...inputStyle, appearance: "none" }} className="footer-input">
+              <option value="">לאיזה פורום אני מתעניין/ת?</option>
+              <option value="tech">פורום חדשנות טכנולוגית (AI)</option>
+              <option value="process">פורום חדשנות תהליכית</option>
+            </select>
+
+            {forum === "tech" && (
+              <div style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(249,115,22,0.4)", borderRadius: "10px", padding: "10px 14px", fontSize: "12px", color: "rgba(255,255,255,0.8)", lineHeight: 1.6, direction: "rtl" }}>
+                <strong style={{ color: "#f97316" }}>שימו לב: </strong>
+                הצטרפות לפורום מחייבת התחייבות להמשך עבודה באמרל לשנה מיום ההצטרפות, שכן מדובר בהכשרה ייחודית שהארגון משקיע בה משאבים רבים.
+              </div>
+            )}
+
+            <label style={{ fontSize: "14px", color: "#ffffff", direction: "rtl", display: "flex", alignItems: "center", gap: "8px", cursor: "pointer" }}>
+              <input type="checkbox" checked={agreed} onChange={(e) => setAgreed(e.target.checked)} />
+              <span>אני מאשר/ת קבלת עדכונים מפורום החדשנות של אמרל</span>
+            </label>
+
+            <motion.button
+              type="submit"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
               style={{
-                fontSize: "50px",
-                fontWeight: 900,
+                background: "linear-gradient(135deg, #f97316 0%, #e53e2f 100%)",
                 color: "#ffffff",
-                lineHeight: 1.2,
-                marginBottom: "16px",
+                borderRadius: "50px",
+                padding: "16px 30px",
+                fontSize: "18px",
+                fontWeight: 700,
+                border: "none",
+                cursor: "pointer",
+                width: "100%",
+                textAlign: "center",
+                marginTop: "4px",
               }}
             >
-              הצטרפו לפורום החדשנות של אמרל!
-            </h2>
-            <p
-              style={{
-                fontSize: "20px",
-                color: "rgba(255,255,255,0.9)",
-                marginBottom: "32px",
-              }}
-            >
-              השאירו פרטים ונחזור אליכם בהקדם עם כל הפרטים על הרשמה לפורום
-            </p>
-          </motion.div>
-
-          <motion.div
-            className="footer-form-col"
-            style={{ flex: 1, maxWidth: "500px" }}
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-          >
-            <form onSubmit={handleSubmit}>
-              <input
-                type="text"
-                placeholder="שם מלא"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                style={inputStyle}
-                className="footer-input"
-              />
-              <input
-                type="text"
-                placeholder="חטיבה / מחלקה"
-                value={division}
-                onChange={(e) => setDivision(e.target.value)}
-                style={inputStyle}
-                className="footer-input"
-              />
-              <input
-                type="tel"
-                placeholder="טלפון נייד"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                style={inputStyle}
-                className="footer-input"
-              />
-              <input
-                type="email"
-                placeholder="כתובת מייל"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                style={inputStyle}
-                className="footer-input"
-              />
-              <select
-                value={forum}
-                onChange={(e) => setForum(e.target.value)}
-                style={{ ...inputStyle, appearance: "none" }}
-                className="footer-input"
-              >
-                <option value="">לאיזה פורום אני מתעניין/ת?</option>
-                <option value="tech">פורום חדשנות טכנולוגית (AI)</option>
-                <option value="process">פורום חדשנות תהליכית</option>
-              </select>
-
-              <label
-                style={{
-                  display: "flex",
-                  alignItems: "flex-start",
-                  gap: "10px",
-                  color: "#ffffff",
-                  fontSize: "14px",
-                  lineHeight: 1.5,
-                  marginBottom: "12px",
-                  cursor: "pointer",
-                }}
-              >
-                <input
-                  type="checkbox"
-                  checked={agreed}
-                  onChange={(e) => setAgreed(e.target.checked)}
-                  style={{ marginTop: "2px", flexShrink: 0, cursor: "pointer" }}
-                />
-                <span>אני מאשר/ת קבלת עדכונים מפורום החדשנות של אמרל</span>
-              </label>
-
-              {forum === "tech" && (
-                <div style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(249,115,22,0.4)", borderRadius: "10px", padding: "10px 14px", fontSize: "12px", color: "rgba(255,255,255,0.8)", lineHeight: 1.6, direction: "rtl", marginBottom: "16px" }}>
-                  <strong style={{ color: "#f97316" }}>שימו לב: </strong>
-                  הצטרפות לפורום מחייבת התחייבות להמשך עבודה באמרל לשנה מיום ההצטרפות, שכן מדובר בהכשרה ייחודית שהארגון משקיע בה משאבים רבים.
-                </div>
-              )}
-
-              <button
-                type="submit"
-                style={{
-                  background: "linear-gradient(135deg, #f97316 0%, #e53e2f 100%)",
-                  color: "#ffffff",
-                  borderRadius: "50px",
-                  padding: "16px 20px",
-                  fontSize: "18px",
-                  fontWeight: 700,
-                  border: "none",
-                  cursor: "pointer",
-                  width: "100%",
-                  textAlign: "center",
-                }}
-              >
-                אני רוצה להצטרף לפורום &gt;&gt;
-              </button>
-            </form>
-          </motion.div>
+              אני רוצה להצטרף לפורום &gt;&gt;
+            </motion.button>
+          </motion.form>
         </div>
       </section>
 
