@@ -1,11 +1,9 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Layers, CalendarDays, Users } from "lucide-react";
 import { motion } from "framer-motion";
-import { useRouter } from "next/navigation";
 
 const heroFeatures = [
   { Icon: Layers,      title: "שני פורומים\nמקבילים בארגון" },
@@ -14,8 +12,6 @@ const heroFeatures = [
 ];
 
 export function HeroSection() {
-  const router = useRouter();
-  const [forum, setForum] = useState("");
   return (
     <section
       className={cn("hero-main relative overflow-hidden flex flex-col justify-end w-full")}
@@ -101,65 +97,6 @@ export function HeroSection() {
               </div>
             ))}
           </motion.div>
-
-          {/* Form */}
-          <motion.section
-            className="hero-form-wrap"
-            initial={{ opacity: 0, y: 28 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
-            style={{
-            direction: "rtl",
-            background: "rgba(255, 255, 255, 0.08)",
-            backdropFilter: "blur(16px)",
-            WebkitBackdropFilter: "blur(16px)",
-            border: "1px solid rgba(255, 255, 255, 0.18)",
-            borderRadius: "20px",
-            padding: "24px",
-          } as React.CSSProperties}
-          >
-            <form onSubmit={(e) => {
-              e.preventDefault();
-              const fd = new FormData(e.currentTarget);
-              sessionStorage.setItem("forum_form", JSON.stringify({
-                name: fd.get("firstname") ?? "",
-                division: fd.get("division") ?? "",
-                phone: fd.get("phone") ?? "",
-                email: fd.get("email") ?? "",
-                forum: fd.get("forum") ?? "",
-                agreed: (e.currentTarget.querySelector('input[name="terms"]') as HTMLInputElement)?.checked ?? false,
-                source: "hero",
-              }));
-              router.push("/questionnaire");
-            }} className="flex flex-col gap-3">
-              <div className="flex gap-3 flex-col md:flex-row">
-                <input type="text" name="firstname" placeholder="שם מלא" className="hero-input" style={{ backgroundColor: "#0c1a2e", border: "1px solid #ffffff", borderRadius: "50px", padding: "14px 20px", fontSize: "18px", color: "#ffffff", width: "100%", outline: "none", direction: "rtl" }} />
-                <input type="text" name="division" placeholder="חטיבה / מחלקה" className="hero-input" style={{ backgroundColor: "#0c1a2e", border: "1px solid #ffffff", borderRadius: "50px", padding: "14px 20px", fontSize: "18px", color: "#ffffff", width: "100%", outline: "none", direction: "rtl" }} />
-              </div>
-              <div className="flex gap-3 flex-col md:flex-row">
-                <input type="tel" name="phone" placeholder="טלפון נייד" className="hero-input" style={{ backgroundColor: "#0c1a2e", border: "1px solid #ffffff", borderRadius: "50px", padding: "14px 20px", fontSize: "18px", color: "#ffffff", width: "100%", outline: "none", direction: "rtl" }} />
-                <input type="email" name="email" placeholder="כתובת מייל" className="hero-input" style={{ backgroundColor: "#0c1a2e", border: "1px solid #ffffff", borderRadius: "50px", padding: "14px 20px", fontSize: "18px", color: "#ffffff", width: "100%", outline: "none", direction: "rtl" }} />
-              </div>
-              <select name="forum" className="hero-input" style={{ backgroundColor: "#0c1a2e", border: "1px solid #ffffff", borderRadius: "50px", padding: "14px 20px", fontSize: "18px", color: "#ffffff", width: "100%", outline: "none", direction: "rtl", appearance: "none" }} value={forum} onChange={(e) => setForum(e.target.value)}>
-                <option value="">לאיזה פורום אני מתעניין/ת?</option>
-                <option value="tech">פורום חדשנות טכנולוגית (AI)</option>
-                <option value="process">פורום חדשנות תהליכית</option>
-              </select>
-              <label style={{ fontSize: "14px", color: "#ffffff", direction: "rtl", display: "flex", alignItems: "center", gap: "8px", marginBottom: "4px", cursor: "pointer" }}>
-                <input type="checkbox" name="terms" defaultChecked />
-                <span>אני מאשר/ת קבלת עדכונים מפורום החדשנות של אמרל</span>
-              </label>
-              {forum === "tech" && (
-                <div style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(249,115,22,0.4)", borderRadius: "10px", padding: "10px 14px", fontSize: "12px", color: "rgba(255,255,255,0.8)", lineHeight: 1.6, direction: "rtl" }}>
-                  <strong style={{ color: "#f97316" }}>שימו לב: </strong>
-                  הצטרפות לפורום מחייבת התחייבות להמשך עבודה באמרל לשנה מיום ההצטרפות, שכן מדובר בהכשרה ייחודית שהארגון משקיע בה משאבים רבים.
-                </div>
-              )}
-              <button type="submit" style={{ background: "linear-gradient(135deg, #f97316 0%, #e53e2f 100%)", color: "#ffffff", borderRadius: "50px", padding: "14px 30px", fontSize: "18px", fontWeight: 700, border: "none", cursor: "pointer", width: "100%", display: "block", textAlign: "center" }}>
-                אני רוצה להצטרף לפורום &gt;&gt;
-              </button>
-            </form>
-          </motion.section>
         </div>
       </div>
 
@@ -172,7 +109,6 @@ export function HeroSection() {
           .hero-h1 { font-size: 52px; }
           .hero-main { min-height: 100svh !important; }
           .hero-content-inner { padding: 0 16px 32px !important; }
-          .hero-form-wrap { padding: 18px !important; }
           .hero-subtitle { font-size: 20px !important; margin-bottom: 20px !important; }
           .hero-features { margin-bottom: 20px !important; }
         }
