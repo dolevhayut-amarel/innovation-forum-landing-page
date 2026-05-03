@@ -9,7 +9,7 @@ const cards = [
     Icon: Bot,
     badge: "פורום 01",
     title: "פורום חדשנות טכנולוגית",
-    audience: "אם LLM, Agents, Automation ו-Prompt Engineering לא נשמעים לך כמו סינית - המקום שלך איתנו",
+    audience: "אנשים שבונים עם AI, ומונחים כמו LLM, Agents ו-Prompt Engineering לא נשמעים להם כמו סינית",
     text: "תיחשפו לכלי AI מתקדמים, תבנו פתרונות אמיתיים ותצאו עם יכולות שישדרגו כל יום עבודה.",
     accent: "#f97316",
     iconBg: "linear-gradient(135deg, #f97316 0%, #e53e2f 100%)",
