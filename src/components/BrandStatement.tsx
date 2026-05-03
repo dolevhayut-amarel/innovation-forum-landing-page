@@ -47,6 +47,7 @@ export function BrandStatement() {
 
   return (
     <section
+      id="brand-statement"
       style={{
         backgroundColor: "#ffffff",
         padding: "100px 24px",
