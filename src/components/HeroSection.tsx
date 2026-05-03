@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
-import { ArrowLeft, Play } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 
 function ScrollIndicator() {
   return (
@@ -147,47 +147,29 @@ export function HeroSection() {
             מנגנון ארגוני מובנה להצפת רעיונות, פיתוח פתרונות ושיפור מתמיד של תהליכים — פתוח לכל עובד ומנהל באמרל.
           </motion.p>
 
-          {/* CTA buttons */}
+          {/* CTA button */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.32 }}
             className="hero-btns"
-            style={{ display: "flex", gap: "12px", flexDirection: "row", marginBottom: "48px" }}
+            style={{ display: "flex", marginBottom: "48px" }}
           >
             <motion.a
-              href="#footer-contact"
+              href="#brand-statement"
               whileHover={{ scale: 1.04, boxShadow: "0 8px 36px rgba(249,115,22,0.5)" }}
               whileTap={{ scale: 0.97 }}
               style={{
                 display: "inline-flex", alignItems: "center", gap: "8px",
                 background: "linear-gradient(135deg, #f97316 0%, #ef4444 100%)",
                 color: "#fff", fontWeight: 700, fontSize: "15px",
-                padding: "14px 26px", borderRadius: "10px",
+                padding: "14px 28px", borderRadius: "10px",
                 textDecoration: "none", boxShadow: "0 4px 20px rgba(249,115,22,0.3)",
                 whiteSpace: "nowrap",
               }}
             >
-              הצטרפו עכשיו
+              בואו לקרוא עוד
               <ArrowLeft size={16} strokeWidth={2.5} />
-            </motion.a>
-
-            <motion.a
-              href="#brand-statement"
-              whileHover={{ scale: 1.03, borderColor: "rgba(255,255,255,0.4)" }}
-              whileTap={{ scale: 0.97 }}
-              style={{
-                display: "inline-flex", alignItems: "center", gap: "8px",
-                background: "transparent",
-                color: "#fff", fontWeight: 600, fontSize: "15px",
-                padding: "14px 22px", borderRadius: "10px",
-                textDecoration: "none", border: "1px solid rgba(255,255,255,0.2)",
-                backdropFilter: "blur(8px)", whiteSpace: "nowrap",
-                transition: "border-color 0.2s",
-              }}
-            >
-              למד עוד
-              <Play size={14} fill="white" strokeWidth={0} style={{ transform: "scaleX(-1)" }} />
             </motion.a>
           </motion.div>
 
