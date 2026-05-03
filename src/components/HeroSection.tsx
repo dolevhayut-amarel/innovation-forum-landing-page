@@ -4,12 +4,6 @@ import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { ArrowLeft, Play } from "lucide-react";
 
-const stats = [
-  { value: "2", label: "פורומים מקבילים" },
-  { value: "6–7", label: "מפגשים בסדרה" },
-  { value: "100%", label: "פתוח לכל עובד" },
-];
-
 function ScrollIndicator() {
   return (
     <motion.button
@@ -203,39 +197,11 @@ export function HeroSection() {
                 transition: "border-color 0.2s",
               }}
             >
-              <Play size={14} fill="white" strokeWidth={0} />
               למד עוד
+              <Play size={14} fill="white" strokeWidth={0} style={{ transform: "scaleX(-1)" }} />
             </motion.a>
           </motion.div>
 
-          {/* Stats row */}
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.44 }}
-            style={{
-              display: "flex",
-              gap: "0",
-              borderTop: "1px solid rgba(255,255,255,0.08)",
-              paddingTop: "28px",
-            }}
-          >
-            {stats.map((s, i) => (
-              <div key={i} style={{
-                flex: 1,
-                textAlign: "center",
-                borderRight: i < stats.length - 1 ? "1px solid rgba(255,255,255,0.08)" : "none",
-                padding: "0 16px",
-              }}>
-                <div style={{ fontSize: "28px", fontWeight: 800, color: "#f97316", lineHeight: 1.1, marginBottom: "4px" }}>
-                  {s.value}
-                </div>
-                <div style={{ fontSize: "12px", color: "rgba(255,255,255,0.45)", fontWeight: 500 }}>
-                  {s.label}
-                </div>
-              </div>
-            ))}
-          </motion.div>
 
         </div>
         {/* Left column is intentionally empty — background image fills it */}
