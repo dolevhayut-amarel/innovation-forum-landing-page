@@ -126,11 +126,24 @@ export function HeroSection() {
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
+              fontSize: "0.55em",
+              fontWeight: 800,
+              lineHeight: 1.2,
+              textTransform: "none",
+              letterSpacing: "-0.01em",
             }}>
-              MAKE IT
+              Make an impact,
             </span>
-            <span style={{ display: "block", color: "#ffffff" }}>
-              POSSIBLE
+            <span style={{
+              display: "block",
+              color: "#ffffff",
+              fontSize: "0.55em",
+              fontWeight: 800,
+              lineHeight: 1.2,
+              textTransform: "none",
+              letterSpacing: "-0.01em",
+            }}>
+              for real!
             </span>
           </motion.h1>
 
