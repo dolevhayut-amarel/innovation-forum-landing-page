@@ -1,188 +1,169 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
-
-function ScrollIndicator() {
-  return (
-    <motion.button
-      className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5"
-      style={{ zIndex: 10, background: "none", border: "none", cursor: "pointer" }}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 1.4, duration: 0.6 }}
-      onClick={() => window.scrollBy({ top: window.innerHeight * 0.85, behavior: "smooth" })}
-      aria-label="גלול למטה"
-    >
-      <svg width="26" height="40" viewBox="0 0 26 40" fill="none">
-        <rect x="1" y="1" width="24" height="38" rx="12" stroke="rgba(255,255,255,0.35)" strokeWidth="1.5" />
-        <motion.rect
-          x="11" y="7" width="4" height="7" rx="2"
-          fill="rgba(255,255,255,0.8)"
-          animate={{ y: [7, 15, 7], opacity: [0.9, 0.2, 0.9] }}
-          transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-        />
-      </svg>
-      <motion.svg
-        width="16" height="20" viewBox="0 0 16 20" fill="none"
-        animate={{ y: [0, 4, 0] }}
-        transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-      >
-        <path d="M8 1L8 15M8 15L2 9M8 15L14 9" stroke="rgba(255,255,255,0.35)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-      </motion.svg>
-    </motion.button>
-  );
-}
 
 export function HeroSection() {
   return (
     <section
-      className={cn("hero-main relative w-full overflow-hidden")}
-      style={{
-        background: "#05081a",
-        minHeight: "100vh",
-      }}
+      className="relative w-full overflow-hidden"
+      style={{ minHeight: "100svh", background: "#05081a" }}
       dir="rtl"
     >
-      {/* Background image - right half bleeds in from left */}
+      {/* Background */}
       <div
         className="absolute inset-0"
         style={{
           backgroundImage: "url('/images/hero-bg.png')",
           backgroundSize: "cover",
-          backgroundPosition: "center center",
+          backgroundPosition: "center",
           zIndex: 0,
         }}
       />
-
-      {/* Overlay: desktop = right-side dark, mobile = full dark */}
-      <div className="absolute inset-0 hero-overlay" style={{ zIndex: 1 }} />
-
-      {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0" style={{ height: 120, background: "linear-gradient(to top, #05081a 0%, transparent 100%)", zIndex: 2 }} />
-
-      {/* ── Content ── */}
+      {/* Overlay */}
       <div
-        className="relative flex items-center hero-content-wrap"
-        style={{ minHeight: "100vh", zIndex: 5, maxWidth: "1240px", margin: "0 auto", padding: "0 40px" }}
-      >
-        {/* Right column - text */}
-        <div className="flex flex-col hero-text-col" style={{ maxWidth: "520px", width: "100%", paddingTop: "60px", paddingBottom: "100px" }}>
+        className="absolute inset-0"
+        style={{ background: "rgba(5,8,26,0.72)", zIndex: 1 }}
+      />
 
-          {/* Eyebrow badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            style={{ marginBottom: "24px" }}
-          >
-            <span className="hero-badge" style={{
+      {/* Content — centered column */}
+      <div
+        className="relative flex flex-col items-center justify-center text-center"
+        style={{
+          minHeight: "100svh",
+          zIndex: 2,
+          padding: "80px 24px",
+          maxWidth: "760px",
+          margin: "0 auto",
+          gap: "0",
+        }}
+      >
+        {/* Row 1 — Badge */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          style={{ marginBottom: "28px" }}
+        >
+          <span style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "8px",
+            border: "1px solid rgba(249,115,22,0.4)",
+            borderRadius: "999px",
+            padding: "7px 16px",
+            fontSize: "13px",
+            fontWeight: 600,
+            color: "#f97316",
+            background: "rgba(249,115,22,0.08)",
+            letterSpacing: "0.03em",
+          }}>
+            <motion.span
+              style={{ width: 7, height: 7, borderRadius: "50%", background: "#f97316", display: "inline-block", flexShrink: 0 }}
+              animate={{ opacity: [1, 0.3, 1], scale: [1, 1.4, 1] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            />
+            קול קורא - מוזמנים להירשם כעת
+          </span>
+        </motion.div>
+
+        {/* Row 2 — Big English headline */}
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65, delay: 0.1 }}
+          style={{
+            margin: "0 0 20px 0",
+            fontWeight: 900,
+            lineHeight: 1.0,
+            letterSpacing: "-0.03em",
+            direction: "ltr",
+          }}
+          className="hero-h1"
+        >
+          <span className="hero-headline-orange">Make an impact,</span>
+          <br />
+          <span style={{ color: "#fff" }}>for real!</span>
+        </motion.h1>
+
+        {/* Row 3 — Hebrew subtitle */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.22 }}
+          style={{
+            fontSize: "18px",
+            fontWeight: 400,
+            lineHeight: 1.7,
+            color: "rgba(255,255,255,0.65)",
+            margin: "0 0 40px 0",
+            maxWidth: "560px",
+          }}
+        >
+          מנגנון ארגוני מובנה להצפת רעיונות, פיתוח פתרונות ושיפור מתמיד של תהליכים - פתוח לכל עובד ומנהל באמרל.
+        </motion.p>
+
+        {/* Row 4 — CTA button */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.32 }}
+        >
+          <motion.a
+            href="#brand-statement"
+            whileHover={{ scale: 1.05, boxShadow: "0 8px 40px rgba(249,115,22,0.55)" }}
+            whileTap={{ scale: 0.97 }}
+            style={{
               display: "inline-flex",
               alignItems: "center",
-              gap: "8px",
-              border: "1px solid rgba(249,115,22,0.35)",
-              borderRadius: "999px",
-              padding: "6px 14px",
-              fontSize: "12px",
-              fontWeight: 600,
-              color: "#f97316",
-              letterSpacing: "0.06em",
-              textTransform: "uppercase",
-              background: "rgba(249,115,22,0.08)",
-            }}>
-              <motion.span
-                style={{ width: 7, height: 7, borderRadius: "50%", background: "#f97316", display: "inline-block" }}
-                animate={{ opacity: [1, 0.3, 1], scale: [1, 1.3, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              />
-              קול קורא - מוזמנים להירשם כעת
-            </span>
-          </motion.div>
-
-          {/* Headline */}
-          <motion.h1
-            initial={{ opacity: 0, y: 28 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.1 }}
-            className="hero-h1"
-            style={{ margin: "0 0 20px 0", lineHeight: 1.05, fontWeight: 900, textAlign: "right", direction: "ltr", unicodeBidi: "plaintext" }}
-          >
-            <span className="hero-headline-orange" style={{
-              display: "block",
-              fontWeight: 900,
-              lineHeight: 1.1,
-              letterSpacing: "-0.02em",
-              textAlign: "right",
-            }}>
-              Make an impact,
-            </span>
-            <span style={{
-              display: "block",
-              color: "#ffffff",
-              fontWeight: 900,
-              lineHeight: 1.1,
-              letterSpacing: "-0.02em",
-              textAlign: "right",
-              textShadow: "0 0 40px rgba(255,255,255,0.15), 0 0 80px rgba(249,115,22,0.1)",
-            }}>
-              for real!
-            </span>
-          </motion.h1>
-
-          {/* Sub-headline */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.22 }}
-            style={{
-              fontSize: "18px",
-              fontWeight: 400,
-              lineHeight: 1.7,
-              color: "rgba(255,255,255,0.6)",
-              margin: "0 0 36px 0",
-              textAlign: "right",
+              gap: "10px",
+              background: "linear-gradient(135deg, #f97316 0%, #ef4444 100%)",
+              color: "#fff",
+              fontWeight: 700,
+              fontSize: "16px",
+              padding: "15px 32px",
+              borderRadius: "12px",
+              textDecoration: "none",
+              boxShadow: "0 4px 24px rgba(249,115,22,0.35)",
             }}
           >
-            מנגנון ארגוני מובנה להצפת רעיונות, פיתוח פתרונות ושיפור מתמיד של תהליכים - פתוח לכל עובד ומנהל באמרל.
-          </motion.p>
-
-          {/* CTA button */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.32 }}
-            className="hero-btns"
-            style={{ display: "flex", marginBottom: "48px" }}
-          >
-            <motion.a
-              href="#brand-statement"
-              whileHover={{ scale: 1.04, boxShadow: "0 8px 36px rgba(249,115,22,0.5)" }}
-              whileTap={{ scale: 0.97 }}
-              style={{
-                display: "inline-flex", alignItems: "center", gap: "8px",
-                background: "linear-gradient(135deg, #f97316 0%, #ef4444 100%)",
-                color: "#fff", fontWeight: 700, fontSize: "15px",
-                padding: "14px 28px", borderRadius: "10px",
-                textDecoration: "none", boxShadow: "0 4px 20px rgba(249,115,22,0.3)",
-                whiteSpace: "nowrap",
-              }}
-            >
-              בואו לקרוא עוד
-              <ArrowLeft size={16} strokeWidth={2.5} />
-            </motion.a>
-          </motion.div>
-
-
-        </div>
-        {/* Left column is intentionally empty - background image fills it */}
+            בואו לקרוא עוד
+            <ArrowLeft size={18} strokeWidth={2.5} />
+          </motion.a>
+        </motion.div>
       </div>
 
-      <ScrollIndicator />
+      {/* Scroll indicator */}
+      <motion.button
+        className="absolute flex flex-col items-center gap-1"
+        style={{ bottom: "28px", left: "50%", transform: "translateX(-50%)", zIndex: 10, background: "none", border: "none", cursor: "pointer" }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 0.6 }}
+        onClick={() => window.scrollBy({ top: window.innerHeight * 0.85, behavior: "smooth" })}
+        aria-label="גלול למטה"
+      >
+        <svg width="24" height="38" viewBox="0 0 24 38" fill="none">
+          <rect x="1" y="1" width="22" height="36" rx="11" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" />
+          <motion.rect
+            x="10" y="7" width="4" height="6" rx="2"
+            fill="rgba(255,255,255,0.7)"
+            animate={{ y: [7, 14, 7], opacity: [0.8, 0.2, 0.8] }}
+            transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+          />
+        </svg>
+        <motion.div
+          animate={{ y: [0, 4, 0] }}
+          transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <svg width="14" height="8" viewBox="0 0 14 8" fill="none">
+            <path d="M1 1l6 6 6-6" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </motion.div>
+      </motion.button>
 
       <style>{`
-        .hero-h1 { font-size: 88px; }
-        .hero-badge { white-space: nowrap; }
+        .hero-h1 { font-size: clamp(52px, 10vw, 110px); }
 
         .hero-headline-orange {
           background: linear-gradient(90deg, #f97316 0%, #ff6b35 30%, #fbbf24 55%, #f97316 80%, #ef4444 100%);
@@ -191,39 +172,12 @@ export function HeroSection() {
           -webkit-text-fill-color: transparent;
           background-clip: text;
           animation: shimmer 3.5s linear infinite;
-          filter: drop-shadow(0 0 18px rgba(249,115,22,0.55));
+          filter: drop-shadow(0 0 20px rgba(249,115,22,0.5));
         }
 
         @keyframes shimmer {
           0%   { background-position: 0% center; }
           100% { background-position: 200% center; }
-        }
-
-        /* Desktop overlay */
-        .hero-overlay {
-          background: linear-gradient(to left, #05081a 0%, #05081a 35%, rgba(5,8,26,0.75) 55%, rgba(5,8,26,0.2) 75%, transparent 100%);
-        }
-
-        @media (max-width: 900px) {
-          .hero-h1 { font-size: 52px !important; }
-          .hero-text-col { max-width: 100% !important; }
-          .hero-overlay {
-            background: rgba(5,8,26,0.78) !important;
-          }
-          .hero-content-wrap {
-            padding: 0 24px !important;
-            align-items: center !important;
-            justify-content: center !important;
-          }
-          .hero-text-col {
-            padding-top: 80px !important;
-            padding-bottom: 80px !important;
-          }
-          .hero-badge { font-size: 11px !important; white-space: normal !important; text-align: center; justify-content: center; }
-        }
-        @media (max-width: 480px) {
-          .hero-h1 { font-size: 40px !important; }
-          .hero-btns a { width: 100% !important; justify-content: center !important; }
         }
       `}</style>
     </section>
