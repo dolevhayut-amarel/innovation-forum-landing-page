@@ -33,15 +33,7 @@ const stats = [
   },
 ];
 
-function Counter({
-  value,
-  prefix = "",
-  suffix = "",
-}: {
-  value: number;
-  prefix?: string;
-  suffix?: string;
-}) {
+function Counter({ value }: { value: number }) {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
@@ -55,21 +47,18 @@ function Counter({
     const increment = value / steps;
     const timer = setInterval(() => {
       start += increment;
-      if (start >= value) {
-        setCount(value);
-        clearInterval(timer);
-      } else {
-        setCount(Math.floor(start));
-      }
+      if (start >= value) { setCount(value); clearInterval(timer); }
+      else { setCount(Math.floor(start)); }
     }, step);
     return () => clearInterval(timer);
   }, [inView, value]);
 
-  return <span ref={ref}>{prefix}{count}{suffix}</span>;
+  return <span ref={ref}>{count}</span>;
 }
 
 function StatCard({ stat, index }: { stat: typeof stats[0]; index: number }) {
   const [hovered, setHovered] = useState(false);
+  const accent = hovered ? "#f97316" : "#ffffff";
 
   return (
     <motion.div
@@ -87,64 +76,50 @@ function StatCard({ stat, index }: { stat: typeof stats[0]; index: number }) {
         textAlign: "center",
         padding: "28px 20px",
         borderRight: index < stats.length - 1 ? "1px solid rgba(255,255,255,0.12)" : "none",
-        position: "relative",
         cursor: "default",
         transition: "background 0.3s ease",
         background: hovered ? "rgba(249,115,22,0.10)" : "transparent",
         borderRadius: "12px",
       }}
     >
-      {/* animated number */}
-      <div
-        style={{
-          fontSize: "52px",
-          fontWeight: 900,
-          lineHeight: 1,
-          marginBottom: "8px",
-          letterSpacing: "-1px",
-          fontVariantNumeric: "tabular-nums",
-          color: hovered ? "#f97316" : "#ffffff",
-          transition: "color 0.3s ease",
-        }}
-      >
-        <Counter value={stat.value} prefix={stat.prefix} suffix={stat.suffix} />
+      {/* Metric row: prefix + BIG NUMBER + suffix */}
+      <div style={{ display: "flex", alignItems: "baseline", gap: "4px", marginBottom: "6px" }}>
+        {stat.prefix && (
+          <span style={{ fontSize: "18px", fontWeight: 700, color: "rgba(255,255,255,0.55)", letterSpacing: 0 }}>
+            {stat.prefix}
+          </span>
+        )}
+        <span style={{
+          fontSize: "56px", fontWeight: 900, lineHeight: 1,
+          letterSpacing: "-2px", fontVariantNumeric: "tabular-nums",
+          color: accent, transition: "color 0.3s ease",
+        }}>
+          <Counter value={stat.value} />
+        </span>
+        {stat.suffix && (
+          <span style={{ fontSize: "18px", fontWeight: 700, color: "rgba(255,255,255,0.55)" }}>
+            {stat.suffix}
+          </span>
+        )}
       </div>
 
-      {/* divider line */}
-      <div
-        style={{
-          width: "32px",
-          height: "2px",
-          borderRadius: "2px",
-          margin: "0 auto 10px",
-          background: hovered
-            ? "linear-gradient(90deg, #f97316, #e53e2f)"
-            : "rgba(255,255,255,0.25)",
-          transition: "background 0.3s ease",
-        }}
-      />
+      {/* divider */}
+      <div style={{
+        width: "28px", height: "2px", borderRadius: "2px", margin: "0 auto 10px",
+        background: hovered ? "linear-gradient(90deg,#f97316,#e53e2f)" : "rgba(255,255,255,0.2)",
+        transition: "background 0.3s ease",
+      }} />
 
-      <span
-        style={{
-          fontSize: "15px",
-          fontWeight: 700,
-          color: hovered ? "#ffffff" : "rgba(255,255,255,0.95)",
-          marginBottom: "4px",
-          display: "block",
-          transition: "color 0.3s ease",
-        }}
-      >
+      {/* Primary label */}
+      <span style={{
+        fontSize: "15px", fontWeight: 700,
+        color: "rgba(255,255,255,0.95)", marginBottom: "5px", display: "block",
+      }}>
         {stat.label}
       </span>
 
-      <span
-        style={{
-          fontSize: "12px",
-          color: hovered ? "rgba(255,255,255,0.7)" : "rgba(255,255,255,0.4)",
-          lineHeight: 1.4,
-          transition: "color 0.3s ease",
-        }}
-      >
+      {/* Secondary context */}
+      <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.5)", lineHeight: 1.4 }}>
         {stat.sub}
       </span>
     </motion.div>
