@@ -47,12 +47,14 @@ function ScrollIndicator() {
 export function HeroSection() {
   return (
     <section
-      className={cn("hero-main relative overflow-hidden flex flex-col justify-end w-full")}
+      className={cn("hero-main relative overflow-hidden flex flex-col justify-center w-full")}
       style={{
         backgroundImage: "url('/images/hero-bg.png')",
         backgroundSize: "cover",
         backgroundPosition: "center center",
-        minHeight: "890px",
+        minHeight: "100vh",
+        paddingTop: "80px",
+        paddingBottom: "100px",
       }}
       dir="rtl"
     >
@@ -240,8 +242,8 @@ export function HeroSection() {
 
         @media (max-width: 768px) {
           .hero-h1 { font-size: 52px; }
-          .hero-main { min-height: 100svh !important; }
-          .hero-content-inner { padding: 0 16px 48px !important; }
+          .hero-main { min-height: 100svh !important; padding-top: 60px !important; padding-bottom: 80px !important; }
+          .hero-content-inner { padding: 0 16px !important; }
           .hero-subtitle { font-size: 17px !important; margin-bottom: 24px !important; }
           .hero-features { gap: 8px !important; }
         }
