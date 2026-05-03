@@ -16,7 +16,7 @@ export function HeroSection() {
     <section
       className={cn("hero-main relative overflow-hidden flex flex-col justify-end w-full")}
       style={{
-        backgroundImage: "url('/images/bg-banner.jpg')",
+        backgroundImage: "url('/images/hero-bg.png')",
         backgroundSize: "cover",
         backgroundPosition: "center center",
         minHeight: "890px",
