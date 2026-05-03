@@ -22,9 +22,18 @@ export function HeroSection() {
       }}
       dir="rtl"
     >
+      {/* Dark gradient overlay — right side so text pops over the busy image */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: "linear-gradient(to left, rgba(10,10,30,0.82) 38%, rgba(10,10,30,0.45) 65%, transparent 100%)",
+          zIndex: 2,
+        }}
+      />
+
       {/* Main content */}
       <div className="hero-content-inner relative mx-auto w-full px-6 pb-10" style={{ maxWidth: "1200px", zIndex: 5 }}>
-        <div className="hero-content ml-auto" style={{ maxWidth: "660px" }}>
+        <div className="hero-content ml-auto" style={{ maxWidth: "580px" }}>
 
           <motion.h1
             className="hero-h1 font-black text-right"
