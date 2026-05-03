@@ -109,8 +109,8 @@ export function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.32 }}
         >
-          <motion.a
-            href="#brand-statement"
+          <motion.button
+            onClick={() => document.getElementById("brand-statement")?.scrollIntoView({ behavior: "smooth" })}
             whileHover={{ scale: 1.05, boxShadow: "0 8px 40px rgba(249,115,22,0.55)" }}
             whileTap={{ scale: 0.97 }}
             style={{
@@ -123,13 +123,14 @@ export function HeroSection() {
               fontSize: "16px",
               padding: "15px 32px",
               borderRadius: "12px",
-              textDecoration: "none",
+              border: "none",
+              cursor: "pointer",
               boxShadow: "0 4px 24px rgba(249,115,22,0.35)",
             }}
           >
             בואו לקרוא עוד
             <ArrowLeft size={18} strokeWidth={2.5} />
-          </motion.a>
+          </motion.button>
         </motion.div>
       </div>
 
