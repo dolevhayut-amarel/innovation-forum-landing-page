@@ -95,7 +95,7 @@ export function HeroSection() {
             fontSize: "18px",
             fontWeight: 400,
             lineHeight: 1.7,
-            color: "rgba(255,255,255,0.65)",
+            color: "rgba(255,255,255,0.92)",
             margin: "0 0 40px 0",
             maxWidth: "560px",
           }}
