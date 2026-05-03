@@ -35,7 +35,7 @@ export function LeadsToSuccess() {
   return (
     <section className={cn("w-full")}>
       <style>{`
-        .leads-outer { background-color: #ffffff; padding: 100px 0; direction: rtl; text-align: center; }
+        .leads-outer { background-color: #ffffff; padding: 60px 0 50px; direction: rtl; text-align: center; }
         .leads-inner { max-width: 960px; margin: 0 auto; padding: 0 24px; }
         .leads-h2    { font-size: 45px; font-weight: 900; color: #0f172a; margin-bottom: 16px; }
         .leads-sub   { font-size: 20px; color: #555; line-height: 1.6; max-width: 700px; margin: 0 auto 48px; }

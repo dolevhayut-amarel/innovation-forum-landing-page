@@ -39,7 +39,7 @@ export function WhyStudySection() {
   return (
     <section className={cn("relative overflow-hidden")}>
       <style>{`
-        .why-outer { padding: 100px 0; }
+        .why-outer { padding: 50px 0 60px; }
         .why-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
         .why-h2   { font-size: 45px; font-weight: 900; color: #0f172a; text-align: center; margin-bottom: 8px; }
         .why-sub  { font-size: 20px; color: #555; text-align: center; margin-bottom: 60px; }
