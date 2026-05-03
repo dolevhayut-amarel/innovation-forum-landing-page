@@ -121,27 +121,28 @@ export function LeadsToSuccess() {
                   <card.Icon size={26} color="#ffffff" strokeWidth={1.75} />
                 </div>
 
-                <h3 style={{ fontSize: "22px", fontWeight: 800, color: "#0f172a", marginBottom: "10px" }}>
+                <h3 style={{ fontSize: "26px", fontWeight: 900, color: "#0f172a", marginBottom: "16px", lineHeight: 1.2 }}>
                   {card.title}
                 </h3>
 
-                <div
-                  style={{
-                    fontSize: "13px",
+                <div style={{ marginBottom: "16px" }}>
+                  <span style={{
+                    display: "block",
+                    fontSize: "10px",
+                    fontWeight: 700,
+                    letterSpacing: "1.2px",
+                    textTransform: "uppercase" as const,
                     color: card.accent,
-                    fontWeight: 600,
-                    backgroundColor: card.accent + "12",
-                    borderRadius: "8px",
-                    padding: "6px 12px",
-                    marginBottom: "16px",
-                    display: "inline-block",
-                    lineHeight: 1.5,
-                  }}
-                >
-                  מיועד ל: {card.audience}
+                    marginBottom: "5px",
+                  }}>
+                    מיועד ל:
+                  </span>
+                  <span style={{ fontSize: "15px", fontWeight: 500, color: "#334155", lineHeight: 1.55 }}>
+                    {card.audience}
+                  </span>
                 </div>
 
-                <p style={{ fontSize: "16px", color: "#555", lineHeight: 1.7 }}>{card.text}</p>
+                <p style={{ fontSize: "14px", color: "#94a3b8", lineHeight: 1.75, margin: 0 }}>{card.text}</p>
               </motion.div>
             ))}
           </div>
