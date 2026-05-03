@@ -33,14 +33,11 @@ export function WhatStudySection() {
     <section className={cn("relative")}>
       <style>{`
         .process-outer {
-          background:
-            radial-gradient(ellipse at 85% 15%, rgba(249,115,22,0.12) 0%, transparent 50%),
-            radial-gradient(ellipse at 10% 80%, rgba(50,106,158,0.3) 0%, transparent 50%),
-            linear-gradient(160deg, #326a9e 0%, #2a5377 40%, #1e3252 100%);
-          padding: 100px 40px; direction: rtl;
+          background: #f8fafc;
+          padding: 80px 40px; direction: rtl;
         }
-        .process-h2   { font-size: 45px; font-weight: 900; color: #ffffff; text-align: right; margin-bottom: 8px; }
-        .process-sub  { font-size: 20px; color: rgba(255,255,255,0.85); text-align: right; margin-bottom: 48px; }
+        .process-h2   { font-size: 45px; font-weight: 900; color: #0f172a; text-align: right; margin-bottom: 8px; }
+        .process-sub  { font-size: 20px; color: #555; text-align: right; margin-bottom: 48px; }
         .process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 
         @media (max-width: 768px) {
@@ -81,16 +78,15 @@ export function WhatStudySection() {
                 viewport={view}
                 transition={{ duration: 0.55, delay: 0.1 + i * 0.12 }}
                 style={{
-                  background: "rgba(255, 255, 255, 0.08)",
-                  backdropFilter: "blur(12px)",
-                  WebkitBackdropFilter: "blur(12px)",
-                  border: "1px solid rgba(255, 255, 255, 0.15)",
+                  background: "#ffffff",
+                  border: "1px solid #e2e8f0",
                   borderRadius: "16px",
                   padding: "28px 24px",
                   display: "flex",
                   flexDirection: "column",
                   direction: "rtl",
                   textAlign: "right",
+                  boxShadow: "0 4px 20px rgba(0,0,0,0.05)",
                 }}
               >
                 <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
@@ -111,12 +107,12 @@ export function WhatStudySection() {
                   >
                     {step.number}
                   </div>
-                  <p style={{ fontSize: "20px", fontWeight: 700, color: "#ffffff", margin: 0 }}>
+                  <p style={{ fontSize: "20px", fontWeight: 700, color: "#0f172a", margin: 0 }}>
                     {step.title}
                   </p>
                 </div>
 
-                <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.75)", lineHeight: 1.7, marginBottom: "16px", flex: 1 }}>
+                <p style={{ fontSize: "15px", color: "#64748b", lineHeight: 1.7, marginBottom: "16px", flex: 1 }}>
                   {step.text}
                 </p>
 
