@@ -56,25 +56,19 @@ export function HeroSection() {
         }}
       />
 
-      {/* Overlay: strong dark on right, fades to transparent on left */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background: "linear-gradient(to left, #05081a 0%, #05081a 35%, rgba(5,8,26,0.75) 55%, rgba(5,8,26,0.2) 75%, transparent 100%)",
-          zIndex: 1,
-        }}
-      />
+      {/* Overlay: desktop = right-side dark, mobile = full dark */}
+      <div className="absolute inset-0 hero-overlay" style={{ zIndex: 1 }} />
 
       {/* Bottom fade */}
       <div className="absolute bottom-0 left-0 right-0" style={{ height: 120, background: "linear-gradient(to top, #05081a 0%, transparent 100%)", zIndex: 2 }} />
 
       {/* ── Content ── */}
       <div
-        className="relative flex items-center"
+        className="relative flex items-center hero-content-wrap"
         style={{ minHeight: "100vh", zIndex: 5, maxWidth: "1240px", margin: "0 auto", padding: "0 40px" }}
       >
         {/* Right column — text */}
-        <div className="flex flex-col hero-text-col" style={{ maxWidth: "520px", width: "100%", paddingTop: "60px", paddingBottom: "60px" }}>
+        <div className="flex flex-col hero-text-col" style={{ maxWidth: "520px", width: "100%", paddingTop: "60px", paddingBottom: "100px" }}>
 
           {/* Eyebrow badge */}
           <motion.div
@@ -223,13 +217,32 @@ export function HeroSection() {
           100% { background-position: 200% center; }
         }
 
-        @media (max-width: 900px) {
-          .hero-h1 { font-size: 58px !important; }
-          .hero-text-col { max-width: 100% !important; }
+        /* Desktop overlay */
+        .hero-overlay {
+          background: linear-gradient(to left, #05081a 0%, #05081a 35%, rgba(5,8,26,0.75) 55%, rgba(5,8,26,0.2) 75%, transparent 100%);
         }
-        @media (max-width: 640px) {
-          .hero-h1 { font-size: 42px !important; }
+
+        @media (max-width: 900px) {
+          .hero-h1 { font-size: 56px !important; }
+          .hero-text-col { max-width: 100% !important; }
+          /* Mobile: darken whole image so text is always readable */
+          .hero-overlay {
+            background: linear-gradient(to bottom, rgba(5,8,26,0.55) 0%, rgba(5,8,26,0.75) 40%, #05081a 80%) !important;
+          }
+          .hero-content-wrap {
+            padding: 0 24px !important;
+            align-items: flex-end !important;
+          }
+          .hero-text-col {
+            padding-top: 0 !important;
+            padding-bottom: 60px !important;
+          }
+          .hero-badge { font-size: 11px !important; }
+        }
+        @media (max-width: 480px) {
+          .hero-h1 { font-size: 44px !important; }
           .hero-btns { flex-direction: column !important; }
+          .hero-btns a { justify-content: center !important; }
         }
       `}</style>
     </section>
