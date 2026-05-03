@@ -112,30 +112,25 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.1 }}
             className="hero-h1"
-            style={{ margin: "0 0 20px 0", lineHeight: 1.0, fontWeight: 900, textAlign: "right" }}
+            style={{ margin: "0 0 20px 0", lineHeight: 1.05, fontWeight: 900, textAlign: "right", direction: "ltr", unicodeBidi: "plaintext" }}
           >
-            <span style={{
+            <span className="hero-headline-orange" style={{
               display: "block",
-              background: "linear-gradient(135deg, #f97316 0%, #ef4444 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-              fontSize: "0.55em",
-              fontWeight: 800,
-              lineHeight: 1.2,
-              textTransform: "none",
-              letterSpacing: "-0.01em",
+              fontWeight: 900,
+              lineHeight: 1.1,
+              letterSpacing: "-0.02em",
+              textAlign: "right",
             }}>
               Make an impact,
             </span>
             <span style={{
               display: "block",
               color: "#ffffff",
-              fontSize: "0.55em",
-              fontWeight: 800,
-              lineHeight: 1.2,
-              textTransform: "none",
-              letterSpacing: "-0.01em",
+              fontWeight: 900,
+              lineHeight: 1.1,
+              letterSpacing: "-0.02em",
+              textAlign: "right",
+              textShadow: "0 0 40px rgba(255,255,255,0.15), 0 0 80px rgba(249,115,22,0.1)",
             }}>
               for real!
             </span>
@@ -210,15 +205,30 @@ export function HeroSection() {
       <ScrollIndicator />
 
       <style>{`
-        .hero-h1 { font-size: 86px; }
+        .hero-h1 { font-size: 88px; }
         .hero-badge { white-space: nowrap; }
+
+        .hero-headline-orange {
+          background: linear-gradient(90deg, #f97316 0%, #ff6b35 30%, #fbbf24 55%, #f97316 80%, #ef4444 100%);
+          background-size: 200% auto;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          animation: shimmer 3.5s linear infinite;
+          filter: drop-shadow(0 0 18px rgba(249,115,22,0.55));
+        }
+
+        @keyframes shimmer {
+          0%   { background-position: 0% center; }
+          100% { background-position: 200% center; }
+        }
 
         @media (max-width: 900px) {
           .hero-h1 { font-size: 58px !important; }
           .hero-text-col { max-width: 100% !important; }
         }
         @media (max-width: 640px) {
-          .hero-h1 { font-size: 44px !important; }
+          .hero-h1 { font-size: 42px !important; }
           .hero-btns { flex-direction: column !important; }
         }
       `}</style>
