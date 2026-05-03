@@ -15,7 +15,7 @@ const programCards: ProgramCard[] = [
   {
     plusColor: "#f97316",
     title: "עבודה מעשית ותוצרים אמיתיים",
-    text: "כל מפגש מניב תוצרים מוחשיים — Use Cases, אוטומציות וכלים שנכנסים ישירות לשימוש בחטיבות. לא רק שיח רעיוני, אלא פתרונות שמיושמים.",
+    text: "כל מפגש מניב תוצרים מוחשיים - Use Cases, אוטומציות וכלים שנכנסים ישירות לשימוש בחטיבות. לא רק שיח רעיוני, אלא פתרונות שמיושמים.",
   },
   {
     plusColor: "#2a5377",
@@ -138,7 +138,7 @@ export function StudyProgramsSection() {
         >
           <div style={{ flex: 1, direction: "rtl" }}>
             <p style={{ fontSize: "26px", fontWeight: 700, color: "#ffffff" }}>
-              עשרות עובדים ומנהלים מכל החטיבות כבר נרשמו —{" "}
+              עשרות עובדים ומנהלים מכל החטיבות כבר נרשמו -{" "}
               <span style={{ color: "#f97316" }}>עכשיו תורכם</span>
             </p>
           </div>

@@ -146,7 +146,7 @@ export function BrandStatement() {
           className="brand-body"
         >
           פורום החדשנות של אמרל הוא לא עוד רעיון.
-          זהו מקום שבו אתם — העובדים והמנהלים המוכשרים שלנו —{" "}
+          זהו מקום שבו אתם - העובדים והמנהלים המוכשרים שלנו -{" "}
           <strong style={{ color: "#0f172a" }}>תבנו, תזהו ותיישמו</strong>{" "}
           את הרעיונות שתמיד רציתם.{" "}
           לא עוד שיחות מסדרון וחלומות במגירה.{" "}
@@ -168,7 +168,7 @@ export function BrandStatement() {
                 <div style={{ fontSize: "14px", color: "rgba(255,255,255,0.85)" }}>AI · Automation · Agents</div>
               </div>
 
-              {/* Seam — zero height, star centered exactly on the boundary */}
+              {/* Seam - zero height, star centered exactly on the boundary */}
               <div style={{ position: "relative", height: 0, display: "flex", justifyContent: "center", zIndex: 2 }}>
                 <div style={{ position: "absolute", top: "-26px" }}>
                   <PulsingStar whiteBg />
@@ -213,7 +213,7 @@ export function BrandStatement() {
             marginTop: "20px",
           }}
         >
-          שני פורומים. עבודה אחת משותפת. תוצאה אחת — ארגון שמתקדם.
+          שני פורומים. עבודה אחת משותפת. תוצאה אחת - ארגון שמתקדם.
         </motion.p>
 
       </div>

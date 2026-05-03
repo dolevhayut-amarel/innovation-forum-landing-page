@@ -9,7 +9,7 @@ const questions = [
     id: 1,
     number: "01",
     title: "מה החלום שלך לשנות ביחידה שלך מבחינה תהליכית?",
-    subtitle: "פרט/י על תהליך שהיית רוצה לשפר, לשנות או לחדש — ולמה זה חשוב בעיניך",
+    subtitle: "פרט/י על תהליך שהיית רוצה לשפר, לשנות או לחדש - ולמה זה חשוב בעיניך",
     placeholder: "התחל/י לכתוב...",
     image: null,
   },
@@ -17,7 +17,7 @@ const questions = [
     id: 2,
     number: "02",
     title: "לפנייך אטב כביסה",
-    subtitle: "פרט/י כמה שיותר שימושים יצירתיים ויוצאי דופן לחפץ זה — שאינם השימוש המקורי שלו",
+    subtitle: "פרט/י כמה שיותר שימושים יצירתיים ויוצאי דופן לחפץ זה - שאינם השימוש המקורי שלו",
     placeholder: "שימוש 1, שימוש 2, שימוש 3...",
     image: "clothespin",
   },
@@ -239,7 +239,7 @@ export default function QuestionnairePage() {
                 {q.subtitle}
               </motion.p>
 
-              {/* Answer area — no box, pure text on screen */}
+              {/* Answer area - no box, pure text on screen */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}

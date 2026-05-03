@@ -45,7 +45,7 @@ export function HeroSection() {
       }}
       dir="rtl"
     >
-      {/* Background image — right half bleeds in from left */}
+      {/* Background image - right half bleeds in from left */}
       <div
         className="absolute inset-0"
         style={{
@@ -67,7 +67,7 @@ export function HeroSection() {
         className="relative flex items-center hero-content-wrap"
         style={{ minHeight: "100vh", zIndex: 5, maxWidth: "1240px", margin: "0 auto", padding: "0 40px" }}
       >
-        {/* Right column — text */}
+        {/* Right column - text */}
         <div className="flex flex-col hero-text-col" style={{ maxWidth: "520px", width: "100%", paddingTop: "60px", paddingBottom: "100px" }}>
 
           {/* Eyebrow badge */}
@@ -96,7 +96,7 @@ export function HeroSection() {
                 animate={{ opacity: [1, 0.3, 1], scale: [1, 1.3, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
               />
-              קול קורא — מוזמנים להירשם כעת
+              קול קורא - מוזמנים להירשם כעת
             </span>
           </motion.div>
 
@@ -144,7 +144,7 @@ export function HeroSection() {
               textAlign: "right",
             }}
           >
-            מנגנון ארגוני מובנה להצפת רעיונות, פיתוח פתרונות ושיפור מתמיד של תהליכים — פתוח לכל עובד ומנהל באמרל.
+            מנגנון ארגוני מובנה להצפת רעיונות, פיתוח פתרונות ושיפור מתמיד של תהליכים - פתוח לכל עובד ומנהל באמרל.
           </motion.p>
 
           {/* CTA button */}
@@ -175,7 +175,7 @@ export function HeroSection() {
 
 
         </div>
-        {/* Left column is intentionally empty — background image fills it */}
+        {/* Left column is intentionally empty - background image fills it */}
       </div>
 
       <ScrollIndicator />
