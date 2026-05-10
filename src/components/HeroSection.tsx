@@ -14,102 +14,23 @@ export function HeroSection() {
       <div
         className="absolute inset-0"
         style={{
-          backgroundImage: "url('/images/hero-bg.png')",
+          backgroundImage: "url('/images/hero-bg-new.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           zIndex: 0,
         }}
       />
-      {/* Overlay */}
-      <div
-        className="absolute inset-0"
-        style={{ background: "rgba(5,8,26,0.72)", zIndex: 1 }}
-      />
 
-      {/* Content — centered column */}
+      {/* Content — CTA pinned to bottom-center */}
       <div
-        className="relative flex flex-col items-center justify-center text-center"
+        className="relative flex flex-col items-center justify-end text-center"
         style={{
           minHeight: "100svh",
           zIndex: 2,
-          padding: "80px 24px",
-          maxWidth: "760px",
-          margin: "0 auto",
-          gap: "0",
+          padding: "0 24px 80px",
         }}
       >
-        {/* Row 1 — Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          style={{ marginBottom: "28px" }}
-        >
-          <span style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "8px",
-            border: "1px solid rgba(249,115,22,0.4)",
-            borderRadius: "999px",
-            padding: "7px 16px",
-            fontSize: "13px",
-            fontWeight: 600,
-            color: "#f97316",
-            background: "rgba(249,115,22,0.08)",
-            letterSpacing: "0.03em",
-          }}>
-            <motion.span
-              style={{ width: 7, height: 7, borderRadius: "50%", background: "#f97316", display: "inline-block", flexShrink: 0 }}
-              animate={{ opacity: [1, 0.3, 1], scale: [1, 1.4, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
-            קול קורא - מוזמנים להירשם כעת
-          </span>
-        </motion.div>
-
-        {/* Row 2 — Big English headline */}
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, delay: 0.1 }}
-          style={{
-            margin: "0 0 20px 0",
-            fontWeight: 900,
-            lineHeight: 1.0,
-            letterSpacing: "-0.03em",
-            direction: "ltr",
-          }}
-          className="hero-h1"
-        >
-          <span style={{ whiteSpace: "nowrap" }}>
-            <span className="hero-headline-orange">Make </span>
-            <span className="hero-headline-white">A</span>
-            <span className="hero-headline-orange">n </span>
-            <span className="hero-headline-white">I</span>
-            <span className="hero-headline-orange">mpact</span>
-          </span>
-          <br />
-          <span className="hero-headline-orange">for real.</span>
-        </motion.h1>
-
-        {/* Row 3 — Hebrew subtitle */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.22 }}
-          style={{
-            fontSize: "18px",
-            fontWeight: 400,
-            lineHeight: 1.7,
-            color: "rgba(255,255,255,0.92)",
-            margin: "0 0 40px 0",
-            maxWidth: "560px",
-          }}
-        >
-          מנגנון ארגוני מובנה להצפת רעיונות, פיתוח פתרונות ושיפור מתמיד של תהליכים - פתוח לכל עובד ומנהל באמרל.
-        </motion.p>
-
-        {/* Row 4 — CTA button */}
+        {/* CTA button */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -169,30 +90,7 @@ export function HeroSection() {
         </motion.div>
       </motion.button>
 
-      <style>{`
-        .hero-h1 { font-size: clamp(40px, 7.5vw, 90px); }
 
-        .hero-headline-white {
-          color: #ffffff;
-          -webkit-text-fill-color: #ffffff;
-          filter: none;
-        }
-
-        .hero-headline-orange {
-          background: linear-gradient(90deg, #f97316 0%, #ff6b35 30%, #fbbf24 55%, #f97316 80%, #ef4444 100%);
-          background-size: 200% auto;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-          animation: shimmer 3.5s linear infinite;
-          filter: drop-shadow(0 0 20px rgba(249,115,22,0.5));
-        }
-
-        @keyframes shimmer {
-          0%   { background-position: 0% center; }
-          100% { background-position: 200% center; }
-        }
-      `}</style>
     </section>
   );
 }
