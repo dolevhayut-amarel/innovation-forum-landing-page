@@ -7,7 +7,7 @@ export function HeroSection() {
   return (
     <section
       className="relative w-full overflow-hidden"
-      style={{ aspectRatio: "1 / 1", background: "#05081a" }}
+      style={{ paddingBottom: "calc(100% + 50px)", background: "#05081a" }}
       dir="rtl"
     >
       {/* Background */}
@@ -33,11 +33,10 @@ export function HeroSection() {
 
       {/* Content — CTA pinned to bottom-center */}
       <div
-        className="relative flex flex-col items-center justify-end text-center"
+        className="absolute inset-0 flex flex-col items-center justify-end text-center"
         style={{
-          height: "100%",
           zIndex: 2,
-          padding: "0 24px 6%",
+          padding: "0 24px 12px",
         }}
       >
         {/* CTA button */}
