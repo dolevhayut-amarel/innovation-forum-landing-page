@@ -24,6 +24,8 @@ export async function POST(req: NextRequest) {
       "תאריך הגשה": new Date().toISOString(),
     };
 
+    console.log("submit payload:", JSON.stringify({ name, division, phone, email, forum, source }));
+
     const res = await fetch(
       `https://api.airtable.com/v0/${process.env.AIRTABLE_BASE_ID}/${process.env.AIRTABLE_TABLE_ID}`,
       {
