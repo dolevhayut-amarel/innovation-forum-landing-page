@@ -1,5 +1,6 @@
 import { StickyHeader } from "@/components/StickyHeader";
 import { HeroSection } from "@/components/HeroSection";
+import { HeroCtaSection } from "@/components/HeroCtaSection";
 import { ClientsBar } from "@/components/ClientsBar";
 import { BrandStatement } from "@/components/BrandStatement";
 import { LeadsToSuccess } from "@/components/LeadsToSuccess";
@@ -16,6 +17,7 @@ export default function Home() {
       <StickyHeader />
       <main dir="rtl" className="w-full overflow-x-hidden">
       <HeroSection />
+      <HeroCtaSection />
       <ClientsBar />
       <BrandStatement />
       <LeadsToSuccess />
