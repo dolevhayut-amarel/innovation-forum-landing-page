@@ -21,6 +21,15 @@ export function HeroSection() {
           zIndex: 0,
         }}
       />
+      {/* Bottom gradient for CTA legibility */}
+      <div
+        className="absolute inset-x-0 bottom-0"
+        style={{
+          height: "30%",
+          background: "linear-gradient(to bottom, transparent, rgba(5,8,26,0.85))",
+          zIndex: 1,
+        }}
+      />
 
       {/* Content — CTA pinned to bottom-center */}
       <div
