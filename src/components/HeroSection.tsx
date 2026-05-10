@@ -7,7 +7,7 @@ export function HeroSection() {
   return (
     <section
       className="relative w-full overflow-hidden"
-      style={{ minHeight: "100svh", background: "#05081a" }}
+      style={{ aspectRatio: "1 / 1", background: "#05081a" }}
       dir="rtl"
     >
       {/* Background */}
@@ -15,8 +15,9 @@ export function HeroSection() {
         className="absolute inset-0"
         style={{
           backgroundImage: "url('/images/hero-bg-new.jpg')",
-          backgroundSize: "cover",
+          backgroundSize: "contain",
           backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
           zIndex: 0,
         }}
       />
@@ -25,9 +26,9 @@ export function HeroSection() {
       <div
         className="relative flex flex-col items-center justify-end text-center"
         style={{
-          minHeight: "100svh",
+          height: "100%",
           zIndex: 2,
-          padding: "0 24px 80px",
+          padding: "0 24px 6%",
         }}
       >
         {/* CTA button */}
