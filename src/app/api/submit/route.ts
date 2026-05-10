@@ -46,12 +46,18 @@ export async function POST(req: NextRequest) {
 
     const data = await res.json();
 
-    // Fire Make.com webhook as backup — non-blocking, don't fail the request if it errors
-    fetch("https://hook.eu1.make.com/l869xj6564n6ydbhq72svi671aswk1tw", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...fields, airtable_id: data.id }),
-    }).catch((err) => console.error("Webhook error:", err));
+    // Make.com webhook backup — awaited (fire-and-forget gets killed in serverless)
+    try {
+      const hookRes = await fetch("https://hook.eu1.make.com/l869xj6564n6ydbhq72svi671aswk1tw", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...fields, airtable_id: data.id }),
+        signal: AbortSignal.timeout(5000),
+      });
+      console.log("Webhook status:", hookRes.status);
+    } catch (err) {
+      console.error("Webhook error:", err);
+    }
 
     return NextResponse.json({ success: true, id: data.id });
   } catch (e) {
