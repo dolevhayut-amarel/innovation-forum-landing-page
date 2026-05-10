@@ -81,7 +81,13 @@ export function HeroSection() {
           }}
           className="hero-h1"
         >
-          <span className="hero-headline-orange" style={{ whiteSpace: "nowrap" }}>make an impact</span>
+          <span style={{ whiteSpace: "nowrap" }}>
+            <span className="hero-headline-orange">Make </span>
+            <span className="hero-headline-white">A</span>
+            <span className="hero-headline-orange">n </span>
+            <span className="hero-headline-white">I</span>
+            <span className="hero-headline-orange">mpact</span>
+          </span>
           <br />
           <span className="hero-headline-orange">for real.</span>
         </motion.h1>
@@ -165,6 +171,12 @@ export function HeroSection() {
 
       <style>{`
         .hero-h1 { font-size: clamp(40px, 7.5vw, 90px); }
+
+        .hero-headline-white {
+          color: #ffffff;
+          -webkit-text-fill-color: #ffffff;
+          filter: none;
+        }
 
         .hero-headline-orange {
           background: linear-gradient(90deg, #f97316 0%, #ff6b35 30%, #fbbf24 55%, #f97316 80%, #ef4444 100%);

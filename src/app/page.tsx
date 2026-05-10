@@ -1,3 +1,4 @@
+import { StickyHeader } from "@/components/StickyHeader";
 import { HeroSection } from "@/components/HeroSection";
 import { ClientsBar } from "@/components/ClientsBar";
 import { BrandStatement } from "@/components/BrandStatement";
@@ -11,7 +12,9 @@ import { FooterSection } from "@/components/FooterSection";
 
 export default function Home() {
   return (
-    <main dir="rtl" className="w-full overflow-x-hidden">
+    <>
+      <StickyHeader />
+      <main dir="rtl" className="w-full overflow-x-hidden">
       <HeroSection />
       <ClientsBar />
       <BrandStatement />
@@ -23,5 +26,6 @@ export default function Home() {
       <WhatStudySection />
       <FooterSection />
     </main>
+    </>
   );
 }

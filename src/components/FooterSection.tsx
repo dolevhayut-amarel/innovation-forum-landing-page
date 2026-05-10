@@ -101,7 +101,7 @@ export function FooterSection() {
             {forum === "tech" && (
               <div style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(249,115,22,0.4)", borderRadius: "10px", padding: "10px 14px", fontSize: "12px", color: "rgba(255,255,255,0.8)", lineHeight: 1.6, direction: "rtl" }}>
                 <strong style={{ color: "#f97316" }}>שימו לב: </strong>
-                הצטרפות לפורום מחייבת התחייבות להמשך עבודה באמרל לשנה מיום ההצטרפות, שכן מדובר בהכשרה ייחודית שהארגון משקיע בה משאבים רבים.
+                הצטרפות לפורום מחייבת התחייבות להמשך עבודה באמרל לשנה מתום הקורס, שכן מדובר בהכשרה ייחודית שהארגון משקיע בה משאבים רבים.
               </div>
             )}
 
