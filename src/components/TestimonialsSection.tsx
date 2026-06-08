@@ -3,6 +3,7 @@
 import { cn } from "@/lib/utils";
 import { Bot, Workflow, Star } from "lucide-react";
 import { motion } from "framer-motion";
+import { REGISTRATION_CLOSED } from "@/lib/config";
 
 const outcomes = [
   {
@@ -183,25 +184,24 @@ export function TestimonialsSection() {
         transition={{ duration: 0.5, delay: 0.3 }}
         style={{ textAlign: "center", marginTop: "50px" }}
       >
-        <motion.a
-          href="#registration"
-          whileHover={{ scale: 1.04 }}
-          whileTap={{ scale: 0.97 }}
+        <motion.button
+          disabled={REGISTRATION_CLOSED}
           style={{
-            background: "linear-gradient(135deg, #f97316 0%, #e53e2f 100%)",
-            color: "#ffffff",
+            background: REGISTRATION_CLOSED
+              ? "rgba(255,255,255,0.1)"
+              : "linear-gradient(135deg, #f97316 0%, #e53e2f 100%)",
+            color: REGISTRATION_CLOSED ? "rgba(255,255,255,0.35)" : "#ffffff",
             borderRadius: "50px",
             padding: "14px 40px",
             fontSize: "18px",
             fontWeight: 700,
-            border: "none",
-            cursor: "pointer",
-            textDecoration: "none",
+            border: REGISTRATION_CLOSED ? "1px solid rgba(255,255,255,0.18)" : "none",
+            cursor: REGISTRATION_CLOSED ? "not-allowed" : "pointer",
             display: "inline-block",
           }}
         >
-          אני רוצה להשתתף בפורום &gt;&gt;
-        </motion.a>
+          {REGISTRATION_CLOSED ? "🔒 ההרשמה נסגרה" : "אני רוצה להשתתף בפורום >>"}
+        </motion.button>
       </motion.div>
 
       <style>{`

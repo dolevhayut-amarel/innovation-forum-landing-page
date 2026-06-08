@@ -9,10 +9,12 @@ import { StudyProgramsSection } from "@/components/StudyProgramsSection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { WhatStudySection } from "@/components/WhatStudySection";
 import { FooterSection } from "@/components/FooterSection";
+import { RegistrationClosedModal } from "@/components/RegistrationClosedModal";
 
 export default function Home() {
   return (
     <>
+      <RegistrationClosedModal />
       <StickyHeader />
       <main dir="rtl" className="w-full overflow-x-hidden">
       <HeroSection />

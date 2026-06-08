@@ -4,6 +4,7 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
+import { REGISTRATION_CLOSED } from "@/lib/config";
 
 interface ProgramCard {
   plusColor: string;
@@ -124,6 +125,32 @@ export function StudyProgramsSection() {
         }}
       >
         <div style={{ maxWidth: "680px", margin: "0 auto", padding: "0 24px" }}>
+          {REGISTRATION_CLOSED && (
+            <motion.div
+              initial={hidden}
+              whileInView={show}
+              viewport={view}
+              transition={{ duration: 0.45 }}
+              style={{
+                background: "rgba(249,115,22,0.12)",
+                border: "1px solid rgba(249,115,22,0.45)",
+                borderRadius: "14px",
+                padding: "18px 24px",
+                textAlign: "center",
+                marginBottom: "28px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "10px",
+              }}
+            >
+              <span style={{ fontSize: "22px" }}>🔒</span>
+              <span style={{ fontSize: "17px", fontWeight: 700, color: "#fbbf7a" }}>
+                ההרשמה נסגרה — תודה לכל מי שנרשם!
+              </span>
+            </motion.div>
+          )}
+
           <motion.p
             initial={hidden}
             whileInView={show}
@@ -131,8 +158,10 @@ export function StudyProgramsSection() {
             transition={{ duration: 0.55 }}
             style={{ fontSize: "28px", fontWeight: 700, color: "#ffffff", textAlign: "center", marginBottom: "8px" }}
           >
-            עשרות עובדים ומנהלים מכל החטיבות כבר נרשמו —{" "}
-            <span style={{ color: "#f97316" }}>עכשיו תורכם</span>
+            {REGISTRATION_CLOSED
+              ? <span>ההרשמה לפורומי החדשנות <span style={{ color: "#f97316" }}>נסגרה</span></span>
+              : <>עשרות עובדים ומנהלים מכל החטיבות כבר נרשמו —{" "}<span style={{ color: "#f97316" }}>עכשיו תורכם</span></>
+            }
           </motion.p>
           <motion.p
             initial={hidden}
@@ -141,7 +170,10 @@ export function StudyProgramsSection() {
             transition={{ duration: 0.55, delay: 0.08 }}
             style={{ fontSize: "16px", color: "rgba(255,255,255,0.65)", textAlign: "center", marginBottom: "40px" }}
           >
-            השאירו פרטים ונחזור אליכם עם כל המידע
+            {REGISTRATION_CLOSED
+              ? "נשמח לראותכם בסבב הבא"
+              : "השאירו פרטים ונחזור אליכם עם כל המידע"
+            }
           </motion.p>
 
           <motion.form
@@ -151,6 +183,7 @@ export function StudyProgramsSection() {
             transition={{ duration: 0.55, delay: 0.15 }}
             onSubmit={(e) => {
               e.preventDefault();
+              if (REGISTRATION_CLOSED) return;
               const fd = new FormData(e.currentTarget);
               sessionStorage.setItem("forum_form", JSON.stringify({
                 name: fd.get("firstname") ?? "",
@@ -164,15 +197,15 @@ export function StudyProgramsSection() {
               router.push("/questionnaire");
             }}
             className={cn("flex flex-col gap-3")}
-            style={{ direction: "rtl" }}
+            style={{ direction: "rtl", opacity: REGISTRATION_CLOSED ? 0.5 : 1, pointerEvents: REGISTRATION_CLOSED ? "none" : "auto" }}
           >
             <div className="form-row-2">
-              <input type="text" name="firstname" placeholder="שם מלא" className="study-input" style={inputStyle} />
-              <input type="text" name="division" placeholder="חטיבה / מחלקה" className="study-input" style={inputStyle} />
+              <input type="text" name="firstname" placeholder="שם מלא" className="study-input" style={inputStyle} disabled={REGISTRATION_CLOSED} />
+              <input type="text" name="division" placeholder="חטיבה / מחלקה" className="study-input" style={inputStyle} disabled={REGISTRATION_CLOSED} />
             </div>
             <div className="form-row-2">
-              <input type="tel" name="phone" placeholder="טלפון נייד" className="study-input" style={inputStyle} />
-              <input type="email" name="email" placeholder="כתובת מייל" className="study-input" style={inputStyle} />
+              <input type="tel" name="phone" placeholder="טלפון נייד" className="study-input" style={inputStyle} disabled={REGISTRATION_CLOSED} />
+              <input type="email" name="email" placeholder="כתובת מייל" className="study-input" style={inputStyle} disabled={REGISTRATION_CLOSED} />
             </div>
             <select
               name="forum"
@@ -180,6 +213,7 @@ export function StudyProgramsSection() {
               style={{ ...inputStyle, appearance: "none" }}
               value={forum}
               onChange={(e) => setForum(e.target.value)}
+              disabled={REGISTRATION_CLOSED}
             >
               <option value="">לאיזה פורום אני מתעניין/ת?</option>
               <option value="tech">פורום חדשנות טכנולוגית (AI)</option>
@@ -209,31 +243,32 @@ export function StudyProgramsSection() {
               display: "flex",
               alignItems: "center",
               gap: "8px",
-              cursor: "pointer",
+              cursor: REGISTRATION_CLOSED ? "not-allowed" : "pointer",
             }}>
-              <input type="checkbox" name="gdpr" defaultChecked />
+              <input type="checkbox" name="gdpr" defaultChecked disabled={REGISTRATION_CLOSED} />
               <span>אני מאשר/ת קבלת עדכונים מפורום החדשנות של אמרל</span>
             </label>
 
             <motion.button
               type="submit"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
+              disabled={REGISTRATION_CLOSED}
               style={{
-                background: "linear-gradient(135deg, #f97316 0%, #e53e2f 100%)",
-                color: "#ffffff",
+                background: REGISTRATION_CLOSED
+                  ? "rgba(255,255,255,0.12)"
+                  : "linear-gradient(135deg, #f97316 0%, #e53e2f 100%)",
+                color: REGISTRATION_CLOSED ? "rgba(255,255,255,0.4)" : "#ffffff",
                 borderRadius: "50px",
                 padding: "16px 30px",
                 fontSize: "18px",
                 fontWeight: 700,
-                border: "none",
-                cursor: "pointer",
+                border: REGISTRATION_CLOSED ? "1px solid rgba(255,255,255,0.18)" : "none",
+                cursor: REGISTRATION_CLOSED ? "not-allowed" : "pointer",
                 width: "100%",
                 textAlign: "center",
                 marginTop: "4px",
               }}
             >
-              אני רוצה להצטרף לפורום &gt;&gt;
+              {REGISTRATION_CLOSED ? "🔒 ההרשמה נסגרה" : "אני רוצה להצטרף לפורום >>"}
             </motion.button>
           </motion.form>
         </div>

@@ -3,6 +3,7 @@
 import { cn } from "@/lib/utils";
 import { Bot, Workflow } from "lucide-react";
 import { motion } from "framer-motion";
+import { REGISTRATION_CLOSED } from "@/lib/config";
 
 const cards = [
   {
@@ -147,27 +148,28 @@ export function LeadsToSuccess() {
             ))}
           </div>
 
-          <motion.a
-            href="#registration"
+          <motion.button
+            disabled={REGISTRATION_CLOSED}
             initial={hidden}
             whileInView={show}
             viewport={view}
             transition={{ duration: 0.5, delay: 0.3 }}
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.97 }}
             style={{
               display: "inline-block",
-              background: "linear-gradient(135deg, #f97316 0%, #e53e2f 100%)",
-              color: "#ffffff",
+              background: REGISTRATION_CLOSED
+                ? "rgba(15,23,42,0.15)"
+                : "linear-gradient(135deg, #f97316 0%, #e53e2f 100%)",
+              color: REGISTRATION_CLOSED ? "rgba(15,23,42,0.4)" : "#ffffff",
               borderRadius: "50px",
               padding: "14px 40px",
               fontSize: "18px",
               fontWeight: 700,
-              textDecoration: "none",
+              border: REGISTRATION_CLOSED ? "1px solid rgba(15,23,42,0.2)" : "none",
+              cursor: REGISTRATION_CLOSED ? "not-allowed" : "pointer",
             }}
           >
-            אני רוצה להצטרף לפורום &gt;&gt;
-          </motion.a>
+            {REGISTRATION_CLOSED ? "🔒 ההרשמה נסגרה" : "אני רוצה להצטרף לפורום >>"}
+          </motion.button>
         </div>
       </div>
     </section>

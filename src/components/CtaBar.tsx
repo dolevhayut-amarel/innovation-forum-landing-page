@@ -2,6 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
+import { REGISTRATION_CLOSED } from "@/lib/config";
 
 export function CtaBar() {
   return (
@@ -49,28 +50,26 @@ export function CtaBar() {
         >
           הפורומים מחכים לכם - הצטרפו עכשיו לפורום החדשנות של אמרל ועצבו את עתיד הארגון
         </p>
-        <motion.a
-          href="#registration"
+        <motion.button
+          disabled={REGISTRATION_CLOSED}
           className="cta-bar-btn"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.97 }}
           style={{
-            background: "linear-gradient(135deg, #f97316 0%, #e53e2f 100%)",
-            color: "#ffffff",
+            background: REGISTRATION_CLOSED
+              ? "rgba(255,255,255,0.12)"
+              : "linear-gradient(135deg, #f97316 0%, #e53e2f 100%)",
+            color: REGISTRATION_CLOSED ? "rgba(255,255,255,0.4)" : "#ffffff",
             borderRadius: 50,
             padding: "14px 32px",
             fontSize: 18,
             fontWeight: 700,
-            border: "none",
-            cursor: "pointer",
+            border: REGISTRATION_CLOSED ? "1px solid rgba(255,255,255,0.18)" : "none",
+            cursor: REGISTRATION_CLOSED ? "not-allowed" : "pointer",
             flexShrink: 0,
             whiteSpace: "nowrap",
-            textDecoration: "none",
-            display: "inline-block",
           }}
         >
-          אני רוצה להצטרף לפורום &gt;&gt;
-        </motion.a>
+          {REGISTRATION_CLOSED ? "🔒 ההרשמה נסגרה" : "אני רוצה להצטרף לפורום >>"}
+        </motion.button>
       </motion.div>
     </section>
   );

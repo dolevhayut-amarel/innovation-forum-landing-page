@@ -4,6 +4,7 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
+import { REGISTRATION_CLOSED } from "@/lib/config";
 
 export function FooterSection() {
   const [name, setName] = useState("");
@@ -55,6 +56,32 @@ export function FooterSection() {
         `}</style>
 
         <div style={{ maxWidth: "680px", margin: "0 auto", padding: "0 24px" }}>
+          {REGISTRATION_CLOSED && (
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.45 }}
+              style={{
+                background: "rgba(249,115,22,0.12)",
+                border: "1px solid rgba(249,115,22,0.45)",
+                borderRadius: "14px",
+                padding: "18px 24px",
+                textAlign: "center",
+                marginBottom: "28px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "10px",
+              }}
+            >
+              <span style={{ fontSize: "22px" }}>🔒</span>
+              <span style={{ fontSize: "17px", fontWeight: 700, color: "#fbbf7a" }}>
+                ההרשמה נסגרה — תודה לכל מי שנרשם!
+              </span>
+            </motion.div>
+          )}
+
           <motion.p
             initial={{ opacity: 0, y: 32 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -62,8 +89,10 @@ export function FooterSection() {
             transition={{ duration: 0.55 }}
             style={{ fontSize: "28px", fontWeight: 700, color: "#ffffff", textAlign: "center", marginBottom: "8px" }}
           >
-            עדיין לא נרשמתם? —{" "}
-            <span style={{ color: "#f97316" }}>זה הזמן</span>
+            {REGISTRATION_CLOSED
+              ? <span>ההרשמה לפורומי החדשנות <span style={{ color: "#f97316" }}>נסגרה</span></span>
+              : <>עדיין לא נרשמתם? — <span style={{ color: "#f97316" }}>זה הזמן</span></>
+            }
           </motion.p>
           <motion.p
             initial={{ opacity: 0, y: 32 }}
@@ -72,7 +101,7 @@ export function FooterSection() {
             transition={{ duration: 0.55, delay: 0.08 }}
             style={{ fontSize: "16px", color: "rgba(255,255,255,0.65)", textAlign: "center", marginBottom: "40px" }}
           >
-            השאירו פרטים ונחזור אליכם בהקדם עם כל הפרטים על הרשמה לפורום
+            {REGISTRATION_CLOSED ? "נשמח לראותכם בסבב הבא" : "השאירו פרטים ונחזור אליכם בהקדם עם כל הפרטים על הרשמה לפורום"}
           </motion.p>
 
           <motion.form
@@ -80,19 +109,19 @@ export function FooterSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.55, delay: 0.15 }}
-            onSubmit={handleSubmit}
+            onSubmit={(e) => { e.preventDefault(); if (!REGISTRATION_CLOSED) handleSubmit(e); }}
             className={cn("flex flex-col gap-3")}
-            style={{ direction: "rtl" }}
+            style={{ direction: "rtl", opacity: REGISTRATION_CLOSED ? 0.5 : 1, pointerEvents: REGISTRATION_CLOSED ? "none" : "auto" }}
           >
             <div className="footer-form-row-2">
-              <input type="text" placeholder="שם מלא" value={name} onChange={(e) => setName(e.target.value)} style={inputStyle} className="footer-input" />
-              <input type="text" placeholder="חטיבה / מחלקה" value={division} onChange={(e) => setDivision(e.target.value)} style={inputStyle} className="footer-input" />
+              <input type="text" placeholder="שם מלא" value={name} onChange={(e) => setName(e.target.value)} style={inputStyle} className="footer-input" disabled={REGISTRATION_CLOSED} />
+              <input type="text" placeholder="חטיבה / מחלקה" value={division} onChange={(e) => setDivision(e.target.value)} style={inputStyle} className="footer-input" disabled={REGISTRATION_CLOSED} />
             </div>
             <div className="footer-form-row-2">
-              <input type="tel" placeholder="טלפון נייד" value={phone} onChange={(e) => setPhone(e.target.value)} style={inputStyle} className="footer-input" />
-              <input type="email" placeholder="כתובת מייל" value={email} onChange={(e) => setEmail(e.target.value)} style={inputStyle} className="footer-input" />
+              <input type="tel" placeholder="טלפון נייד" value={phone} onChange={(e) => setPhone(e.target.value)} style={inputStyle} className="footer-input" disabled={REGISTRATION_CLOSED} />
+              <input type="email" placeholder="כתובת מייל" value={email} onChange={(e) => setEmail(e.target.value)} style={inputStyle} className="footer-input" disabled={REGISTRATION_CLOSED} />
             </div>
-            <select value={forum} onChange={(e) => setForum(e.target.value)} style={{ ...inputStyle, appearance: "none" }} className="footer-input">
+            <select value={forum} onChange={(e) => setForum(e.target.value)} style={{ ...inputStyle, appearance: "none" }} className="footer-input" disabled={REGISTRATION_CLOSED}>
               <option value="">לאיזה פורום אני מתעניין/ת?</option>
               <option value="tech">פורום חדשנות טכנולוגית (AI)</option>
               <option value="process">פורום חדשנות תהליכית</option>
@@ -105,30 +134,31 @@ export function FooterSection() {
               </div>
             )}
 
-            <label style={{ fontSize: "14px", color: "#ffffff", direction: "rtl", display: "flex", alignItems: "center", gap: "8px", cursor: "pointer" }}>
-              <input type="checkbox" checked={agreed} onChange={(e) => setAgreed(e.target.checked)} />
+            <label style={{ fontSize: "14px", color: "#ffffff", direction: "rtl", display: "flex", alignItems: "center", gap: "8px", cursor: REGISTRATION_CLOSED ? "not-allowed" : "pointer" }}>
+              <input type="checkbox" checked={agreed} onChange={(e) => setAgreed(e.target.checked)} disabled={REGISTRATION_CLOSED} />
               <span>אני מאשר/ת קבלת עדכונים מפורום החדשנות של אמרל</span>
             </label>
 
             <motion.button
               type="submit"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
+              disabled={REGISTRATION_CLOSED}
               style={{
-                background: "linear-gradient(135deg, #f97316 0%, #e53e2f 100%)",
-                color: "#ffffff",
+                background: REGISTRATION_CLOSED
+                  ? "rgba(255,255,255,0.12)"
+                  : "linear-gradient(135deg, #f97316 0%, #e53e2f 100%)",
+                color: REGISTRATION_CLOSED ? "rgba(255,255,255,0.4)" : "#ffffff",
                 borderRadius: "50px",
                 padding: "16px 30px",
                 fontSize: "18px",
                 fontWeight: 700,
-                border: "none",
-                cursor: "pointer",
+                border: REGISTRATION_CLOSED ? "1px solid rgba(255,255,255,0.18)" : "none",
+                cursor: REGISTRATION_CLOSED ? "not-allowed" : "pointer",
                 width: "100%",
                 textAlign: "center",
                 marginTop: "4px",
               }}
             >
-              אני רוצה להצטרף לפורום &gt;&gt;
+              {REGISTRATION_CLOSED ? "🔒 ההרשמה נסגרה" : "אני רוצה להצטרף לפורום >>"}
             </motion.button>
           </motion.form>
         </div>
